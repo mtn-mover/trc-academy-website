@@ -139,7 +139,7 @@ export default function AboutPage() {
             The TRC Training Academy Vision
           </h2>
           
-          <div className="prose prose-lg mx-auto text-trc-gray-700 space-y-6">
+          <div className="mx-auto text-trc-gray-700 space-y-6">
             <p className="text-lg leading-relaxed">
               TRC Training Academy was born from a simple yet profound observation: the coaching 
               industry was missing the wisdom, depth, and life experience that mature professionals 
