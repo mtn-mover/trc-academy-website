@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* Global Typography System for 45+ Demographic - Unified Sans-Serif */
+html {
+  font-size: 18px; /* Base font size for better readability */
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  color: #1f2937; /* trc-gray-800 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+  word-wrap: break-word !important;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Typography Scale - All Sans-Serif for Consistency */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827; /* trc-gray-900 */
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3rem; /* 48px */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+}
+
+/* Body Text - Enhanced Readability */
+p {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1.125rem; /* 18px minimum */
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  color: #374151; /* trc-gray-700 */
+}
+
+/* Ensure all text elements use same font */
+span, a, li, td, th, label, input, select, textarea {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Large Text Variants */
+.text-lg {
+  font-size: 1.25rem !important; /* 20px */
+  line-height: 1.75 !important;
+}
+
+.text-xl {
+  font-size: 1.375rem !important; /* 22px */
+  line-height: 1.6 !important;
+}
+
+.text-2xl {
+  font-size: 1.625rem !important; /* 26px */
+  line-height: 1.5 !important;
+}
+
+.text-3xl {
+  font-size: 2rem !important; /* 32px */
+  line-height: 1.4 !important;
+}
+
+.text-4xl {
+  font-size: 2.5rem !important; /* 40px */
+  line-height: 1.3 !important;
+}
+
+.text-5xl {
+  font-size: 3rem !important; /* 48px */
+  line-height: 1.2 !important;
+}
+
+.text-6xl {
+  font-size: 3.75rem !important; /* 60px */
+  line-height: 1.1 !important;
+}
+
+/* Responsive Typography for Mobile */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.875rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.25rem !important;
+  }
+  
+  .text-6xl {
+    font-size: 2.75rem !important;
+  }
+}
+
+/* Override Tailwind defaults to ensure consistency */
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+}
+
+/* Navigation Typography */
+nav {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Button Typography */
+button, a.button, [role="button"] {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+/* SMART TEXT COLOR CONTRAST RULES */
+
+/* DARK Blue backgrounds (600-900) - WHITE text */
+/* Only apply to elements that DON'T have explicit text color classes */
+.bg-trc-blue-600:not([class*="text-"]), 
+.bg-trc-blue-700:not([class*="text-"]), 
+.bg-trc-blue-800:not([class*="text-"]), 
+.bg-trc-blue-900:not([class*="text-"]) {
+  color: white;
+}
+
+/* DARK Gold/Orange backgrounds (600-900) - WHITE text */
+.bg-trc-gold-600:not([class*="text-"]), 
+.bg-trc-gold-700:not([class*="text-"]), 
+.bg-trc-gold-800:not([class*="text-"]), 
+.bg-trc-gold-900:not([class*="text-"]),
+.bg-orange-600:not([class*="text-"]), 
+.bg-orange-700:not([class*="text-"]) {
+  color: white;
+}
+
+/* Dark gradients - ensure white text */
+[class*="bg-gradient-"][class*="trc-blue-600"],
+[class*="bg-gradient-"][class*="trc-blue-700"],
+[class*="bg-gradient-"][class*="trc-gold-600"],
+[class*="bg-gradient-"][class*="trc-gold-700"] {
+  color: white;
+}
+
+/* Dark gray backgrounds - WHITE text */
+.bg-trc-gray-700:not([class*="text-"]), 
+.bg-trc-gray-800:not([class*="text-"]), 
+.bg-trc-gray-900:not([class*="text-"]) {
+  color: white;
+}
+
+/* BUTTONS - Explicit contrast rules */
+a[class*="bg-white"], button[class*="bg-white"] {
+  color: inherit; /* Don't override explicit text color classes */
+}
+
+/* Explicit text color classes should always override */
+.text-white { color: white !important; }
+.text-black { color: black !important; }
+.text-trc-blue-50 { color: #f0f4ff !important; }
+.text-trc-blue-100 { color: #e0e7ff !important; }
+.text-trc-blue-200 { color: #c7d2fe !important; }
+.text-trc-blue-300 { color: #a5b4fc !important; }
+.text-trc-blue-400 { color: #818cf8 !important; }
+.text-trc-blue-500 { color: #6366f1 !important; }
+.text-trc-blue-600 { color: #4f46e5 !important; }
+.text-trc-blue-700 { color: #4338ca !important; }
+.text-trc-blue-800 { color: #3730a3 !important; }
+.text-trc-blue-900 { color: #312e81 !important; }
+.text-trc-gold-500 { color: #f59e0b !important; }
+.text-trc-gold-600 { color: #d97706 !important; }
+.text-trc-gold-700 { color: #b45309 !important; }
+.text-trc-gray-50 { color: #fafafa !important; }
+.text-trc-gray-100 { color: #f4f4f5 !important; }
+.text-trc-gray-200 { color: #e4e4e7 !important; }
+.text-trc-gray-300 { color: #d4d4d8 !important; }
+.text-trc-gray-400 { color: #a1a1aa !important; }
+.text-trc-gray-500 { color: #71717a !important; }
+.text-trc-gray-600 { color: #52525b !important; }
+.text-trc-gray-700 { color: #3f3f46 !important; }
+.text-trc-gray-800 { color: #27272a !important; }
+.text-trc-gray-900 { color: #18181b !important; }
+.text-orange-500 { color: #f97316 !important; }
+.text-orange-600 { color: #ea580c !important; }
+.text-orange-700 { color: #c2410c !important; }
+
+/* Fix all text elements */
+p, h1, h2, h3, h4, h5, h6, li {
+  white-space: normal !important;
+  min-width: 0;
+}
+
+/* Inline elements should stay inline */
+span, a {
+  display: inline;
+  white-space: normal !important;
+}
+
+/* Ensure containers work properly */
+section, main, div {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix max-width utilities */
+.max-w-3xl {
+  max-width: 48rem !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-4xl {
+  max-width: 56rem !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-5xl {
+  max-width: 64rem !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-7xl {
+  max-width: 80rem !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fix flexbox and grid items */
+.grid {
+  width: 100%;
+}
+
+.grid > * {
+  min-width: 0;
+}
+
+/* Header specific fixes */
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+header nav {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+header .flex {
+  display: flex;
+  width: 100%;
+}
+
+/* Navigation link fixes */
+nav a {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@theme {
+  /* Modern Professional Blues */
+  --color-trc-blue-50: #f0f4ff;
+  --color-trc-blue-100: #e0e7ff;
+  --color-trc-blue-200: #c7d2fe;
+  --color-trc-blue-300: #a5b4fc;
+  --color-trc-blue-400: #818cf8;
+  --color-trc-blue-500: #6366f1;
+  --color-trc-blue-600: #4f46e5;
+  --color-trc-blue-700: #4338ca;
+  --color-trc-blue-800: #3730a3;
+  --color-trc-blue-900: #312e81;
+  
+  /* Warm Accent Colors */
+  --color-trc-gold-50: #fffbf3;
+  --color-trc-gold-100: #fef3e2;
+  --color-trc-gold-200: #fde8c9;
+  --color-trc-gold-300: #fbd4a1;
+  --color-trc-gold-400: #f8b66d;
+  --color-trc-gold-500: #f59e0b;
+  --color-trc-gold-600: #d97706;
+  --color-trc-gold-700: #b45309;
+  --color-trc-gold-800: #92400e;
+  --color-trc-gold-900: #78350f;
+  
+  /* Neutral Grays */
+  --color-trc-gray-50: #fafafa;
+  --color-trc-gray-100: #f4f4f5;
+  --color-trc-gray-200: #e4e4e7;
+  --color-trc-gray-300: #d4d4d8;
+  --color-trc-gray-400: #a1a1aa;
+  --color-trc-gray-500: #71717a;
+  --color-trc-gray-600: #52525b;
+  --color-trc-gray-700: #3f3f46;
+  --color-trc-gray-800: #27272a;
+  --color-trc-gray-900: #18181b;
+  
+  /* Professional Orange */
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
