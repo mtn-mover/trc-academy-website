@@ -24,7 +24,7 @@ export default function AboutPage() {
             <div className="order-2 lg:order-1">
               <div className="relative rounded-lg overflow-hidden shadow-lg mx-auto" style={{maxWidth: '400px'}}>
                 <Image
-                  src="/images/Karen.jpg"
+                  src="/Images/Karen.jpg"
                   alt="Karen Florence - Founder of TRC Training Academy"
                   width={400}
                   height={500}
