@@ -40,7 +40,7 @@ export default function HomePage() {
             <div className="order-2 lg:order-1">
               <div className="relative rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/images/Remote Coaching Session2.jpg"
+                  src="/Images/Remote Coaching Session2.jpg"
                   alt="Professional coach in a remote coaching session"
                   width={600}
                   height={400}
