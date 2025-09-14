@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: 'TRC Training Academy',
     images: [
       {
-        url: '/Images/Karen.jpg',
+        url: '/images/Karen.jpg',
         width: 1200,
         height: 630,
         alt: 'Karen Florence - TRC Training Academy Founder',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'TRC Training Academy',
     description: 'Transform your wisdom into impact. Professional coaching certification for 45+ professionals.',
-    images: ['/Images/Karen.jpg'],
+    images: ['/images/Karen.jpg'],
   },
   viewport: {
     width: 'device-width',
