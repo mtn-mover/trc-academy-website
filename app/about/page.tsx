@@ -41,7 +41,7 @@ export default function AboutPage() {
               <div className="space-y-6 text-lg text-trc-gray-700 leading-relaxed">
                 <p>
                   For over two decades, Karen Florence has been a beacon of transformation 
-                  for professionals seeking deeper meaning in their life's work. Her journey 
+                  for professionals seeking deeper meaning in their life&apos;s work. Her journey 
                   began not in a classroom, but in the crucible of her own midlife awakening—a 
                   profound realization that success without soul satisfaction is merely existing, 
                   not truly living.
@@ -56,9 +56,9 @@ export default function AboutPage() {
                 </p>
                 
                 <p>
-                  "I believe that the second half of life holds our greatest potential for impact," 
-                  Karen shares. "When we combine our accumulated wisdom with our soul's true calling, 
-                  we don't just change careers—we transform lives, starting with our own."
+                  &ldquo;I believe that the second half of life holds our greatest potential for impact,&rdquo; 
+                  Karen shares. &ldquo;When we combine our accumulated wisdom with our soul&apos;s true calling, 
+                  we don&apos;t just change careers—we transform lives, starting with our own.&rdquo;
                 </p>
               </div>
             </div>
@@ -111,9 +111,9 @@ export default function AboutPage() {
                 Teaching Philosophy
               </h3>
               <p className="text-trc-gray-700 leading-relaxed">
-                Karen's teaching philosophy centers on the belief that authentic coaching 
+                Karen&apos;s teaching philosophy centers on the belief that authentic coaching 
                 emerges from the integration of professional skill and personal wisdom. 
-                She creates transformative learning experiences that honor each student's 
+                She creates transformative learning experiences that honor each student&apos;s 
                 unique journey and potential.
               </p>
             </div>
@@ -149,10 +149,10 @@ export default function AboutPage() {
             
             <div className="bg-trc-blue-50 border-l-4 border-trc-blue-600 p-6 my-8">
               <p className="text-lg font-semibold text-trc-gray-900 mb-2">
-                "Transform, Realize, Connect"
+                &ldquo;Transform, Realize, Connect&rdquo;
               </p>
               <p className="text-trc-gray-700">
-                This isn't just our tagline—it's our methodology. We believe that true coaching 
+                This isn&apos;t just our tagline—it&apos;s our methodology. We believe that true coaching 
                 excellence comes from first transforming yourself, realizing your unique gifts, 
                 and then connecting authentically with those you serve.
               </p>

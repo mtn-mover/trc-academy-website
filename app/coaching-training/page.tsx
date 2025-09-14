@@ -44,20 +44,20 @@ export default function CoachingTrainingPage() {
                   <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
                     Our flagship Professional Coach Certification Program is a comprehensive 12-lesson 
                     journey that transforms your accumulated wisdom and life experience into professional 
-                    coaching excellence. Using the revolutionary Tabula Rasa methodology, you'll master 
+                    coaching excellence. Using the revolutionary Tabula Rasa methodology, you&apos;ll master 
                     the art of soul-centered coaching while building a sustainable practice that honors 
                     your unique gifts.
                   </p>
                   <div className="bg-trc-blue-50 border-l-4 border-trc-blue-600 p-6 rounded-r-lg">
                     <p className="text-lg font-semibold text-trc-gray-900">
-                      "Where your wisdom meets your calling, transformation begins."
+                      &ldquo;Where your wisdom meets your calling, transformation begins.&rdquo;
                     </p>
                   </div>
                 </div>
 
                 {/* What's Included */}
                 <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">What's Included</h3>
+                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <ul className="space-y-4">
                       <li className="flex items-start">
@@ -254,9 +254,9 @@ export default function CoachingTrainingPage() {
                 <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
               </svg>
               <p className="text-xl text-trc-gray-700 leading-relaxed italic mb-6">
-                "The TRC program didn't just teach me coaching skills—it helped me discover my true calling. 
-                At 52, I thought my best years were behind me. Now I'm building a thriving practice that 
-                combines everything I've learned with a purpose that lights me up every day."
+                &ldquo;The TRC program didn&apos;t just teach me coaching skills—it helped me discover my true calling. 
+                At 52, I thought my best years were behind me. Now I&apos;m building a thriving practice that 
+                combines everything I&apos;ve learned with a purpose that lights me up every day.&rdquo;
               </p>
               <p className="text-lg font-semibold text-trc-gray-900">
                 Sarah M., TRC Certified Coach

@@ -49,8 +49,8 @@ export default function ContactPage() {
               Begin Your Journey
             </h1>
             <p className="text-xl lg:text-2xl text-trc-gray-700 leading-relaxed">
-              Take the first step toward discovering your soul's work. 
-              We're here to guide you on your transformation path.
+              Take the first step toward discovering your soul&apos;s work. 
+              We&apos;re here to guide you on your transformation path.
             </p>
           </div>
         </div>
@@ -67,14 +67,14 @@ export default function ContactPage() {
                   Schedule Your Consultation
                 </h2>
                 <p className="text-lg text-trc-gray-700 mb-8">
-                  Complete the form below and we'll connect with you within 24 hours 
+                  Complete the form below and we&apos;ll connect with you within 24 hours 
                   to discuss your coaching journey.
                 </p>
 
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-green-800 font-medium">
-                      Thank you for your interest! We'll be in touch within 24 hours.
+                      Thank you for your interest! We&apos;ll be in touch within 24 hours.
                     </p>
                   </div>
                 )}
@@ -126,7 +126,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="interest" className="block text-lg font-medium text-trc-gray-900 mb-2">
-                      I'm Interested In *
+                      I&apos;m Interested In *
                     </label>
                     <select
                       id="interest"

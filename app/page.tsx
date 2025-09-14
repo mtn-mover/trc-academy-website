@@ -9,11 +9,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl lg:text-6xl font-bold text-trc-gray-900 mb-8 tracking-tight leading-tight" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
-              Your Soul's Work Awaits
+              Your Soul&apos;s Work Awaits
             </h1>
             <p className="text-xl lg:text-2xl text-trc-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
               Transform your decades of wisdom into a deeply meaningful coaching practice. 
-              Join compassionate professionals who've answered their inner calling after 45.
+              Join compassionate professionals who&apos;ve answered their inner calling after 45.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -57,7 +57,7 @@ export default function HomePage() {
                 deep, transformative relationships that define exceptional coaching.
               </p>
               <p className="text-lg text-trc-gray-600 leading-relaxed">
-                Whether you're building a practice from home or expanding your reach globally, 
+                Whether you&apos;re building a practice from home or expanding your reach globally, 
                 TRC equips you with the tools and techniques to deliver powerful coaching experiences 
                 in any setting.
               </p>
@@ -156,7 +156,7 @@ export default function HomePage() {
               <div className="p-10">
                 <div className="grid md:grid-cols-2 gap-10 mb-10">
                   <div>
-                    <h4 className="text-xl font-bold text-trc-gray-900 mb-6">What's Included</h4>
+                    <h4 className="text-xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h4>
                     <ul className="space-y-4 text-lg text-trc-gray-700">
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -280,9 +280,9 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
-                "At 52, I thought my best career years were behind me. TRC Academy showed me 
+                &ldquo;At 52, I thought my best career years were behind me. TRC Academy showed me 
                 they were just beginning. The depth of training and community support helped 
-                me launch a thriving coaching practice that honors my life experience."
+                me launch a thriving coaching practice that honors my life experience.&rdquo;
               </p>
               <div>
                 <p className="font-bold text-trc-gray-900 text-lg">Sarah Mitchell</p>
@@ -299,9 +299,9 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
-                "Karen's approach transcends traditional coaching education. She creates a 
+                &ldquo;Karen&apos;s approach transcends traditional coaching education. She creates a 
                 sacred space where wisdom meets purpose. I found not just a new career, 
-                but my soul's true calling through TRC's transformative methodology."
+                but my soul&apos;s true calling through TRC&apos;s transformative methodology.&rdquo;
               </p>
               <div>
                 <p className="font-bold text-trc-gray-900 text-lg">Michael Chen</p>
@@ -319,7 +319,7 @@ export default function HomePage() {
             Your Transformation Begins Today
           </h2>
           <p className="text-xl text-trc-blue-100 mb-10 leading-relaxed">
-            Take the first step toward your soul's work. 
+            Take the first step toward your soul&apos;s work. 
             Discover how your unique wisdom can create lasting impact in the world.
           </p>
           <Link

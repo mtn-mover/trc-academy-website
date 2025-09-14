@@ -12,7 +12,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold mb-2">TRC Training Academy</h3>
             <p className="text-sm text-white/90 mb-4">Tabula Rasa Coach Training</p>
             <p className="text-white mb-6 leading-relaxed">
-              Empowering mature professionals to discover their soul's work through 
+              Empowering mature professionals to discover their soul&apos;s work through 
               transformative coaching programs. Your wisdom, experience, and calling 
               converge here.
             </p>
