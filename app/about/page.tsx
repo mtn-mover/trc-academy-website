@@ -38,7 +38,7 @@ export default function AboutPage() {
                 A Journey of Transformation
               </h2>
               
-              <div className="space-y-6 text-base text-trc-gray-700 leading-relaxed">
+              <div className="space-y-6 text-lg text-trc-gray-700 leading-relaxed">
                 <p>
                   For over two decades, Karen Florence has been a beacon of transformation 
                   for professionals seeking deeper meaning in their life&apos;s work. Her journey 
@@ -78,7 +78,7 @@ export default function AboutPage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Professional Excellence
               </h3>
-              <ul className="space-y-3 text-trc-gray-700">
+              <ul className="space-y-3 text-lg text-trc-gray-700">
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -110,7 +110,7 @@ export default function AboutPage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Teaching Philosophy
               </h3>
-              <p className="text-trc-gray-700 leading-relaxed">
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
                 Karen&apos;s teaching philosophy centers on the belief that authentic coaching 
                 emerges from the integration of professional skill and personal wisdom. 
                 She creates transformative learning experiences that honor each student&apos;s 
@@ -122,7 +122,7 @@ export default function AboutPage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 The TRC Difference
               </h3>
-              <p className="text-trc-gray-700 leading-relaxed">
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
                 Our programs are designed specifically for mature professionals who bring 
                 rich life experience to their coaching practice. We believe your wisdom 
                 is your greatest asset, and we help you transform it into professional excellence.
@@ -140,7 +140,7 @@ export default function AboutPage() {
           </h2>
           
           <div className="prose prose-lg mx-auto text-trc-gray-700 space-y-6">
-            <p className="text-base leading-relaxed">
+            <p className="text-lg leading-relaxed">
               TRC Training Academy was born from a simple yet profound observation: the coaching 
               industry was missing the wisdom, depth, and life experience that mature professionals 
               bring to the table. While many programs focus on quick certifications and surface-level 
@@ -148,17 +148,17 @@ export default function AboutPage() {
             </p>
             
             <div className="bg-trc-blue-50 border-l-4 border-trc-blue-600 p-6 my-8">
-              <p className="text-base font-semibold text-trc-gray-900 mb-2">
+              <p className="text-lg font-semibold text-trc-gray-900 mb-2">
                 &ldquo;Transform, Realize, Connect&rdquo;
               </p>
-              <p className="text-trc-gray-700">
+              <p className="text-lg text-trc-gray-700">
                 This isn&apos;t just our tagline—it&apos;s our methodology. We believe that true coaching 
                 excellence comes from first transforming yourself, realizing your unique gifts, 
                 and then connecting authentically with those you serve.
               </p>
             </div>
             
-            <p className="text-base leading-relaxed">
+            <p className="text-lg leading-relaxed">
               Our academy has become a sanctuary for professionals in their second act, those who 
               refuse to believe their best contributions are behind them. Here, age is an asset, 
               wisdom is currency, and your life story becomes the foundation of your coaching legacy.

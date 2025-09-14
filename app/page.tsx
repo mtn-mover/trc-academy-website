@@ -11,20 +11,20 @@ export default function HomePage() {
             <h1 className="text-5xl font-bold text-trc-gray-900 mb-8 tracking-tight leading-tight" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
               Your Soul&apos;s Work Awaits
             </h1>
-            <p className="text-base lg:text-base text-trc-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
+            <p className="text-lg lg:text-lg text-trc-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
               Transform your decades of wisdom into a deeply meaningful coaching practice. 
               Join compassionate professionals who&apos;ve answered their inner calling after 45.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/coaching-training"
-                className="px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg text-base"
+                className="px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg text-lg"
               >
                 Explore Your Calling
               </Link>
               <Link
                 href="/about"
-                className="px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md border-2 border-trc-blue-600 hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 text-base"
+                className="px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md border-2 border-trc-blue-600 hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 text-lg"
               >
                 Meet Karen Florence
               </Link>
@@ -51,12 +51,12 @@ export default function HomePage() {
             </div>
             <div className="order-1 lg:order-2">
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">Transform Lives From Anywhere</h3>
-              <p className="text-base text-trc-gray-700 leading-relaxed mb-6">
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
                 Join our global community of professional coaches making a difference. Our remote coaching 
                 methodology enables you to connect with clients worldwide while maintaining the 
                 deep, transformative relationships that define exceptional coaching.
               </p>
-              <p className="text-base text-trc-gray-600 leading-relaxed">
+              <p className="text-lg text-trc-gray-600 leading-relaxed">
                 Whether you&apos;re building a practice from home or expanding your reach globally, 
                 TRC equips you with the tools and techniques to deliver powerful coaching experiences 
                 in any setting.
@@ -73,7 +73,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold text-trc-gray-900 mb-6" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
               The TRC Methodology
             </h2>
-            <p className="text-base text-trc-gray-600 max-w-3xl mx-auto leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
+            <p className="text-lg text-trc-gray-600 max-w-3xl mx-auto leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
               Tabula Rasa Coach Training Academy transforms professionals through 
               our proven methodology that honors your wisdom and experience.
             </p>
@@ -89,7 +89,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Wisdom-Centered Learning
               </h3>
-              <p className="text-trc-gray-600 leading-relaxed text-base" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+              <p className="text-trc-gray-600 leading-relaxed text-lg" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
                 Your decades of experience become the foundation for transformative coaching. 
                 We honor and integrate your life wisdom into professional practice.
               </p>
@@ -104,7 +104,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Heart-Centered Approach
               </h3>
-              <p className="text-trc-gray-600 leading-relaxed text-base" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+              <p className="text-trc-gray-600 leading-relaxed text-lg" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
                 Beyond techniques and certifications, discover coaching that touches souls. 
                 Create authentic connections that transform both you and your clients.
               </p>
@@ -119,7 +119,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Mature Professional Community
               </h3>
-              <p className="text-trc-gray-600 leading-relaxed text-base" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+              <p className="text-trc-gray-600 leading-relaxed text-lg" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
                 Join peers who understand your journey. 78% of our students are 45+, 
                 creating a rich tapestry of shared wisdom and support.
               </p>
@@ -135,7 +135,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
               Begin Your Transformation Journey
             </h2>
-            <p className="text-base text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
               Join our comprehensive certification program designed specifically for 
               mature professionals ready to make their mark in the coaching world.
             </p>
@@ -148,7 +148,7 @@ export default function HomePage() {
                 <h3 className="text-2xl font-bold mb-3 text-white">
                   Professional Coach Certification Program
                 </h3>
-                <p className="text-base opacity-95 text-white">
+                <p className="text-lg opacity-95 text-white">
                   Complete Your Transformation • October 18, 2025
                 </p>
               </div>
@@ -157,7 +157,7 @@ export default function HomePage() {
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h4 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h4>
-                    <ul className="space-y-4 text-base text-trc-gray-700">
+                    <ul className="space-y-4 text-lg text-trc-gray-700">
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -187,7 +187,7 @@ export default function HomePage() {
                   
                   <div>
                     <h4 className="text-2xl font-bold text-trc-gray-900 mb-6">Additional Benefits</h4>
-                    <ul className="space-y-4 text-base text-trc-gray-700">
+                    <ul className="space-y-4 text-lg text-trc-gray-700">
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -214,13 +214,13 @@ export default function HomePage() {
                   <div className="flex flex-col md:flex-row items-center justify-between">
                     <div className="text-center md:text-left mb-6 md:mb-0">
                       <p className="text-2xl font-bold text-trc-gray-900 mb-2">$6,999</p>
-                      <p className="text-base text-trc-gray-600">Complete Certification Program</p>
+                      <p className="text-lg text-trc-gray-600">Complete Certification Program</p>
                       <p className="text-sm text-trc-gray-500 mt-1">Payment plans available</p>
                     </div>
                     <div className="text-center">
                       <a
                         href="/contact"
-                        className="inline-block px-10 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base"
+                        className="inline-block px-10 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
                       >
                         Enroll Now for October 2025
                       </a>
@@ -240,19 +240,19 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">78%</div>
-              <p className="text-base text-trc-gray-600">of our souls are 45+</p>
+              <p className="text-lg text-trc-gray-600">of our souls are 45+</p>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">25+</div>
-              <p className="text-base text-trc-gray-600">years of wisdom shared</p>
+              <p className="text-lg text-trc-gray-600">years of wisdom shared</p>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">500+</div>
-              <p className="text-base text-trc-gray-600">coaches transformed</p>
+              <p className="text-lg text-trc-gray-600">coaches transformed</p>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">TRC</div>
-              <p className="text-base text-trc-gray-600">certified excellence</p>
+              <p className="text-lg text-trc-gray-600">certified excellence</p>
             </div>
           </div>
         </div>
@@ -265,7 +265,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
               Stories of Transformation
             </h2>
-            <p className="text-base text-trc-gray-600">
+            <p className="text-lg text-trc-gray-600">
               Real journeys from professionals who found their calling
             </p>
           </div>
@@ -279,13 +279,13 @@ export default function HomePage() {
                   </svg>
                 ))}
               </div>
-              <p className="text-base text-trc-gray-700 mb-8 italic leading-relaxed">
+              <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
                 &ldquo;At 52, I thought my best career years were behind me. TRC Academy showed me 
                 they were just beginning. The depth of training and community support helped 
                 me launch a thriving coaching practice that honors my life experience.&rdquo;
               </p>
               <div>
-                <p className="font-bold text-trc-gray-900 text-base">Sarah Mitchell</p>
+                <p className="font-bold text-trc-gray-900 text-lg">Sarah Mitchell</p>
                 <p className="text-trc-gray-600">Executive Coach, Class of 2023</p>
               </div>
             </div>
@@ -298,13 +298,13 @@ export default function HomePage() {
                   </svg>
                 ))}
               </div>
-              <p className="text-base text-trc-gray-700 mb-8 italic leading-relaxed">
+              <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
                 &ldquo;Karen&apos;s approach transcends traditional coaching education. She creates a 
                 sacred space where wisdom meets purpose. I found not just a new career, 
                 but my soul&apos;s true calling through TRC&apos;s transformative methodology.&rdquo;
               </p>
               <div>
-                <p className="font-bold text-trc-gray-900 text-base">Michael Chen</p>
+                <p className="font-bold text-trc-gray-900 text-lg">Michael Chen</p>
                 <p className="text-trc-gray-600">Life Transformation Coach, Class of 2024</p>
               </div>
             </div>
@@ -318,13 +318,13 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold text-white mb-8">
             Your Transformation Begins Today
           </h2>
-          <p className="text-base text-trc-blue-100 mb-10 leading-relaxed">
+          <p className="text-lg text-trc-blue-100 mb-10 leading-relaxed">
             Take the first step toward your soul&apos;s work. 
             Discover how your unique wisdom can create lasting impact in the world.
           </p>
           <Link
             href="/coaching-training"
-            className="inline-block px-10 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base"
+            className="inline-block px-10 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
           >
             Start Your Journey
           </Link>

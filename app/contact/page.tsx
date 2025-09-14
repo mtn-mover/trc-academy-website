@@ -66,7 +66,7 @@ export default function ContactPage() {
                 <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
                   Schedule Your Consultation
                 </h2>
-                <p className="text-base text-trc-gray-700 mb-8">
+                <p className="text-lg text-trc-gray-700 mb-8">
                   Complete the form below and we&apos;ll connect with you within 24 hours 
                   to discuss your coaching journey.
                 </p>
@@ -81,7 +81,7 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-base font-medium text-trc-gray-900 mb-2">
+                    <label htmlFor="name" className="block text-lg font-medium text-trc-gray-900 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -91,12 +91,12 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-base font-medium text-trc-gray-900 mb-2">
+                    <label htmlFor="email" className="block text-lg font-medium text-trc-gray-900 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -106,12 +106,12 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block text-base font-medium text-trc-gray-900 mb-2">
+                    <label htmlFor="phone" className="block text-lg font-medium text-trc-gray-900 mb-2">
                       Phone Number
                     </label>
                     <input
@@ -120,12 +120,12 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="interest" className="block text-base font-medium text-trc-gray-900 mb-2">
+                    <label htmlFor="interest" className="block text-lg font-medium text-trc-gray-900 mb-2">
                       I&apos;m Interested In *
                     </label>
                     <select
@@ -134,7 +134,7 @@ export default function ContactPage() {
                       required
                       value={formData.interest}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg"
                     >
                       <option value="">Select an option</option>
                       <option value="certification">Professional Coach Certification</option>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-base font-medium text-trc-gray-900 mb-2">
+                    <label htmlFor="message" className="block text-lg font-medium text-trc-gray-900 mb-2">
                       Tell Us About Your Journey
                     </label>
                     <textarea
@@ -153,7 +153,7 @@ export default function ContactPage() {
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg"
                       placeholder="Share what brings you to coaching and what you hope to achieve..."
                     />
                   </div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sending...' : 'Send My Information'}
                   </button>
@@ -181,7 +181,7 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <h3 className="text-2xl font-semibold text-trc-gray-900 mb-1">Email</h3>
-                      <a href="mailto:info@trcacademy.com" className="text-base text-trc-blue-600 hover:underline">
+                      <a href="mailto:info@trcacademy.com" className="text-lg text-trc-blue-600 hover:underline">
                         info@trcacademy.com
                       </a>
                     </div>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <h3 className="text-2xl font-semibold text-trc-gray-900 mb-1">Phone</h3>
-                      <p className="text-base text-trc-gray-700">+1 (555) 123-4567</p>
+                      <p className="text-lg text-trc-gray-700">+1 (555) 123-4567</p>
                       <p className="text-sm text-trc-gray-600 mt-1">Monday - Friday, 9am - 5pm MST</p>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <h3 className="text-2xl font-semibold text-trc-gray-900 mb-1">Office</h3>
-                      <p className="text-base text-trc-gray-700">
+                      <p className="text-lg text-trc-gray-700">
                         Transform Your Life Center<br />
                         123 Wisdom Way<br />
                         Denver, CO 80202
@@ -218,7 +218,7 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-semibold text-trc-gray-900 mb-3">
                     Office Hours
                   </h3>
-                  <div className="space-y-2 text-base text-trc-gray-700">
+                  <div className="space-y-2 text-lg text-trc-gray-700">
                     <p><span className="font-medium">Monday - Friday:</span> 9:00 AM - 5:00 PM MST</p>
                     <p><span className="font-medium">Saturday:</span> By Appointment</p>
                     <p><span className="font-medium">Sunday:</span> Closed</p>
