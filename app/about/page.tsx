@@ -39,7 +39,7 @@ export default function AboutPage() {
               </h2>
               
               <div className="space-y-6 text-lg text-trc-gray-700 leading-relaxed">
-                <p>
+                <p className="text-lg">
                   For over two decades, Karen Florence has been a beacon of transformation 
                   for professionals seeking deeper meaning in their life&apos;s work. Her journey 
                   began not in a classroom, but in the crucible of her own midlife awakening—a 
@@ -47,7 +47,7 @@ export default function AboutPage() {
                   not truly living.
                 </p>
                 
-                <p>
+                <p className="text-lg">
                   As the founder of TRC Training Academy, Karen has developed the revolutionary 
                   Tabula Rasa methodology, which honors the blank slate within each of us—ready 
                   to be inscribed with purpose, passion, and profound impact. Her approach 
@@ -55,7 +55,7 @@ export default function AboutPage() {
                   wisdom, spiritual insight, and practical business acumen.
                 </p>
                 
-                <p>
+                <p className="text-lg">
                   &ldquo;I believe that the second half of life holds our greatest potential for impact,&rdquo; 
                   Karen shares. &ldquo;When we combine our accumulated wisdom with our soul&apos;s true calling, 
                   we don&apos;t just change careers—we transform lives, starting with our own.&rdquo;
@@ -83,25 +83,25 @@ export default function AboutPage() {
                   <svg className="w-5 h-5 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Master Coach Certification
+                  <span className="text-lg">Master Coach Certification</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  TRC Methodology Creator
+                  <span className="text-lg">TRC Methodology Creator</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Advanced Psychology Training
+                  <span className="text-lg">Advanced Psychology Training</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Leadership Development Expert
+                  <span className="text-lg">Leadership Development Expert</span>
                 </li>
               </ul>
             </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
             The TRC Training Academy Vision
           </h2>
           
-          <div className="mx-auto text-trc-gray-700 space-y-6">
+          <div className="mx-auto text-lg text-trc-gray-700 space-y-6">
             <p className="text-lg leading-relaxed">
               TRC Training Academy was born from a simple yet profound observation: the coaching 
               industry was missing the wisdom, depth, and life experience that mature professionals 
