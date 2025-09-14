@@ -7,10 +7,10 @@ export default function AboutPage() {
       <section className="bg-gradient-to-b from-trc-blue-50 to-white py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl lg:text-6xl font-bold text-trc-gray-900 mb-6">
+            <h1 className="text-4xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
               Meet Karen Florence
             </h1>
-            <p className="text-xl lg:text-2xl text-trc-gray-600 leading-relaxed">
+            <p className="text-lg lg:text-xl text-trc-gray-600 leading-relaxed">
               Master Coach, TRC Founder, and Guide for Souls Seeking Their True Calling
             </p>
           </div>
@@ -34,11 +34,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-8">
+              <h2 className="text-2xl lg:text-3xl font-bold text-trc-gray-900 mb-8">
                 A Journey of Transformation
               </h2>
               
-              <div className="space-y-6 text-lg text-trc-gray-700 leading-relaxed">
+              <div className="space-y-6 text-base text-trc-gray-700 leading-relaxed">
                 <p>
                   For over two decades, Karen Florence has been a beacon of transformation 
                   for professionals seeking deeper meaning in their life&apos;s work. Her journey 
@@ -69,13 +69,13 @@ export default function AboutPage() {
       {/* Credentials & Experience */}
       <section className="py-20 bg-trc-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-12">
+          <h2 className="text-2xl lg:text-3xl font-bold text-center text-trc-gray-900 mb-12">
             Excellence in Coach Training
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-trc-gray-900 mb-4">
+              <h3 className="text-lg font-bold text-trc-gray-900 mb-4">
                 Professional Excellence
               </h3>
               <ul className="space-y-3 text-trc-gray-700">
@@ -107,7 +107,7 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-trc-gray-900 mb-4">
+              <h3 className="text-lg font-bold text-trc-gray-900 mb-4">
                 Teaching Philosophy
               </h3>
               <p className="text-trc-gray-700 leading-relaxed">
@@ -119,7 +119,7 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-trc-gray-900 mb-4">
+              <h3 className="text-lg font-bold text-trc-gray-900 mb-4">
                 The TRC Difference
               </h3>
               <p className="text-trc-gray-700 leading-relaxed">
@@ -135,12 +135,12 @@ export default function AboutPage() {
       {/* TRC Academy Vision */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-12">
+          <h2 className="text-2xl lg:text-3xl font-bold text-center text-trc-gray-900 mb-12">
             The TRC Training Academy Vision
           </h2>
           
           <div className="prose prose-lg mx-auto text-trc-gray-700 space-y-6">
-            <p className="text-lg leading-relaxed">
+            <p className="text-base leading-relaxed">
               TRC Training Academy was born from a simple yet profound observation: the coaching 
               industry was missing the wisdom, depth, and life experience that mature professionals 
               bring to the table. While many programs focus on quick certifications and surface-level 
@@ -148,7 +148,7 @@ export default function AboutPage() {
             </p>
             
             <div className="bg-trc-blue-50 border-l-4 border-trc-blue-600 p-6 my-8">
-              <p className="text-lg font-semibold text-trc-gray-900 mb-2">
+              <p className="text-base font-semibold text-trc-gray-900 mb-2">
                 &ldquo;Transform, Realize, Connect&rdquo;
               </p>
               <p className="text-trc-gray-700">
@@ -158,7 +158,7 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <p className="text-lg leading-relaxed">
+            <p className="text-base leading-relaxed">
               Our academy has become a sanctuary for professionals in their second act, those who 
               refuse to believe their best contributions are behind them. Here, age is an asset, 
               wisdom is currency, and your life story becomes the foundation of your coaching legacy.
@@ -170,10 +170,10 @@ export default function AboutPage() {
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">
             Ready to Begin Your Journey?
           </h2>
-          <p className="text-xl text-trc-blue-100 mb-8 leading-relaxed">
+          <p className="text-lg text-trc-blue-100 mb-8 leading-relaxed">
             Join Karen and discover how your life experience can become your greatest 
             professional asset in service to others.
           </p>

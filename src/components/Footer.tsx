@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-2">TRC Training Academy</h3>
+            <h3 className="text-xl font-bold mb-2">TRC Training Academy</h3>
             <p className="text-sm text-white/90 mb-4">Tabula Rasa Coach Training</p>
             <p className="text-white mb-6 leading-relaxed">
               Empowering mature professionals to discover their soul&apos;s work through 
@@ -50,7 +50,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-base font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-white hover:text-white transition-colors duration-200">
@@ -77,7 +77,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
+            <h4 className="text-base font-semibold mb-4">Get In Touch</h4>
             <ul className="space-y-3 text-white">
               <li className="flex items-start">
                 <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
