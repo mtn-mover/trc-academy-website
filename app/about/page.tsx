@@ -4,10 +4,10 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-trc-blue-50 to-white py-20 lg:py-28">
+      <section className="bg-gradient-to-b from-trc-blue-50 to-white py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+            <h1 className="text-5xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
               Meet Karen Florence
             </h1>
             <p className="text-lg lg:text-xl text-trc-gray-600 leading-relaxed">
@@ -18,7 +18,7 @@ export default function AboutPage() {
       </section>
 
       {/* Karen's Story Section */}
-      <section className="py-20">
+      <section className="py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
@@ -34,7 +34,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-2xl lg:text-3xl font-bold text-trc-gray-900 mb-8">
+              <h2 className="text-4xl lg:text-4xl font-bold text-trc-gray-900 mb-8">
                 A Journey of Transformation
               </h2>
               
@@ -67,15 +67,15 @@ export default function AboutPage() {
       </section>
 
       {/* Credentials & Experience */}
-      <section className="py-20 bg-trc-gray-50">
+      <section className="py-12 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-center text-trc-gray-900 mb-12">
+          <h2 className="text-4xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-12">
             Excellence in Coach Training
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h3 className="text-lg font-bold text-trc-gray-900 mb-4">
+            <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Professional Excellence
               </h3>
               <ul className="space-y-3 text-trc-gray-700">
@@ -106,8 +106,8 @@ export default function AboutPage() {
               </ul>
             </div>
             
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h3 className="text-lg font-bold text-trc-gray-900 mb-4">
+            <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Teaching Philosophy
               </h3>
               <p className="text-trc-gray-700 leading-relaxed">
@@ -118,8 +118,8 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h3 className="text-lg font-bold text-trc-gray-900 mb-4">
+            <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 The TRC Difference
               </h3>
               <p className="text-trc-gray-700 leading-relaxed">
@@ -133,9 +133,9 @@ export default function AboutPage() {
       </section>
 
       {/* TRC Academy Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-center text-trc-gray-900 mb-12">
+          <h2 className="text-4xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-12">
             The TRC Training Academy Vision
           </h2>
           
@@ -168,9 +168,9 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
+      <section className="py-12 lg:py-16 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">
+          <h2 className="text-4xl lg:text-4xl font-bold text-white mb-6">
             Ready to Begin Your Journey?
           </h2>
           <p className="text-lg text-trc-blue-100 mb-8 leading-relaxed">
@@ -180,13 +180,13 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/coaching-training"
-              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md hover:bg-trc-gray-50 transition-all duration-200 shadow-lg border-2 border-trc-blue-600"
+              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md hover:bg-trc-gray-50 hover:scale-105 transition-all duration-300 shadow-lg border-2 border-trc-blue-600"
             >
               Explore Our Programs
             </a>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-transparent text-white font-semibold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 transition-all duration-200"
+              className="inline-block px-8 py-4 bg-transparent text-white font-semibold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300"
             >
               Schedule a Consultation
             </a>

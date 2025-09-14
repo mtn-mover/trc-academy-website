@@ -42,10 +42,10 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-trc-warm-50 to-white py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-trc-warm-50 to-white py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+            <h1 className="text-5xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
               Begin Your Journey
             </h1>
             <p className="text-lg lg:text-xl text-trc-gray-700 leading-relaxed">
@@ -57,13 +57,13 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 lg:py-20">
+      <section className="py-12 lg:py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Form */}
               <div>
-                <h2 className="text-2xl font-bold text-trc-gray-900 mb-6">
+                <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
                   Schedule Your Consultation
                 </h2>
                 <p className="text-base text-trc-gray-700 mb-8">
@@ -79,7 +79,7 @@ export default function ContactPage() {
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-base font-medium text-trc-gray-900 mb-2">
                       Full Name *
@@ -161,7 +161,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 transition-colors duration-200 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sending...' : 'Send My Information'}
                   </button>
@@ -170,41 +170,41 @@ export default function ContactPage() {
 
               {/* Contact Information */}
               <div className="lg:pl-8">
-                <h2 className="text-2xl font-bold text-trc-gray-900 mb-6">
+                <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
                   Connect With Us
                 </h2>
                 
                 <div className="space-y-6 mb-8">
-                  <div className="flex items-start">
+                  <div className="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
                     <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <div>
-                      <h3 className="text-base font-semibold text-trc-gray-900 mb-1">Email</h3>
+                      <h3 className="text-2xl font-semibold text-trc-gray-900 mb-1">Email</h3>
                       <a href="mailto:info@trcacademy.com" className="text-base text-trc-blue-600 hover:underline">
                         info@trcacademy.com
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start">
+                  <div className="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
                     <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <div>
-                      <h3 className="text-base font-semibold text-trc-gray-900 mb-1">Phone</h3>
+                      <h3 className="text-2xl font-semibold text-trc-gray-900 mb-1">Phone</h3>
                       <p className="text-base text-trc-gray-700">+1 (555) 123-4567</p>
                       <p className="text-sm text-trc-gray-600 mt-1">Monday - Friday, 9am - 5pm MST</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start">
+                  <div className="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
                     <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <div>
-                      <h3 className="text-base font-semibold text-trc-gray-900 mb-1">Office</h3>
+                      <h3 className="text-2xl font-semibold text-trc-gray-900 mb-1">Office</h3>
                       <p className="text-base text-trc-gray-700">
                         Transform Your Life Center<br />
                         123 Wisdom Way<br />
@@ -214,8 +214,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="bg-trc-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-trc-gray-900 mb-3">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                  <h3 className="text-2xl font-semibold text-trc-gray-900 mb-3">
                     Office Hours
                   </h3>
                   <div className="space-y-2 text-base text-trc-gray-700">
@@ -226,13 +226,13 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="text-lg font-semibold text-trc-gray-900 mb-4">
+                  <h3 className="text-2xl font-semibold text-trc-gray-900 mb-4">
                     Follow Our Journey
                   </h3>
                   <div className="flex space-x-4">
                     <a
                       href="#"
-                      className="w-12 h-12 bg-trc-gray-200 rounded-full flex items-center justify-center hover:bg-trc-blue-600 hover:text-white transition-colors"
+                      className="w-12 h-12 bg-trc-gray-200 rounded-full flex items-center justify-center hover:bg-trc-blue-600 hover:text-white hover:scale-110 transition-all duration-300"
                       aria-label="LinkedIn"
                     >
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

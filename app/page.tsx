@@ -5,10 +5,10 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Clean and Modern */}
-      <section className="relative bg-gradient-to-b from-trc-blue-50 to-white py-24 lg:py-32">
+      <section className="relative bg-gradient-to-b from-trc-blue-50 to-white py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-2xl lg:text-3xl font-bold text-trc-gray-900 mb-8 tracking-tight leading-tight" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+            <h1 className="text-5xl font-bold text-trc-gray-900 mb-8 tracking-tight leading-tight" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
               Your Soul&apos;s Work Awaits
             </h1>
             <p className="text-base lg:text-base text-trc-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
@@ -18,13 +18,13 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/coaching-training"
-                className="px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-md hover:bg-trc-blue-700 transition-all duration-200 shadow-md hover:shadow-lg text-base"
+                className="px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg text-base"
               >
                 Explore Your Calling
               </Link>
               <Link
                 href="/about"
-                className="px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md border-2 border-trc-blue-600 hover:bg-trc-blue-50 transition-all duration-200 text-base"
+                className="px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md border-2 border-trc-blue-600 hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 text-base"
               >
                 Meet Karen Florence
               </Link>
@@ -34,7 +34,7 @@ export default function HomePage() {
       </section>
 
       {/* Image Section - Remote Coaching */}
-      <section className="py-24 bg-white">
+      <section className="py-12 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
@@ -67,10 +67,10 @@ export default function HomePage() {
       </section>
 
       {/* TRC Methodology Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl lg:text-3xl font-bold text-trc-gray-900 mb-6" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+            <h2 className="text-4xl font-bold text-trc-gray-900 mb-6" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
               The TRC Methodology
             </h2>
             <p className="text-base text-trc-gray-600 max-w-3xl mx-auto leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
@@ -79,14 +79,14 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-trc-gray-50 rounded-xl p-10 hover:shadow-xl transition-all duration-300">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-trc-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="w-16 h-16 bg-trc-blue-100 rounded-full flex items-center justify-center mb-8">
                 <svg className="w-8 h-8 text-trc-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-trc-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Wisdom-Centered Learning
               </h3>
               <p className="text-trc-gray-600 leading-relaxed text-base" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
@@ -95,13 +95,13 @@ export default function HomePage() {
               </p>
             </div>
             
-            <div className="bg-trc-gray-50 rounded-xl p-10 hover:shadow-xl transition-all duration-300">
+            <div className="bg-trc-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="w-16 h-16 bg-trc-gold-100 rounded-full flex items-center justify-center mb-8">
                 <svg className="w-8 h-8 text-trc-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-trc-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Heart-Centered Approach
               </h3>
               <p className="text-trc-gray-600 leading-relaxed text-base" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
@@ -110,13 +110,13 @@ export default function HomePage() {
               </p>
             </div>
             
-            <div className="bg-trc-gray-50 rounded-xl p-10 hover:shadow-xl transition-all duration-300">
+            <div className="bg-trc-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="w-16 h-16 bg-trc-blue-100 rounded-full flex items-center justify-center mb-8">
                 <svg className="w-8 h-8 text-trc-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-trc-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Mature Professional Community
               </h3>
               <p className="text-trc-gray-600 leading-relaxed text-base" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
@@ -129,10 +129,10 @@ export default function HomePage() {
       </section>
 
       {/* Professional Coach Certification Program */}
-      <section className="py-24 bg-gradient-to-b from-white to-trc-gray-50">
+      <section className="py-12 lg:py-16 bg-gradient-to-b from-white to-trc-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl lg:text-3xl font-bold text-trc-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
               Begin Your Transformation Journey
             </h2>
             <p className="text-base text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -143,7 +143,7 @@ export default function HomePage() {
           
           {/* Single Course Card */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white p-10">
                 <h3 className="text-2xl font-bold mb-3 text-white">
                   Professional Coach Certification Program
@@ -154,9 +154,9 @@ export default function HomePage() {
               </div>
               
               <div className="p-10">
-                <div className="grid md:grid-cols-2 gap-10 mb-10">
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
                   <div>
-                    <h4 className="text-base font-bold text-trc-gray-900 mb-6">What&apos;s Included</h4>
+                    <h4 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h4>
                     <ul className="space-y-4 text-base text-trc-gray-700">
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -186,7 +186,7 @@ export default function HomePage() {
                   </div>
                   
                   <div>
-                    <h4 className="text-base font-bold text-trc-gray-900 mb-6">Additional Benefits</h4>
+                    <h4 className="text-2xl font-bold text-trc-gray-900 mb-6">Additional Benefits</h4>
                     <ul className="space-y-4 text-base text-trc-gray-700">
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -220,7 +220,7 @@ export default function HomePage() {
                     <div className="text-center">
                       <a
                         href="/contact"
-                        className="inline-block px-10 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl text-base"
+                        className="inline-block px-10 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base"
                       >
                         Enroll Now for October 2025
                       </a>
@@ -235,22 +235,22 @@ export default function HomePage() {
       </section>
 
       {/* Statistics Section - Clean Cards */}
-      <section className="py-24 bg-white">
+      <section className="py-12 lg:py-16 bg-gradient-to-b from-trc-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="bg-white rounded-xl p-10 text-center shadow-md">
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">78%</div>
               <p className="text-base text-trc-gray-600">of our souls are 45+</p>
             </div>
-            <div className="bg-white rounded-xl p-10 text-center shadow-md">
+            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">25+</div>
               <p className="text-base text-trc-gray-600">years of wisdom shared</p>
             </div>
-            <div className="bg-white rounded-xl p-10 text-center shadow-md">
+            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">500+</div>
               <p className="text-base text-trc-gray-600">coaches transformed</p>
             </div>
-            <div className="bg-white rounded-xl p-10 text-center shadow-md">
+            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-trc-blue-600 mb-3">TRC</div>
               <p className="text-base text-trc-gray-600">certified excellence</p>
             </div>
@@ -259,10 +259,10 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section - Modern Cards */}
-      <section className="py-24 bg-trc-gray-50">
+      <section className="py-12 lg:py-16 bg-trc-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl lg:text-3xl font-bold text-trc-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
               Stories of Transformation
             </h2>
             <p className="text-base text-trc-gray-600">
@@ -270,8 +270,8 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <div className="bg-white border border-trc-gray-200 rounded-xl p-10 hover:shadow-xl transition-all duration-300">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white border border-trc-gray-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="flex mb-6">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-trc-gold-500 fill-current" viewBox="0 0 20 20">
@@ -290,7 +290,7 @@ export default function HomePage() {
               </div>
             </div>
             
-            <div className="bg-white border border-trc-gray-200 rounded-xl p-10 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white border border-trc-gray-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="flex mb-6">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-trc-gold-500 fill-current" viewBox="0 0 20 20">
@@ -313,9 +313,9 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section - Modern Gradient */}
-      <section className="py-24 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
+      <section className="py-12 lg:py-16 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-8">
+          <h2 className="text-4xl font-bold text-white mb-8">
             Your Transformation Begins Today
           </h2>
           <p className="text-base text-trc-blue-100 mb-10 leading-relaxed">
@@ -324,7 +324,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/coaching-training"
-            className="inline-block px-10 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl text-base"
+            className="inline-block px-10 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base"
           >
             Start Your Journey
           </Link>
