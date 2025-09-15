@@ -8,7 +8,7 @@ export default function CoachingTrainingPage() {
       <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/virtual_meeting_1.jpg"
+            src="/images/Virtual_Meeting_1.jpg"
             alt="Virtual coaching session"
             fill
             sizes="100vw"
