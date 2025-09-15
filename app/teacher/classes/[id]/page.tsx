@@ -87,7 +87,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
       if (classData) {
         setClassData({
           ...classData,
-          enrollments: classData.enrollments.filter(e => e.id !== studentToUnenroll.id),
+          members: classData.members.filter(e => e.id !== studentToUnenroll.id),
         });
       }
       setUnenrollModalOpen(false);
@@ -201,7 +201,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
               </div>
               <div>
                 <p className="text-sm text-trc-gray-600">Total Students</p>
-                <p className="font-medium text-trc-gray-900">{classData.enrollments.length}</p>
+                <p className="font-medium text-trc-gray-900">{classData.members.length}</p>
               </div>
             </div>
 
@@ -228,7 +228,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
           <div className="p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-trc-gray-900">
-                Enrolled Students ({classData.enrollments.length})
+                Enrolled Students ({classData.members.length})
               </h2>
               <Link
                 href={`/teacher/classes/${classData.id}/enroll`}
@@ -238,7 +238,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
               </Link>
             </div>
 
-            {classData.enrollments.length > 0 ? (
+            {classData.members.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
@@ -258,7 +258,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {classData.enrollments.map((enrollment) => (
+                    {classData.members.map((enrollment) => (
                       <tr key={enrollment.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">

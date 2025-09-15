@@ -163,12 +163,12 @@ export default function TeacherStudentsPage() {
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          {student.enrollments.length > 0 ? (
+                          {student.classMembers.length > 0 ? (
                             <div className="text-sm text-gray-600">
-                              {student.enrollments.map((enrollment, index) => (
+                              {student.classMembers.map((enrollment, index) => (
                                 <span key={enrollment.class.id}>
                                   {enrollment.class.name}
-                                  {index < student.enrollments.length - 1 && ', '}
+                                  {index < student.classMembers.length - 1 && ', '}
                                 </span>
                               ))}
                             </div>
@@ -271,13 +271,13 @@ export default function TeacherStudentsPage() {
             <div className="bg-white p-4 rounded-lg shadow">
               <p className="text-sm text-gray-600">Enrolled Students</p>
               <p className="text-2xl font-bold text-trc-gray-900">
-                {students.filter(s => s.enrollments.length > 0).length}
+                {students.filter(s => s.classMembers.length > 0).length}
               </p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow">
               <p className="text-sm text-gray-600">Not Enrolled</p>
               <p className="text-2xl font-bold text-trc-gray-900">
-                {students.filter(s => s.enrollments.length === 0).length}
+                {students.filter(s => s.classMembers.length === 0).length}
               </p>
             </div>
           </div>
