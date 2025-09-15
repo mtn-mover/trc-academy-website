@@ -98,7 +98,7 @@ export async function PUT(
     }
 
     // Build update data
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
     if (email !== undefined) updateData.email = email;
     if (name !== undefined) updateData.name = name;
     if (timezone !== undefined) updateData.timezone = timezone;

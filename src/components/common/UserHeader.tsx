@@ -60,19 +60,6 @@ export default function UserHeader() {
      session.user.isTeacher ? 'teacher' :
      'student');
 
-  // Get dashboard title based on current role
-  const getDashboardTitle = () => {
-    switch (currentRole) {
-      case 'admin':
-        return 'Admin Dashboard';
-      case 'teacher':
-        return 'Teacher Dashboard';
-      case 'student':
-        return 'Student Dashboard';
-      default:
-        return 'Dashboard';
-    }
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">

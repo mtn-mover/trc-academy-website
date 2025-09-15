@@ -14,7 +14,7 @@ export default function TeacherDashboard() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-trc-gray-900">Welcome back, {teacherName}!</h1>
-          <p className="text-trc-gray-600 mt-2">Here's an overview of your teaching activities</p>
+          <p className="text-trc-gray-600 mt-2">Here&apos;s an overview of your teaching activities</p>
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Stats Cards */}

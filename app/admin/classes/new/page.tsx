@@ -44,7 +44,7 @@ export default function NewClassPage() {
         const data = await response.json();
         setTeachers(data);
       }
-    } catch (error) {
+    } catch {
       console.error('Failed to fetch teachers:', error);
     }
   };
@@ -118,7 +118,7 @@ export default function NewClassPage() {
         const data = await response.json();
         setError(data.error || 'Failed to create class');
       }
-    } catch (error) {
+    } catch {
       setError('An error occurred while creating the class');
     } finally {
       setLoading(false);

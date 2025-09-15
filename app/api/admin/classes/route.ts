@@ -4,7 +4,7 @@ import { authOptions } from '@/src/lib/auth';
 import { prisma } from '@/src/lib/prisma';
 
 // GET /api/admin/classes - Get all classes
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify all teachers exist and have teacher role
-    const teacherIds = teachers.map((t: any) => t.id);
+    const teacherIds = teachers.map((t: { id: string; isPrimary?: boolean }) => t.id);
     const verifiedTeachers = await prisma.user.findMany({
       where: {
         id: { in: teacherIds },
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
         endDate: new Date(endDate),
         isActive: isActive !== undefined ? isActive : true,
         teachers: {
-          create: teachers.map((t: any) => ({
+          create: teachers.map((t: { id: string; isPrimary?: boolean }) => ({
             teacherId: t.id,
             isPrimary: t.isPrimary || false,
           })),
@@ -127,7 +127,6 @@ export async function POST(request: NextRequest) {
     });
 
     // Create audit log
-    const primaryTeacher = newClass.teachers.find(t => t.isPrimary);
     await prisma.auditLog.create({
       data: {
         userId: session.user.id,

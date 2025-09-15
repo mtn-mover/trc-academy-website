@@ -311,7 +311,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
                 Delete Class
               </h3>
               <p className="text-trc-gray-600 mb-6">
-                Are you sure you want to delete "{classData.name}"? This action cannot be undone.
+                Are you sure you want to delete &quot;{classData.name}&quot;? This action cannot be undone.
                 All student enrollments will also be removed.
               </p>
               <div className="flex gap-3 justify-end">

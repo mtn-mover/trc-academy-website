@@ -5,7 +5,7 @@ import { prisma } from '@/src/lib/prisma';
 import bcrypt from 'bcryptjs';
 
 // GET /api/students - List all students (teachers only)
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 

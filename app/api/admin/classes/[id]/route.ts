@@ -99,7 +99,7 @@ export async function PUT(
 
     // If teachers are being updated, verify them
     if (teachers && teachers.length > 0) {
-      const teacherIds = teachers.map((t: any) => t.id);
+      const teacherIds = teachers.map((t: { id: string; isPrimary?: boolean }) => t.id);
       const verifiedTeachers = await prisma.user.findMany({
         where: {
           id: { in: teacherIds },
@@ -116,7 +116,7 @@ export async function PUT(
     }
 
     // Build update data
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
     if (name !== undefined) updateData.name = name;
     if (description !== undefined) updateData.description = description;
     if (timezone !== undefined) updateData.timezone = timezone;
@@ -132,7 +132,7 @@ export async function PUT(
       });
       // Create new teacher relationships
       updateData.teachers = {
-        create: teachers.map((t: any) => ({
+        create: teachers.map((t: { id: string; isPrimary?: boolean }) => ({
           teacherId: t.id,
           isPrimary: t.isPrimary || false,
         })),

@@ -113,7 +113,7 @@ export async function PUT(
     }
 
     // Build update data
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
     if (email) updateData.email = email;
     if (name) updateData.name = name;
     if (password) {

@@ -18,7 +18,7 @@ interface Class {
 }
 
 export default function TeacherClassesPage() {
-  const router = useRouter();
+  useRouter(); // Router available if needed
   const [classes, setClasses] = useState<Class[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -209,7 +209,7 @@ export default function TeacherClassesPage() {
                 Delete Class
               </h3>
               <p className="text-trc-gray-600 mb-6">
-                Are you sure you want to delete "{classToDelete.name}"? This action cannot be undone.
+                Are you sure you want to delete &quot;{classToDelete.name}&quot;? This action cannot be undone.
                 All student enrollments will also be removed.
               </p>
               <div className="flex gap-3 justify-end">

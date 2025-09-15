@@ -1,5 +1,5 @@
 import { format, toZonedTime, fromZonedTime } from 'date-fns-tz';
-import { addMinutes, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
 
 // Common timezone groups for easy selection
 export const TIMEZONE_GROUPS = {

@@ -73,7 +73,7 @@ export default function NewStudentPage() {
     setError('');
 
     try {
-      const requestData: any = {
+      const requestData: Record<string, string> = {
         name: formData.name,
         email: formData.email,
       };
@@ -314,7 +314,7 @@ export default function NewStudentPage() {
           <ul className="text-sm text-blue-800 space-y-1">
             <li>• Students can log in using their email and password</li>
             <li>• Auto-generated passwords are secure and random</li>
-            <li>• You'll see the password only once after creation</li>
+            <li>• You&apos;ll see the password only once after creation</li>
             <li>• Students can be enrolled in classes after account creation</li>
             <li>• Students can change their password after first login</li>
           </ul>

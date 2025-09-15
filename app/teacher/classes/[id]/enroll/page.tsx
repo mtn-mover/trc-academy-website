@@ -17,10 +17,11 @@ interface ClassData {
   description: string | null;
 }
 
-interface Enrollment {
+// Enrollment interface not used - can be removed later
+// interface Enrollment {
   id: string;
-  userId: string;
-}
+//   userId: string;
+// }
 
 export default function EnrollStudentsPage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -48,7 +49,7 @@ export default function EnrollStudentsPage({ params }: { params: { id: string } 
       setClassData(classData);
 
       // Get currently enrolled student IDs
-      const enrolledIds = classData.enrollments.map((e: any) => e.userId);
+      const enrolledIds = classData.enrollments.map((e: { userId: string }) => e.userId);
       setEnrolledStudentIds(enrolledIds);
 
       // Fetch all students

@@ -237,7 +237,7 @@ export default function TeacherStudentsPage() {
                 Delete Student
               </h3>
               <p className="text-trc-gray-600 mb-6">
-                Are you sure you want to delete "{studentToDelete.name}"? This will also remove them from all enrolled classes.
+                Are you sure you want to delete &quot;{studentToDelete.name}&quot;? This will also remove them from all enrolled classes.
                 This action cannot be undone.
               </p>
               <div className="flex gap-3 justify-end">

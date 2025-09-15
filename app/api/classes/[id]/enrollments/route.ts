@@ -18,12 +18,16 @@ export async function GET(
 
     // Teachers can see all enrollments for their classes
     // Students can only see enrollments for classes they're enrolled in
-    if (session.user.role === 'TEACHER') {
+    if (session.user.isTeacher) {
       // Verify the teacher owns this class
       const classData = await prisma.class.findFirst({
         where: {
           id: id,
-          teacherId: session.user.id,
+          teachers: {
+            some: {
+              teacherId: session.user.id,
+            },
+          },
         },
       });
 

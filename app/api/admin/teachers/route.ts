@@ -4,7 +4,7 @@ import { authOptions } from '@/src/lib/auth';
 import { prisma } from '@/src/lib/prisma';
 
 // GET /api/admin/teachers - Get all users with teacher role
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 

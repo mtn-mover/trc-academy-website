@@ -4,7 +4,7 @@ import { authOptions } from '@/src/lib/auth';
 import { prisma } from '@/src/lib/prisma';
 
 // GET /api/classes - List all classes for the teacher
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
