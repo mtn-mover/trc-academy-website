@@ -56,9 +56,26 @@ function LoginForm() {
           setError('Invalid email or password');
         }
       } else {
-        // Auth successful - redirect will be handled by middleware
-        router.push('/');
-        router.refresh();
+        // Get the actual user roles from session and redirect accordingly
+        const response = await fetch('/api/auth/session');
+        const session = await response.json();
+
+        if (session?.user) {
+          const user = session.user;
+
+          // Redirect to appropriate dashboard based on highest priority role
+          // Priority: Admin > Teacher > Student
+          if (user.isAdmin) {
+            router.push('/admin/dashboard');
+          } else if (user.isTeacher) {
+            router.push('/teacher/dashboard');
+          } else if (user.isStudent) {
+            router.push('/student/dashboard');
+          } else {
+            setError('No valid role assigned. Contact administrator.');
+          }
+          router.refresh();
+        }
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
