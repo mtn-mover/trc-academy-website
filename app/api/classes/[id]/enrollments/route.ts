@@ -25,11 +25,7 @@ export async function GET(
           id: id,
           teachers: {
             some: {
-              teachers: {
-          some: {
-            teacherId: session.user.id,
-          },
-        },
+              teacherId: session.user.id,
             },
           },
         },
@@ -127,7 +123,7 @@ export async function POST(
     const students = await prisma.user.findMany({
       where: {
         id: { in: studentIds },
-        role: 'STUDENT',
+        isStudent: true,
       },
     });
 
@@ -139,7 +135,7 @@ export async function POST(
     }
 
     // Check for existing enrollments
-    const existingEnrollments = await prisma.enrollment.findMany({
+    const existingEnrollments = await prisma.classMember.findMany({
       where: {
         classId: id,
         userId: { in: studentIds },
@@ -157,7 +153,7 @@ export async function POST(
     }
 
     // Create enrollments
-    const enrollments = await prisma.enrollment.createMany({
+    const enrollments = await prisma.classMember.createMany({
       data: newStudentIds.map(userId => ({
         userId,
         classId: id,
@@ -222,7 +218,7 @@ export async function DELETE(
     }
 
     // Delete enrollments
-    const result = await prisma.enrollment.deleteMany({
+    const result = await prisma.classMember.deleteMany({
       where: {
         classId: id,
         userId: { in: studentIds },
