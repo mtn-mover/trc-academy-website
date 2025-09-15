@@ -17,21 +17,21 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const student = await prisma.user.findUnique({
       where: {
         id: id,
-        role: 'STUDENT',
+        isStudent: true,
       },
       select: {
         id: true,
         email: true,
         name: true,
         createdAt: true,
-        enrollments: {
+        classMembers: {
           include: {
             class: {
               select: {
@@ -40,9 +40,13 @@ export async function GET(
                 description: true,
                 startDate: true,
                 endDate: true,
-                teacher: {
-                  select: {
-                    name: true,
+                teachers: {
+                  include: {
+                    teacher: {
+                      select: {
+                        name: true,
+                      },
+                    },
                   },
                 },
               },
@@ -79,7 +83,7 @@ export async function PUT(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -90,7 +94,7 @@ export async function PUT(
     const existingStudent = await prisma.user.findUnique({
       where: {
         id: id,
-        role: 'STUDENT',
+        isStudent: true,
       },
     });
 
@@ -156,7 +160,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -164,7 +168,7 @@ export async function DELETE(
     const existingStudent = await prisma.user.findUnique({
       where: {
         id: id,
-        role: 'STUDENT',
+        isStudent: true,
       },
     });
 
@@ -172,8 +176,8 @@ export async function DELETE(
       return NextResponse.json({ error: 'Student not found' }, { status: 404 });
     }
 
-    // Delete all enrollments first
-    await prisma.enrollment.deleteMany({
+    // Delete all class memberships first
+    await prisma.classMember.deleteMany({
       where: {
         userId: id,
       },
