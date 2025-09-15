@@ -13,20 +13,20 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const students = await prisma.user.findMany({
       where: {
-        role: 'STUDENT',
+        isStudent: true,
       },
       select: {
         id: true,
         email: true,
         name: true,
         createdAt: true,
-        enrollments: {
+        classMembers: {
           include: {
             class: {
               select: {
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
         email,
         name,
         password: hashedPassword,
-        role: 'STUDENT',
+        isStudent: true,
       },
       select: {
         id: true,
