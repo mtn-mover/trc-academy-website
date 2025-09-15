@@ -89,7 +89,7 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -183,7 +183,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
