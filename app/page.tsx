@@ -37,13 +37,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 lg:justify-center">
                 <Link
                   href="/coaching-training"
-                  className="px-8 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl text-base lg:text-lg"
+                  className="px-8 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
                 >
                   Answer Your Inner Calling
                 </Link>
                 <Link
                   href="/about"
-                  className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-base lg:text-lg"
+                  className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
                 >
                   Meet Karen Florence
                 </Link>
@@ -109,7 +109,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Wisdom-Centered Learning
               </h3>
-              <p className="text-trc-gray-600 leading-relaxed text-lg" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+              <p className="text-lg text-trc-gray-600 leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
                 Your decades of experience become the foundation for transformative coaching. 
                 We honor and integrate your life wisdom into professional practice.
               </p>
@@ -124,7 +124,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Heart-Centered Approach
               </h3>
-              <p className="text-trc-gray-600 leading-relaxed text-lg" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+              <p className="text-lg text-trc-gray-600 leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
                 Beyond techniques and certifications, discover coaching that touches souls. 
                 Create authentic connections that transform both you and your clients.
               </p>
@@ -139,7 +139,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
                 Mature Professional Community
               </h3>
-              <p className="text-trc-gray-600 leading-relaxed text-lg" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
+              <p className="text-lg text-trc-gray-600 leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
                 Join peers who understand your journey. 78% of our students are 45+, 
                 creating a rich tapestry of shared wisdom and support.
               </p>
@@ -351,11 +351,11 @@ export default function HomePage() {
 
           {/* Text Content - Positioned in Sky Area */}
           <div className="absolute top-8 lg:top-16 left-0 right-0">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 lg:mb-6" style={{textShadow: '3px 3px 10px rgba(0,0,0,1)'}}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
                 Your Transformation Begins Today
               </h2>
-              <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed max-w-3xl mx-auto" style={{textShadow: '2px 2px 8px rgba(0,0,0,1)'}}>
+              <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
                 Take the first step toward your soul&apos;s work.
                 Discover how your unique wisdom can create lasting impact in the world.
               </p>
@@ -367,7 +367,7 @@ export default function HomePage() {
             <div className="text-center">
               <Link
                 href="/coaching-training"
-                className="inline-block px-8 md:px-10 lg:px-12 py-4 lg:py-5 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl text-base md:text-lg lg:text-xl"
+                className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
               >
                 Begin Your Sacred Journey
               </Link>
