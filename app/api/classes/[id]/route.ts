@@ -16,14 +16,18 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const classData = await prisma.class.findFirst({
       where: {
         id: id,
-        teacherId: session.user.id,
+        teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
       },
       include: {
         enrollments: {
@@ -67,7 +71,7 @@ export async function PUT(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -78,7 +82,11 @@ export async function PUT(
     const existingClass = await prisma.class.findFirst({
       where: {
         id: id,
-        teacherId: session.user.id,
+        teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
       },
     });
 
@@ -139,7 +147,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -147,7 +155,11 @@ export async function DELETE(
     const existingClass = await prisma.class.findFirst({
       where: {
         id: id,
-        teacherId: session.user.id,
+        teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
       },
     });
 
