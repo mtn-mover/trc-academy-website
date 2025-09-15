@@ -1,44 +1,23 @@
 'use client';
 
+import DashboardLayout from '@/src/components/layouts/DashboardLayout';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function StudentDashboard() {
-  const router = useRouter();
-  
-  // Mock student data - in a real app, this would come from authentication/API
-  const studentName = "Sarah Mitchell";
+  const { data: session } = useSession();
+  const studentName = session?.user?.name || session?.user?.email || "Student";
   const currentProgram = "PCC Program - Cohort 2024";
   const progress = 65;
 
-  const handleLogout = () => {
-    router.push('/login');
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Dashboard Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-serif font-bold text-trc-gray-900">
-                Student Dashboard
-              </h1>
-              <p className="text-trc-gray-600">Welcome back, {studentName}</p>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 text-trc-gray-600 hover:text-trc-gray-900 transition-colors"
-            >
-              Logout
-            </button>
-          </div>
+    <DashboardLayout role="STUDENT">
+      <div>
+        {/* Welcome Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-trc-gray-900">Welcome back, {studentName}!</h1>
+          <p className="text-trc-gray-600 mt-2">Continue your learning journey</p>
         </div>
-      </div>
-
-      {/* Main Dashboard Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content Area */}
           <div className="lg:col-span-2 space-y-6">
@@ -195,6 +174,6 @@ export default function StudentDashboard() {
           </div>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 }

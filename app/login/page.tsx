@@ -1,14 +1,41 @@
 'use client';
 
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function LoginPage() {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleStudentLogin = () => {
-    // In a real app, this would handle authentication
-    router.push('/student/dashboard');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsLoading(true);
+
+    try {
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError('Invalid email or password');
+      } else {
+        // Redirect based on user role will be handled by middleware
+        router.push('/dashboard');
+        router.refresh();
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -41,7 +68,7 @@ export default function LoginPage() {
               Access your courses, resources, and connect with your coaching community.
             </p>
             
-            <form onSubmit={(e) => { e.preventDefault(); handleStudentLogin(); }} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="email" className="block text-base font-medium text-trc-gray-700 mb-2">
                   Email Address
@@ -49,12 +76,14 @@ export default function LoginPage() {
                 <input
                   type="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
                   placeholder="your.email@example.com"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="password" className="block text-base font-medium text-trc-gray-700 mb-2">
                   Password
@@ -62,6 +91,8 @@ export default function LoginPage() {
                 <input
                   type="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-base"
                   placeholder="••••••••"
@@ -85,14 +116,31 @@ export default function LoginPage() {
                   Forgot password?
                 </Link>
               </div>
-              
+
+              {error && (
+                <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 text-base"
+                disabled={isLoading}
+                className="w-full px-6 py-3 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Sign In
+                {isLoading ? 'Signing in...' : 'Sign In'}
               </button>
             </form>
+
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-sm text-trc-gray-600 text-center mb-2">
+                Demo Accounts:
+              </p>
+              <div className="space-y-1 text-xs text-trc-gray-500 text-center">
+                <p>Teacher: teacher@trc.com / teacher123</p>
+                <p>Student: student@trc.com / student123</p>
+              </div>
+            </div>
           </div>
         </div>
 
