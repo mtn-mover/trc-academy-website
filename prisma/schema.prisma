@@ -11,11 +11,104 @@ datasource db {
 }
 
 model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  password     String
+  name         String
+  timezone     String    @default("UTC") // IANA timezone identifier
+  isStudent    Boolean   @default(false)
+  isTeacher    Boolean   @default(false)
+  isAdmin      Boolean   @default(false)
+  accessExpiry DateTime? // For students - access cutoff date
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relationships
+  taughtClasses ClassTeacher[] // Classes taught by this teacher
+  classMembers  ClassMember[]
+  auditLogs     AuditLog[]    // Actions performed by this user
+}
+
+model Class {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  timezone    String   @default("Europe/Zurich") // Course origin timezone
+  startDate   DateTime
+  endDate     DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  teachers  ClassTeacher[]
+  members   ClassMember[]
+  classDays ClassDay[]
+}
+
+model ClassTeacher {
+  id         String   @id @default(cuid())
+  classId    String
+  teacherId  String
+  isPrimary  Boolean  @default(false) // Primary teacher vs co-teacher
+  assignedAt DateTime @default(now())
+
+  // Relationships
+  class   Class @relation(fields: [classId], references: [id])
+  teacher User  @relation(fields: [teacherId], references: [id])
+
+  @@unique([classId, teacherId])
+}
+
+model ClassMember {
+  id       String   @id @default(cuid())
+  userId   String
+  classId  String
+  role     String   @default("STUDENT") // STUDENT only (teachers use ClassTeacher)
+  joinedAt DateTime @default(now())
+
+  // Relationships
+  user  User  @relation(fields: [userId], references: [id])
+  class Class @relation(fields: [classId], references: [id])
+
+  @@unique([userId, classId])
+}
+
+model ClassDay {
   id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  name      String?
-  role      String   @default("STUDENT") // Using String for SQLite compatibility
+  classId   String
+  dayOfWeek Int      // 0 = Sunday, 6 = Saturday
+  startTime String   // HH:MM format in class timezone
+  endTime   String   // HH:MM format in class timezone
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
+  // Relationships
+  class Class @relation(fields: [classId], references: [id])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String
+  action    String   // CREATE_USER, UPDATE_USER, DELETE_USER, etc.
+  entityId  String?  // ID of affected entity
+  entityType String? // USER, CLASS, CLASS_MEMBER
+  metadata  String?  // JSON string with additional details
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id])
+}
+
+// Legacy Enrollment model - will be migrated to ClassMember
+model Enrollment {
+  id         String   @id @default(cuid())
+  userId     String
+  classId    String
+  enrolledAt DateTime @default(now())
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, classId])
 }

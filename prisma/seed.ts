@@ -5,8 +5,28 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Hash passwords
+  const adminPassword = await bcrypt.hash('admin123', 10);
   const teacherPassword = await bcrypt.hash('teacher123', 10);
   const studentPassword = await bcrypt.hash('student123', 10);
+
+  // Create admin account with all roles for testing
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@trc.com' },
+    update: {
+      isAdmin: true,
+      isTeacher: true,
+      isStudent: true,
+    },
+    create: {
+      email: 'admin@trc.com',
+      name: 'Admin User',
+      password: adminPassword,
+      isAdmin: true,
+      isTeacher: true,
+      isStudent: true,
+      timezone: 'Europe/Zurich',
+    },
+  });
 
   // Create teacher account
   const teacher = await prisma.user.upsert({
@@ -16,7 +36,10 @@ async function main() {
       email: 'teacher@trc.com',
       name: 'Karen Florence',
       password: teacherPassword,
-      role: 'TEACHER',
+      isTeacher: true,
+      isStudent: false,
+      isAdmin: false,
+      timezone: 'Europe/Zurich',
     },
   });
 
@@ -28,13 +51,33 @@ async function main() {
       email: 'student@trc.com',
       name: 'Sarah Mitchell',
       password: studentPassword,
-      role: 'STUDENT',
+      isStudent: true,
+      isTeacher: false,
+      isAdmin: false,
+      timezone: 'Europe/Zurich',
+    },
+  });
+
+  // Create multi-role user (teacher + admin)
+  const multiRole = await prisma.user.upsert({
+    where: { email: 'multi@trc.com' },
+    update: {},
+    create: {
+      email: 'multi@trc.com',
+      name: 'Multi Role User',
+      password: adminPassword,
+      isAdmin: true,
+      isTeacher: true,
+      isStudent: false,
+      timezone: 'Europe/Zurich',
     },
   });
 
   console.log('Seed data created:');
-  console.log('Teacher:', teacher.email);
-  console.log('Student:', student.email);
+  console.log('Admin:', admin.email, '(password: admin123)');
+  console.log('Teacher:', teacher.email, '(password: teacher123)');
+  console.log('Student:', student.email, '(password: student123)');
+  console.log('Multi-role:', multiRole.email, '(password: admin123)');
 }
 
 main()
