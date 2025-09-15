@@ -25,7 +25,11 @@ export async function GET(
           id: id,
           teachers: {
             some: {
-              teacherId: session.user.id,
+              teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
             },
           },
         },
@@ -97,7 +101,11 @@ export async function POST(
     const classData = await prisma.class.findFirst({
       where: {
         id: id,
-        teacherId: session.user.id,
+        teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
       },
     });
 
@@ -191,7 +199,11 @@ export async function DELETE(
     const classData = await prisma.class.findFirst({
       where: {
         id: id,
-        teacherId: session.user.id,
+        teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
       },
     });
 
