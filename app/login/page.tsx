@@ -85,22 +85,19 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-trc-blue-50 to-trc-warm-50 flex items-center justify-center px-4 py-12">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-trc-blue-50 via-white to-trc-gray-50 flex items-center justify-center py-12 px-4">
+      <div className="w-full" style={{ maxWidth: '384px' }}>
         {/* Logo and Title */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block mb-4">
-            <h1 className="text-4xl font-serif font-bold text-trc-blue-800">
-              trc.<span className="text-trc-warm-600">academy</span>
-            </h1>
-          </Link>
-          <h2 className="text-2xl font-bold text-trc-gray-900">Welcome Back</h2>
-          <p className="text-trc-gray-600 mt-2">Sign in to access your account</p>
+          <h1 className="text-3xl font-bold text-trc-gray-900 mb-2">
+            Welcome Back
+          </h1>
+          <p className="text-trc-gray-600">Sign in to your trc.academy account</p>
         </div>
 
         {/* Login Form */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Email Field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-trc-gray-700 mb-2">
@@ -198,37 +195,25 @@ function LoginForm() {
             </button>
           </form>
 
-          {/* Divider */}
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Need help?</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Support */}
-          <div className="mt-6 text-center">
-            <p className="text-sm text-trc-gray-600">
-              Having trouble signing in?{' '}
-              <Link href="/contact" className="text-trc-blue-600 hover:text-trc-blue-700 font-medium">
-                Contact Support
-              </Link>
-            </p>
-          </div>
         </div>
 
-        {/* Footer Links */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-trc-gray-600">
-            Don&apos;t have an account?{' '}
-            <Link href="/contact" className="text-trc-blue-600 hover:text-trc-blue-700 font-medium">
-              Contact us to enroll
-            </Link>
-          </p>
+        {/* Test Accounts */}
+        <div className="mt-6 bg-gray-50 rounded-lg p-4">
+          <h3 className="text-sm font-medium text-gray-700 mb-3">Test Accounts</h3>
+          <div className="space-y-2 text-xs">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Admin:</span>
+              <span className="font-mono text-gray-900">admin@trc.academy / admin123</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Teacher:</span>
+              <span className="font-mono text-gray-900">teacher@trc.academy / teacher123</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Student:</span>
+              <span className="font-mono text-gray-900">student@trc.academy / student123</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
