@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 interface ScrollAnimationProps {
   children: React.ReactNode;
-  animation?: 'scale' | 'fadeSlide' | 'fade';
+  animation?: 'scale' | 'fadeSlide' | 'fade' | 'rotate';
   delay?: number;
   className?: string;
 }
@@ -28,7 +28,7 @@ export default function ScrollAnimation({
         }
       },
       {
-        threshold: 0.3,
+        threshold: animation === 'rotate' ? 0.5 : 0.3,
         rootMargin: '0px 0px -50px 0px'
       }
     );
@@ -48,8 +48,13 @@ export default function ScrollAnimation({
     const prefersReducedMotion = typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion && animation !== 'rotate') {
       return '';
+    }
+
+    // For rotate animation, element is always visible
+    if (animation === 'rotate') {
+      return prefersReducedMotion ? '' : '';
     }
 
     const baseClasses = 'transition-all duration-700 ease-out';
@@ -75,12 +80,46 @@ export default function ScrollAnimation({
     }
   };
 
+  const getAnimationStyle = () => {
+    if (animation === 'rotate' && isVisible) {
+      const prefersReducedMotion = typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion) {
+        return {};
+      }
+
+      return {
+        animation: 'flipHorizontal 1.2s ease-in-out',
+        transformOrigin: 'center center',
+        transformStyle: 'preserve-3d',
+        perspective: '1000px'
+      };
+    }
+    return {};
+  };
+
   return (
-    <div
-      ref={ref}
-      className={`${getAnimationClasses()} ${className}`}
-    >
-      {children}
-    </div>
+    <>
+      {animation === 'rotate' && (
+        <style jsx>{`
+          @keyframes flipHorizontal {
+            from {
+              transform: perspective(1000px) rotateY(0deg);
+            }
+            to {
+              transform: perspective(1000px) rotateY(360deg);
+            }
+          }
+        `}</style>
+      )}
+      <div
+        ref={ref}
+        className={`${getAnimationClasses()} ${className}`}
+        style={getAnimationStyle()}
+      >
+        {children}
+      </div>
+    </>
   );
 }

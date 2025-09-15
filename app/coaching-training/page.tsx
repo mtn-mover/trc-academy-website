@@ -1,17 +1,37 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function CoachingTrainingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-trc-blue-50 to-white py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl lg:text-6xl font-bold text-trc-gray-900 mb-8">
-              Professional Coach Certification
-            </h1>
-            <p className="text-xl lg:text-2xl text-trc-gray-600 leading-relaxed">
-              Transform your wisdom into professional coaching excellence with our 
-              comprehensive certification program designed for mature professionals.
-            </p>
+      {/* Hero Section with Virtual Meeting Background */}
+      <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/virtual_meeting_1.jpg"
+            alt="Virtual coaching session"
+            fill
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+        </div>
+
+        {/* Dark overlay for text contrast - focused on upper area */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-10"></div>
+
+        {/* Content positioned in upper third */}
+        <div className="relative z-20 h-full flex items-start justify-center pt-24 lg:pt-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="text-center">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                Professional Coach Certification
+              </h1>
+              <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+                Transform your wisdom into professional coaching excellence with our
+                comprehensive certification program designed for mature professionals.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -266,24 +286,44 @@ export default function CoachingTrainingPage() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8">
-            Your Coaching Journey Begins October 18, 2025
-          </h2>
-          <p className="text-xl text-trc-blue-100 mb-10 leading-relaxed">
-            Limited seats available. Join our next cohort of transformational coaches 
-            and discover how your wisdom can change lives.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block px-10 py-5 bg-trc-blue-600 text-white font-bold text-lg rounded-md hover:bg-trc-blue-700 transition-all duration-200 shadow-xl hover:shadow-2xl"
-          >
-            Apply for October 2025 Cohort
-          </a>
+      {/* Final CTA Section with Summit Image */}
+      <div className="relative">
+        <Image
+          src="/images/Summit_3.jpg"
+          alt="Mountain summit representing transformation"
+          width={1920}
+          height={1080}
+          className="w-full h-auto block"
+          sizes="100vw"
+        />
+        {/* Subtle gradient overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
+
+        {/* Text Content - Positioned in Sky Area */}
+        <div className="absolute top-8 lg:top-16 left-0 right-0">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              Your Coaching Journey Begins October 18, 2025
+            </h2>
+            <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+              Limited seats available. Join our next cohort of transformational coaches
+              and discover how your wisdom can change lives.
+            </p>
+          </div>
         </div>
-      </section>
+
+        {/* Button - Positioned Below Person */}
+        <div className="absolute bottom-6 md:bottom-8 lg:bottom-10 left-0 right-0">
+          <div className="text-center">
+            <Link
+              href="/contact"
+              className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+            >
+              Apply for October 2025 Cohort
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

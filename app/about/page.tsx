@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
@@ -167,32 +168,50 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-12 lg:py-16 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-4xl font-bold text-white mb-6">
-            Ready to Begin Your Journey?
-          </h2>
-          <p className="text-lg text-trc-blue-100 mb-8 leading-relaxed">
-            Join Karen and discover how your life experience can become your greatest 
-            professional asset in service to others.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/coaching-training"
-              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md hover:bg-trc-gray-50 hover:scale-105 transition-all duration-300 shadow-lg border-2 border-trc-blue-600"
-            >
-              Explore Our Programs
-            </a>
-            <a
-              href="/contact"
-              className="inline-block px-8 py-4 bg-transparent text-white font-semibold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300"
-            >
-              Schedule a Consultation
-            </a>
+      {/* Call to Action with Summit Image */}
+      <div className="relative">
+        <Image
+          src="/images/Summit_3.jpg"
+          alt="Mountain summit representing transformation"
+          width={1920}
+          height={1080}
+          className="w-full h-auto block"
+          sizes="100vw"
+        />
+        {/* Subtle gradient overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
+
+        {/* Text Content - Positioned in Sky Area */}
+        <div className="absolute top-8 lg:top-16 left-0 right-0">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              Ready to Begin Your Journey?
+            </h2>
+            <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+              Join Karen and discover how your life experience can become your greatest
+              professional asset in service to others.
+            </p>
           </div>
         </div>
-      </section>
+
+        {/* Buttons - Positioned Below Person */}
+        <div className="absolute bottom-6 md:bottom-8 lg:bottom-10 left-0 right-0">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/coaching-training"
+              className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+            >
+              Explore Our Programs
+            </Link>
+            <Link
+              href="/contact"
+              className="px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

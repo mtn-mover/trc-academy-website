@@ -166,7 +166,8 @@ export default function HomePage() {
           </div>
 
           {/* Single Course Card - Elevated Design */}
-          <ScrollAnimation animation="scale" delay={0.2} className="max-w-4xl mx-auto">
+          <div style={{ perspective: '1000px' }}>
+            <ScrollAnimation animation="rotate" delay={0} className="max-w-4xl mx-auto">
             <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-gray-100 overflow-hidden hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300">
               <div className="bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white p-10">
                 <h3 className="text-2xl font-bold mb-3 text-white">
@@ -259,6 +260,7 @@ export default function HomePage() {
               </div>
             </div>
           </ScrollAnimation>
+          </div>
         </div>
       </section>
 
@@ -377,7 +379,7 @@ export default function HomePage() {
           </div>
 
           {/* Button - Positioned Below Person */}
-          <div className="absolute bottom-10 md:bottom-16 lg:bottom-20 left-0 right-0">
+          <div className="absolute bottom-6 md:bottom-8 lg:bottom-10 left-0 right-0">
             <div className="text-center">
               <Link
                 href="/coaching-training"
