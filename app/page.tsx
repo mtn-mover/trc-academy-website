@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import ScrollAnimation from '../src/components/ScrollAnimation';
 
 export default function HomePage() {
   return (
@@ -148,22 +149,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Professional Coach Certification Program */}
-      <section className="py-12 lg:py-16 bg-gradient-to-b from-white to-trc-gray-50">
+      {/* Professional Coach Certification Program - Enhanced CTA Section */}
+      <section className="relative py-20 lg:py-24 mt-8 bg-gradient-to-br from-trc-blue-50 via-white to-trc-gold-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
+            <div className="inline-block px-6 py-2 bg-trc-gold-100 text-trc-gold-700 rounded-full text-sm font-semibold mb-6">
+              LIMITED ENROLLMENT
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
               Begin Your Transformation Journey
             </h2>
-            <p className="text-lg text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Join our comprehensive certification program designed specifically for 
+            <p className="text-lg lg:text-xl text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Join our comprehensive certification program designed specifically for
               mature professionals ready to make their mark in the coaching world.
             </p>
           </div>
-          
-          {/* Single Course Card */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+
+          {/* Single Course Card - Elevated Design */}
+          <ScrollAnimation animation="scale" delay={0.2} className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-gray-100 overflow-hidden hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300">
               <div className="bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white p-10">
                 <h3 className="text-2xl font-bold mb-3 text-white">
                   Professional Coach Certification Program
@@ -230,27 +234,31 @@ export default function HomePage() {
                   </div>
                 </div>
                 
-                <div className="border-t border-trc-gray-200 pt-8">
+                {/* Enhanced Call-to-Action Area */}
+                <div className="bg-gradient-to-r from-trc-blue-50 to-trc-gold-50 rounded-2xl p-8 mt-8 border border-trc-blue-100">
                   <div className="flex flex-col md:flex-row items-center justify-between">
                     <div className="text-center md:text-left mb-6 md:mb-0">
-                      <p className="text-2xl font-bold text-trc-gray-900 mb-2">$6,999</p>
-                      <p className="text-lg text-trc-gray-600">Complete Certification Program</p>
-                      <p className="text-sm text-trc-gray-500 mt-1">Payment plans available</p>
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <p className="text-3xl font-bold text-trc-gray-900">$6,999</p>
+                        <span className="text-lg text-trc-gray-600 line-through">$8,999</span>
+                      </div>
+                      <p className="text-lg font-semibold text-trc-gray-700">Complete Certification Program</p>
+                      <p className="text-sm text-trc-blue-600 mt-1 font-medium">✓ Payment plans available</p>
                     </div>
                     <div className="text-center">
                       <a
                         href="/contact"
-                        className="inline-block px-10 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+                        className="inline-block px-12 py-5 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
                       >
                         Enroll Now for October 2025
                       </a>
-                      <p className="text-sm text-trc-gray-600 mt-3">Limited spots available</p>
+                      <p className="text-sm text-trc-gold-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -258,22 +266,30 @@ export default function HomePage() {
       <section className="py-12 lg:py-16 bg-gradient-to-b from-trc-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-              <div className="text-3xl font-bold text-trc-blue-600 mb-3">78%</div>
-              <p className="text-lg text-trc-gray-600">of our souls are 45+</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-              <div className="text-3xl font-bold text-trc-blue-600 mb-3">25+</div>
-              <p className="text-lg text-trc-gray-600">years of wisdom shared</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-              <div className="text-3xl font-bold text-trc-blue-600 mb-3">500+</div>
-              <p className="text-lg text-trc-gray-600">coaches transformed</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-              <div className="text-3xl font-bold text-trc-blue-600 mb-3">TRC</div>
-              <p className="text-lg text-trc-gray-600">certified excellence</p>
-            </div>
+            <ScrollAnimation animation="fadeSlide" delay={0.1}>
+              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="text-3xl font-bold text-trc-blue-600 mb-3">78%</div>
+                <p className="text-lg text-trc-gray-600">of our souls are 45+</p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation animation="fadeSlide" delay={0.2}>
+              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="text-3xl font-bold text-trc-blue-600 mb-3">25+</div>
+                <p className="text-lg text-trc-gray-600">years of wisdom shared</p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation animation="fadeSlide" delay={0.3}>
+              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="text-3xl font-bold text-trc-blue-600 mb-3">500+</div>
+                <p className="text-lg text-trc-gray-600">coaches transformed</p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation animation="fadeSlide" delay={0.4}>
+              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="text-3xl font-bold text-trc-blue-600 mb-3">TRC</div>
+                <p className="text-lg text-trc-gray-600">certified excellence</p>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -333,21 +349,19 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section - With Background Image */}
-      <section className="relative h-auto">
-        {/* Background Image at Full Natural Height */}
-        <div className="relative">
-          <Image
-            src="/images/Summit_3.jpg"
-            alt="Mountain summit representing transformation"
-            width={1920}
-            height={1080}
-            className="w-full h-auto"
-            sizes="100vw"
-            priority
-          />
+      <div className="relative">
+        <Image
+          src="/images/Summit_3.jpg"
+          alt="Mountain summit representing transformation"
+          width={1920}
+          height={1080}
+          className="w-full h-auto block"
+          sizes="100vw"
+          priority
+        />
 
-          {/* Subtle gradient overlay for better text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
+        {/* Subtle gradient overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
 
           {/* Text Content - Positioned in Sky Area */}
           <div className="absolute top-8 lg:top-16 left-0 right-0">
@@ -373,8 +387,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
