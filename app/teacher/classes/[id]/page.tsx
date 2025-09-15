@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 
-interface Enrollment {
+interface ClassMember {
   id: string;
-  enrolledAt: string;
+  joinedAt: string;
   user: {
     id: string;
     name: string;
@@ -22,7 +22,7 @@ interface ClassData {
   startDate: string;
   endDate: string;
   createdAt: string;
-  enrollments: Enrollment[];
+  members: ClassMember[];
 }
 
 export default function ClassDetailsPage({ params }: { params: { id: string } }) {
@@ -32,7 +32,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
   const [error, setError] = useState('');
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [unenrollModalOpen, setUnenrollModalOpen] = useState(false);
-  const [studentToUnenroll, setStudentToUnenroll] = useState<Enrollment | null>(null);
+  const [studentToUnenroll, setStudentToUnenroll] = useState<ClassMember | null>(null);
 
   useEffect(() => {
     fetchClassDetails();
@@ -272,7 +272,7 @@ export default function ClassDetailsPage({ params }: { params: { id: string } })
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-600">
-                            {formatDateTime(enrollment.enrolledAt)}
+                            {formatDateTime(enrollment.joinedAt)}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
