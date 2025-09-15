@@ -28,6 +28,9 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 lg:pb-12">
             <div className="text-left lg:text-center">
+              <p className="text-lg text-white/90 mb-4 tracking-wide" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)'}}>
+                TRC Training Academy
+              </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
                 Your Soul&apos;s Work Awaits
               </h1>

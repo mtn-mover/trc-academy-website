@@ -23,8 +23,8 @@ const Header = () => {
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-trc-gray-200">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex items-center">
+          {/* Logo and Academy Name */}
+          <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center py-1">
               <Image
                 src="/images/logo.jpg"
@@ -35,6 +35,9 @@ const Header = () => {
                 priority
               />
             </Link>
+            <span className="hidden lg:block text-xl font-medium text-trc-gray-800">
+              TRC Training Academy
+            </span>
           </div>
 
           {/* Desktop Navigation */}
