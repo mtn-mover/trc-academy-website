@@ -12,17 +12,21 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const classes = await prisma.class.findMany({
       where: {
-        teacherId: session.user.id,
+        teachers: {
+          some: {
+            teacherId: session.user.id,
+          },
+        },
       },
       include: {
         _count: {
-          select: { enrollments: true },
+          select: { members: true },
         },
       },
       orderBy: {
@@ -49,7 +53,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -80,7 +84,12 @@ export async function POST(request: NextRequest) {
         description: description || null,
         startDate: start,
         endDate: end,
-        teacherId: session.user.id,
+        teachers: {
+          create: {
+            teacherId: session.user.id,
+            isPrimary: true,
+          },
+        },
       },
     });
 
