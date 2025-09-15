@@ -4,30 +4,50 @@ import Image from 'next/image';
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Clean and Modern */}
-      <section className="relative bg-gradient-to-b from-trc-blue-50 to-white py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl font-bold text-trc-gray-900 mb-8 tracking-tight leading-tight" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
-              Your Soul&apos;s Work Awaits
-            </h1>
-            <p className="text-lg lg:text-lg text-trc-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
-              Transform your decades of wisdom into a deeply meaningful coaching practice. 
-              Join compassionate professionals who&apos;ve answered their inner calling after 45.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/coaching-training"
-                className="px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg text-lg"
-              >
-                Explore Your Calling
-              </Link>
-              <Link
-                href="/about"
-                className="px-8 py-4 bg-white text-trc-blue-600 font-semibold rounded-md border-2 border-trc-blue-600 hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 text-lg"
-              >
-                Meet Karen Florence
-              </Link>
+      {/* Hero Section - With Background Image */}
+      <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Remote_Coaching_1.jpg"
+            alt="Professional coaching session"
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+            }}
+            priority
+          />
+        </div>
+
+        {/* Dark overlay only at bottom 30% for text area */}
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/90 via-black/70 to-transparent z-10"></div>
+
+        {/* Content positioned at absolute bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 lg:pb-12">
+            <div className="text-left lg:text-center">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                Your Soul&apos;s Work Awaits
+              </h1>
+              <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl lg:mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+                Transform your decades of wisdom into a deeply meaningful coaching practice.
+                Join compassionate professionals who&apos;ve answered their inner calling after 45.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 lg:justify-center">
+                <Link
+                  href="/coaching-training"
+                  className="px-8 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl text-base lg:text-lg"
+                >
+                  Answer Your Inner Calling
+                </Link>
+                <Link
+                  href="/about"
+                  className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-base lg:text-lg"
+                >
+                  Meet Karen Florence
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -40,7 +60,7 @@ export default function HomePage() {
             <div className="order-2 lg:order-1">
               <div className="relative rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/images/remote-coaching-session2.jpg"
+                  src="/images/Remote_Coaching_3.jpg"
                   alt="Professional coach in a remote coaching session"
                   width={600}
                   height={400}
@@ -312,22 +332,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section - Modern Gradient */}
-      <section className="py-12 lg:py-16 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-8">
-            Your Transformation Begins Today
-          </h2>
-          <p className="text-lg text-trc-blue-100 mb-10 leading-relaxed">
-            Take the first step toward your soul&apos;s work. 
-            Discover how your unique wisdom can create lasting impact in the world.
-          </p>
-          <Link
-            href="/coaching-training"
-            className="inline-block px-10 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-trc-blue-50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
-          >
-            Start Your Journey
-          </Link>
+      {/* CTA Section - With Background Image */}
+      <section className="relative h-auto">
+        {/* Background Image at Full Natural Height */}
+        <div className="relative">
+          <Image
+            src="/images/Summit_3.jpg"
+            alt="Mountain summit representing transformation"
+            width={1920}
+            height={1080}
+            className="w-full h-auto"
+            sizes="100vw"
+            priority
+          />
+
+          {/* Subtle gradient overlay for better text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
+
+          {/* Text Content - Positioned in Sky Area */}
+          <div className="absolute top-8 lg:top-16 left-0 right-0">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 lg:mb-6" style={{textShadow: '3px 3px 10px rgba(0,0,0,1)'}}>
+                Your Transformation Begins Today
+              </h2>
+              <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed max-w-3xl mx-auto" style={{textShadow: '2px 2px 8px rgba(0,0,0,1)'}}>
+                Take the first step toward your soul&apos;s work.
+                Discover how your unique wisdom can create lasting impact in the world.
+              </p>
+            </div>
+          </div>
+
+          {/* Button - Positioned Below Person */}
+          <div className="absolute bottom-10 md:bottom-16 lg:bottom-20 left-0 right-0">
+            <div className="text-center">
+              <Link
+                href="/coaching-training"
+                className="inline-block px-8 md:px-10 lg:px-12 py-4 lg:py-5 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl text-base md:text-lg lg:text-xl"
+              >
+                Begin Your Sacred Journey
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

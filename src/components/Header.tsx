@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -24,10 +25,15 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-trc-blue-600 tracking-tight">
-                TRC Training Academy
-              </span>
+            <Link href="/" className="flex items-center py-1">
+              <Image
+                src="/images/logo.jpg"
+                alt="TRC Training Academy"
+                width={220}
+                height={90}
+                className="h-18 w-auto"
+                priority
+              />
             </Link>
           </div>
 
