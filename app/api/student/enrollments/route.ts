@@ -14,25 +14,29 @@ export async function GET() {
 
     // Students can see their own enrollments
     // Teachers can also see this endpoint if needed
-    const enrollments = await prisma.enrollment.findMany({
+    const enrollments = await prisma.classMember.findMany({
       where: {
         userId: session.user.id,
       },
       include: {
         class: {
           include: {
-            teacher: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
+            teachers: {
+              include: {
+                teacher: {
+                  select: {
+                    id: true,
+                    name: true,
+                    email: true,
+                  },
+                },
               },
             },
           },
         },
       },
       orderBy: {
-        enrolledAt: 'desc',
+        joinedAt: 'desc',
       },
     });
 
