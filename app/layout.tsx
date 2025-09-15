@@ -55,7 +55,20 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 5,
   },
-  themeColor: '#4f46e5',
+  themeColor: '#1e40af',
+  icons: {
+    icon: [
+      { url: '/images/favicon.ico', type: 'image/x-icon' },
+      { url: '/images/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/images/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/images/apple-touch-icon.png',
+  },
+  manifest: '/images/site.webmanifest',
+  appleWebApp: {
+    title: 'TRC Academy',
+    statusBarStyle: 'default',
+  },
 };
 
 export default function RootLayout({
