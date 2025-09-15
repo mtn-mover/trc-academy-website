@@ -13,7 +13,7 @@ interface Class {
   endDate: string;
   createdAt: string;
   _count: {
-    enrollments: number;
+    members: number;
   };
 }
 
