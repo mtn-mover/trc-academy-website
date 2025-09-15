@@ -19,6 +19,7 @@ export default function ScrollAnimation({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
@@ -33,16 +34,16 @@ export default function ScrollAnimation({
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [delay, isVisible]);
+  }, [animation, delay, isVisible]);
 
   const getAnimationClasses = () => {
     const prefersReducedMotion = typeof window !== 'undefined' &&
@@ -92,7 +93,7 @@ export default function ScrollAnimation({
       return {
         animation: 'flipHorizontal 1.2s ease-in-out',
         transformOrigin: 'center center',
-        transformStyle: 'preserve-3d',
+        transformStyle: 'preserve-3d' as const,
         perspective: '1000px'
       };
     }
