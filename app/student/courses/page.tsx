@@ -4,7 +4,7 @@ import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 
 export default function StudentCoursesPage() {
   return (
-    <DashboardLayout role="STUDENT">
+    <DashboardLayout>
       <div>
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-trc-gray-900">My Courses</h1>

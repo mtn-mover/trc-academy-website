@@ -9,7 +9,7 @@ export default function TeacherDashboard() {
   const teacherName = session?.user?.name || session?.user?.email || "Teacher";
 
   return (
-    <DashboardLayout role="TEACHER">
+    <DashboardLayout>
       <div>
         {/* Welcome Section */}
         <div className="mb-8">

@@ -99,7 +99,7 @@ export default function NewClassPage() {
   const today = new Date().toISOString().split('T')[0];
 
   return (
-    <DashboardLayout role="TEACHER">
+    <DashboardLayout>
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">

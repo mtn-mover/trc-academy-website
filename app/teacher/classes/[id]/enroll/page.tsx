@@ -133,7 +133,7 @@ export default function EnrollStudentsPage({ params }: { params: { id: string } 
 
   if (loading) {
     return (
-      <DashboardLayout role="TEACHER">
+      <DashboardLayout>
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-trc-blue-600"></div>
         </div>
@@ -143,7 +143,7 @@ export default function EnrollStudentsPage({ params }: { params: { id: string } 
 
   if (!classData) {
     return (
-      <DashboardLayout role="TEACHER">
+      <DashboardLayout>
         <div className="max-w-4xl mx-auto">
           <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
             Class not found
@@ -160,7 +160,7 @@ export default function EnrollStudentsPage({ params }: { params: { id: string } 
   }
 
   return (
-    <DashboardLayout role="TEACHER">
+    <DashboardLayout>
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">

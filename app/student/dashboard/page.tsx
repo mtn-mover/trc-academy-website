@@ -11,7 +11,7 @@ export default function StudentDashboard() {
   const progress = 65;
 
   return (
-    <DashboardLayout role="STUDENT">
+    <DashboardLayout>
       <div>
         {/* Welcome Section */}
         <div className="mb-8">

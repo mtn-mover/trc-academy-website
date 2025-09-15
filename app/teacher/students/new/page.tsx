@@ -125,7 +125,7 @@ export default function NewStudentPage() {
 
   if (showCredentials && generatedCredentials) {
     return (
-      <DashboardLayout role="TEACHER">
+      <DashboardLayout>
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-lg shadow p-6">
             <div className="mb-6">
@@ -194,7 +194,7 @@ export default function NewStudentPage() {
   }
 
   return (
-    <DashboardLayout role="TEACHER">
+    <DashboardLayout>
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">

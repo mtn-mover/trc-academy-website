@@ -82,7 +82,7 @@ export default function TeacherStudentsPage() {
   );
 
   return (
-    <DashboardLayout role="TEACHER">
+    <DashboardLayout>
       <div>
         {/* Header */}
         <div className="flex justify-between items-center mb-8">

@@ -119,7 +119,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
 
   if (loading) {
     return (
-      <DashboardLayout role="TEACHER">
+      <DashboardLayout>
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-trc-blue-600"></div>
         </div>
@@ -128,7 +128,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <DashboardLayout role="TEACHER">
+    <DashboardLayout>
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
