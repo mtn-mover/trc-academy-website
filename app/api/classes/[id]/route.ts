@@ -30,7 +30,7 @@ export async function GET(
         },
       },
       include: {
-        enrollments: {
+        members: {
           include: {
             user: {
               select: {
@@ -167,8 +167,8 @@ export async function DELETE(
       return NextResponse.json({ error: 'Class not found' }, { status: 404 });
     }
 
-    // Delete all enrollments first (due to foreign key constraints)
-    await prisma.enrollment.deleteMany({
+    // Delete all class members first (due to foreign key constraints)
+    await prisma.classMember.deleteMany({
       where: {
         classId: id,
       },

@@ -44,7 +44,7 @@ export default function EnrollStudentsPage({ params }: { params: { id: string } 
       setClassData(classData);
 
       // Get currently enrolled student IDs
-      const enrolledIds = classData.enrollments.map((e: { userId: string }) => e.userId);
+      const enrolledIds = classData.members.map((e: { userId: string }) => e.userId);
       setEnrolledStudentIds(enrolledIds);
 
       // Fetch all students
