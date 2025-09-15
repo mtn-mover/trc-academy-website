@@ -16,31 +16,38 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (session.user.role !== 'TEACHER') {
+    if (!session.user.isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Find the enrollment and verify teacher owns the class
-    const enrollment = await prisma.enrollment.findFirst({
+    // Find the class member and verify teacher owns the class
+    const classMember = await prisma.classMember.findFirst({
       where: {
         id: id,
       },
       include: {
-        class: true,
+        class: {
+          include: {
+            teachers: true,
+          },
+        },
       },
     });
 
-    if (!enrollment) {
-      return NextResponse.json({ error: 'Enrollment not found' }, { status: 404 });
+    if (!classMember) {
+      return NextResponse.json({ error: 'Class member not found' }, { status: 404 });
     }
 
     // Check if the teacher owns this class
-    if (enrollment.class.teacherId !== session.user.id) {
+    const isTeacher = classMember.class.teachers.some(
+      (t) => t.teacherId === session.user.id
+    );
+    if (!isTeacher) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Delete the enrollment
-    await prisma.enrollment.delete({
+    // Delete the class member
+    await prisma.classMember.delete({
       where: {
         id: id,
       },
