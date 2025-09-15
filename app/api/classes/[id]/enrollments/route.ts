@@ -36,7 +36,7 @@ export async function GET(
       }
     } else {
       // Check if student is enrolled in this class
-      const enrollment = await prisma.enrollment.findFirst({
+      const enrollment = await prisma.classMember.findFirst({
         where: {
           classId: id,
           userId: session.user.id,
@@ -48,7 +48,7 @@ export async function GET(
       }
     }
 
-    const enrollments = await prisma.enrollment.findMany({
+    const enrollments = await prisma.classMember.findMany({
       where: {
         classId: id,
       },
@@ -62,7 +62,7 @@ export async function GET(
         },
       },
       orderBy: {
-        enrolledAt: 'desc',
+        joinedAt: 'desc',
       },
     });
 

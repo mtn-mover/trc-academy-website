@@ -17,11 +17,6 @@ interface ClassData {
   description: string | null;
 }
 
-// Enrollment interface not used - can be removed later
-// interface Enrollment {
-  id: string;
-//   userId: string;
-// }
 
 export default function EnrollStudentsPage({ params }: { params: { id: string } }) {
   const router = useRouter();
