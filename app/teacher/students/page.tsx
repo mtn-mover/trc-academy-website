@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 
-interface Enrollment {
+interface ClassMembership {
   class: {
     id: string;
     name: string;
@@ -16,7 +16,7 @@ interface Student {
   name: string;
   email: string;
   createdAt: string;
-  enrollments: Enrollment[];
+  classMembers: ClassMembership[];
 }
 
 export default function TeacherStudentsPage() {
