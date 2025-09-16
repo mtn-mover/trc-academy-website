@@ -25,11 +25,17 @@ export async function GET() {
     // Get class statistics
     const totalClasses = await prisma.class.count();
 
+    // Count classes that are either marked as active OR currently in session
+    const now = new Date();
     const activeClasses = await prisma.class.count({
       where: {
-        isActive: true,
-        startDate: { lte: new Date() },
-        endDate: { gte: new Date() }
+        OR: [
+          { isActive: true },
+          {
+            startDate: { lte: now },
+            endDate: { gte: now }
+          }
+        ]
       }
     });
 
