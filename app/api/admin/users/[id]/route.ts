@@ -6,9 +6,10 @@ import { prisma } from '@/src/lib/prisma';
 // GET /api/admin/users/[id] - Get single user
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -16,7 +17,7 @@ export async function GET(
     }
 
     const user = await prisma.user.findUnique({
-      where: { id: params.id },
+      where: { id },
       select: {
         id: true,
         email: true,
@@ -50,9 +51,10 @@ export async function GET(
 // PUT /api/admin/users/[id] - Update user
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -85,7 +87,7 @@ export async function PUT(
     const existingUser = await prisma.user.findFirst({
       where: {
         email,
-        NOT: { id: params.id },
+        NOT: { id },
       },
     });
 
@@ -98,7 +100,7 @@ export async function PUT(
 
     // Update user
     const updatedUser = await prisma.user.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         email,
         name,
@@ -139,9 +141,10 @@ export async function PUT(
 // DELETE /api/admin/users/[id] - Delete user
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -150,20 +153,20 @@ export async function DELETE(
 
     // Delete related records first
     await prisma.classMember.deleteMany({
-      where: { userId: params.id },
+      where: { userId: id },
     });
 
     await prisma.classTeacher.deleteMany({
-      where: { teacherId: params.id },
+      where: { teacherId: id },
     });
 
     await prisma.auditLog.deleteMany({
-      where: { userId: params.id },
+      where: { userId: id },
     });
 
     // Delete the user
     await prisma.user.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({ success: true });

@@ -6,9 +6,10 @@ import { prisma } from '@/src/lib/prisma';
 // PUT /api/admin/users/[id]/status - Update user status
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -20,7 +21,7 @@ export async function PUT(
 
     // Update user status
     const updatedUser = await prisma.user.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         isActive: isActive,
       },
