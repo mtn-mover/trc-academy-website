@@ -83,7 +83,7 @@ export default function UserHeader() {
                 <div className="flex items-center">
                   {availableRoles.map((role, index) => (
                     <span key={role} className="flex items-center">
-                      {index > 0 && <span className="mx-2 text-gray-400">|</span>}
+                      {index > 0 && <span className="mx-1 text-gray-400">|</span>}
                       {role === currentRole ? (
                         <span className="text-base font-bold text-orange-600 capitalize">{role}</span>
                       ) : (
