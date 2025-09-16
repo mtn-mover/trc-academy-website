@@ -143,6 +143,14 @@ export default function ManageClassesPage() {
   return (
     <DashboardLayout>
       <div className="p-6">
+        {/* Back Link */}
+        <Link
+          href="/admin/dashboard"
+          className="text-purple-600 hover:text-purple-700 text-sm mb-4 inline-block"
+        >
+          ← Back to Dashboard
+        </Link>
+
         <div className="mb-6 flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Manage Classes</h1>
