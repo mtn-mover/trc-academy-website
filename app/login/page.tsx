@@ -112,7 +112,10 @@ function LoginForm() {
                 placeholder="you@example.com"
                 required
                 disabled={isLoading}
-                autoComplete="email"
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck="false"
               />
             </div>
 
@@ -131,7 +134,7 @@ function LoginForm() {
                   placeholder="Enter your password"
                   required
                   disabled={isLoading}
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                 />
                 <button
                   type="button"
