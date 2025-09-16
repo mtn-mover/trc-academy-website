@@ -72,13 +72,6 @@ function LoginForm() {
           setError('Invalid email or password');
         }
       } else {
-        // Always update remember me preference after successful login
-        await fetch('/api/auth/remember', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ rememberMe: rememberMe }),
-        });
-
         // Get the actual user roles from session and redirect accordingly
         const response = await fetch('/api/auth/session');
         const session = await response.json();
