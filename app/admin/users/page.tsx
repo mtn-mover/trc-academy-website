@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 import Link from 'next/link';
@@ -22,10 +22,19 @@ interface User {
 export default function ManageUsersPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Set filter from URL parameters on mount
+  useEffect(() => {
+    const filterParam = searchParams.get('filter');
+    if (filterParam) {
+      setFilter(filterParam);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -116,10 +125,26 @@ export default function ManageUsersPage() {
   return (
     <DashboardLayout>
       <div className="p-6">
+        {/* Back Link */}
+        <Link
+          href="/admin/dashboard"
+          className="text-purple-600 hover:text-purple-700 text-sm mb-4 inline-block"
+        >
+          ← Back to Dashboard
+        </Link>
+
         <div className="mb-6 flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Manage Users</h1>
-            <p className="text-gray-600 mt-1">View and manage all system users</p>
+            <h1 className="text-3xl font-bold text-gray-900">
+              {filter === 'students' ? 'Manage Students' :
+               filter === 'teachers' ? 'Manage Teachers' :
+               filter === 'expired' ? 'Expired Access Users' : 'Manage Users'}
+            </h1>
+            <p className="text-gray-600 mt-1">
+              {filter === 'students' ? 'View and manage all students' :
+               filter === 'teachers' ? 'View and manage all teachers' :
+               filter === 'expired' ? 'View users with expired access' : 'View and manage all system users'}
+            </p>
           </div>
           <Link
             href="/admin/users/new"
