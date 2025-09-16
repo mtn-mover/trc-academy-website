@@ -2,7 +2,7 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 
 export default function UserHeader() {
   const { data: session, update } = useSession();
@@ -80,10 +80,10 @@ export default function UserHeader() {
               {availableRoles.length === 1 ? (
                 <span className="text-base font-medium text-orange-600 capitalize">{availableRoles[0]}</span>
               ) : (
-                <div className="flex items-center">
+                <div className="flex items-center gap-1">
                   {availableRoles.map((role, index) => (
-                    <span key={role} className="flex items-center">
-                      {index > 0 && <span className="mx-1 text-gray-400">|</span>}
+                    <Fragment key={role}>
+                      {index > 0 && <span className="text-gray-400">|</span>}
                       {role === currentRole ? (
                         <span className="text-base font-bold text-orange-600 capitalize">{role}</span>
                       ) : (
@@ -95,7 +95,7 @@ export default function UserHeader() {
                           {role}
                         </button>
                       )}
-                    </span>
+                    </Fragment>
                   ))}
                 </div>
               )}

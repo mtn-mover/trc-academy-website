@@ -12,6 +12,7 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -162,6 +163,8 @@ function LoginForm() {
                 <input
                   id="remember"
                   type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                   className="h-4 w-4 text-trc-blue-600 focus:ring-trc-blue-500 border-gray-300 rounded"
                 />
                 <label htmlFor="remember" className="ml-2 block text-sm text-trc-gray-700">
