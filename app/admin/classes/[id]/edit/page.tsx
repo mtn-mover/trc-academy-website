@@ -222,7 +222,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
             {/* Form Actions */}
             <div className="flex gap-3 justify-end pt-4">
               <Link
-                href="/teacher/classes"
+                href="/admin/classes"
                 className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
               >
                 Cancel
