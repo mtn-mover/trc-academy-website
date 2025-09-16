@@ -61,6 +61,7 @@ export default function AdminDashboard() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Welcome back, {session.user.name}!</h1>
           <p className="text-gray-600 mt-2">Here&apos;s an overview of your system administration</p>
+          <p className="text-gray-600 mt-1">As an Admin, you can create and manage users (teachers and students), create and edit classes, and assign users to their respective classes.</p>
         </div>
 
         {/* Stats Grid - clickable cards matching teacher layout */}
