@@ -13,6 +13,8 @@ export default function NewUserPage() {
   const [formData, setFormData] = useState({
     email: '',
     name: '',
+    givenName: '',
+    familyName: '',
     password: '',
     timezone: getBrowserTimezone(),
     isStudent: false,
@@ -57,11 +59,17 @@ export default function NewUserPage() {
       return;
     }
 
+    // Combine given and family names for the full name field
+    const dataToSend = {
+      ...formData,
+      name: `${formData.givenName} ${formData.familyName}`.trim()
+    };
+
     try {
       const response = await fetch('/api/admin/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
@@ -107,28 +115,43 @@ export default function NewUserPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Name *
+                    Given Name (First Name) *
                   </label>
                   <input
                     type="text"
                     required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    value={formData.givenName}
+                    onChange={(e) => setFormData({ ...formData, givenName: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="John"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email *
+                    Family Name (Last Name) *
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    value={formData.familyName}
+                    onChange={(e) => setFormData({ ...formData, familyName: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="Doe"
                   />
                 </div>
+              </div>
+              <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="john.doe@example.com"
+                />
               </div>
             </div>
 

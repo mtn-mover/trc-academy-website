@@ -18,6 +18,8 @@ export async function GET() {
         id: true,
         email: true,
         name: true,
+        givenName: true,
+        familyName: true,
         timezone: true,
         isStudent: true,
         isTeacher: true,
@@ -54,6 +56,8 @@ export async function POST(request: NextRequest) {
     const {
       email,
       name,
+      givenName,
+      familyName,
       password,
       timezone,
       isStudent,
@@ -91,6 +95,8 @@ export async function POST(request: NextRequest) {
       data: {
         email,
         name,
+        givenName: givenName || null,
+        familyName: familyName || null,
         password: hashedPassword,
         timezone: timezone || 'UTC',
         isStudent: isStudent || false,
