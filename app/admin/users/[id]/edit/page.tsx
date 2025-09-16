@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { TIMEZONE_GROUPS, getBrowserTimezone } from '@/src/lib/timezone';
 
 export default function EditUserPage({ params }: { params: { id: string } }) {
-  const { data: session, status } = useSession();
+  const { data: session, status, update } = useSession();
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
@@ -93,6 +93,10 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
       });
 
       if (response.ok) {
+        // If the edited user is the current user, refresh their session
+        if (params.id === session?.user?.id) {
+          await update({ refresh: true });
+        }
         router.push('/admin/users');
       } else {
         const data = await response.json();
@@ -204,6 +208,9 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
             {/* Roles */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-4">Roles *</h3>
+              <p className="text-sm text-gray-500 mb-3">
+                Note: If you change roles for a logged-in user, they need to log out and back in to see the new roles.
+              </p>
               <div className="space-y-2">
                 <div className="flex items-center">
                   <input

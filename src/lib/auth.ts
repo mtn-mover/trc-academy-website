@@ -87,9 +87,25 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-      // Handle session updates (e.g., role switching)
-      if (trigger === 'update' && session?.currentRole) {
-        token.currentRole = session.currentRole;
+      // Handle session updates (e.g., role switching or refresh)
+      if (trigger === 'update') {
+        if (session?.currentRole) {
+          token.currentRole = session.currentRole;
+        }
+        // If refreshing session, fetch updated user data
+        if (session?.refresh && token.id) {
+          const updatedUser = await prisma.user.findUnique({
+            where: { id: token.id as string }
+          });
+          if (updatedUser) {
+            token.isStudent = updatedUser.isStudent;
+            token.isTeacher = updatedUser.isTeacher;
+            token.isAdmin = updatedUser.isAdmin;
+            token.name = updatedUser.name;
+            token.timezone = updatedUser.timezone;
+            token.accessExpiry = updatedUser.accessExpiry?.toISOString() || null;
+          }
+        }
       }
 
       return token;
