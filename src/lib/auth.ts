@@ -140,6 +140,9 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days default (will be overridden by remember me)
+    maxAge: 30 * 24 * 60 * 60, // 30 days - keeps you logged in for a month
+  },
+  jwt: {
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
 };
