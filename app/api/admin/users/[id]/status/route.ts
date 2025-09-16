@@ -3,13 +3,12 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/src/lib/auth';
 import { prisma } from '@/src/lib/prisma';
 
-// PUT /api/admin/users/[id]/status - Toggle user active status
+// PUT /api/admin/users/[id]/status - Update user status
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -19,44 +18,17 @@ export async function PUT(
     const body = await request.json();
     const { isActive } = body;
 
-    // Check if user exists
-    const existingUser = await prisma.user.findUnique({
-      where: { id },
-    });
-
-    if (!existingUser) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
-    }
-
-    // Don't allow deactivating yourself
-    if (id === session.user.id && !isActive) {
-      return NextResponse.json(
-        { error: 'Cannot deactivate your own account' },
-        { status: 400 }
-      );
-    }
-
+    // Update user status
     const updatedUser = await prisma.user.update({
-      where: { id },
-      data: { isActive },
+      where: { id: params.id },
+      data: {
+        isActive: isActive,
+      },
       select: {
         id: true,
         email: true,
+        name: true,
         isActive: true,
-      },
-    });
-
-    // Create audit log
-    await prisma.auditLog.create({
-      data: {
-        userId: session.user.id,
-        action: isActive ? 'ACTIVATE_USER' : 'DEACTIVATE_USER',
-        entityId: id,
-        entityType: 'USER',
-        metadata: JSON.stringify({
-          userEmail: updatedUser.email,
-          newStatus: isActive ? 'active' : 'inactive',
-        }),
       },
     });
 

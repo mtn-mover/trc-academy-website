@@ -2,15 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/src/lib/auth';
 import { prisma } from '@/src/lib/prisma';
-import bcrypt from 'bcryptjs';
 
-// GET /api/admin/users/[id] - Get a single user
+// GET /api/admin/users/[id] - Get single user
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -18,11 +16,13 @@ export async function GET(
     }
 
     const user = await prisma.user.findUnique({
-      where: { id },
+      where: { id: params.id },
       select: {
         id: true,
         email: true,
         name: true,
+        givenName: true,
+        familyName: true,
         timezone: true,
         isStudent: true,
         isTeacher: true,
@@ -30,7 +30,6 @@ export async function GET(
         isActive: true,
         accessExpiry: true,
         createdAt: true,
-        updatedAt: true,
       },
     });
 
@@ -48,13 +47,12 @@ export async function GET(
   }
 }
 
-// PUT /api/admin/users/[id] - Update a user
+// PUT /api/admin/users/[id] - Update user
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
@@ -65,7 +63,8 @@ export async function PUT(
     const {
       email,
       name,
-      password,
+      givenName,
+      familyName,
       timezone,
       isStudent,
       isTeacher,
@@ -74,72 +73,56 @@ export async function PUT(
       isActive,
     } = body;
 
-    // Check if user exists
-    const existingUser = await prisma.user.findUnique({
-      where: { id },
+    // Validation
+    if (!email || !name) {
+      return NextResponse.json(
+        { error: 'Email and name are required' },
+        { status: 400 }
+      );
+    }
+
+    // Check if email is taken by another user
+    const existingUser = await prisma.user.findFirst({
+      where: {
+        email,
+        NOT: { id: params.id },
+      },
     });
 
-    if (!existingUser) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    if (existingUser) {
+      return NextResponse.json(
+        { error: 'Email is already taken by another user' },
+        { status: 400 }
+      );
     }
 
-    // If email is being changed, check for duplicates
-    if (email && email !== existingUser.email) {
-      const emailExists = await prisma.user.findUnique({
-        where: { email },
-      });
-
-      if (emailExists) {
-        return NextResponse.json(
-          { error: 'Email already in use' },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Build update data
-    const updateData: Record<string, unknown> = {};
-    if (email !== undefined) updateData.email = email;
-    if (name !== undefined) updateData.name = name;
-    if (timezone !== undefined) updateData.timezone = timezone;
-    if (isStudent !== undefined) updateData.isStudent = isStudent;
-    if (isTeacher !== undefined) updateData.isTeacher = isTeacher;
-    if (isAdmin !== undefined) updateData.isAdmin = isAdmin;
-    if (isActive !== undefined) updateData.isActive = isActive;
-    if (accessExpiry !== undefined) {
-      updateData.accessExpiry = accessExpiry ? new Date(accessExpiry) : null;
-    }
-    if (password) {
-      updateData.password = await bcrypt.hash(password, 10);
-    }
-
+    // Update user
     const updatedUser = await prisma.user.update({
-      where: { id },
-      data: updateData,
+      where: { id: params.id },
+      data: {
+        email,
+        name,
+        givenName: givenName || null,
+        familyName: familyName || null,
+        timezone: timezone || 'UTC',
+        isStudent: isStudent || false,
+        isTeacher: isTeacher || false,
+        isAdmin: isAdmin || false,
+        accessExpiry: accessExpiry ? new Date(accessExpiry) : null,
+        isActive: isActive !== undefined ? isActive : true,
+      },
       select: {
         id: true,
         email: true,
         name: true,
+        givenName: true,
+        familyName: true,
         timezone: true,
         isStudent: true,
         isTeacher: true,
         isAdmin: true,
         isActive: true,
         accessExpiry: true,
-      },
-    });
-
-    // Create audit log
-    await prisma.auditLog.create({
-      data: {
-        userId: session.user.id,
-        action: 'UPDATE_USER',
-        entityId: id,
-        entityType: 'USER',
-        metadata: JSON.stringify({
-          updatedUser: updatedUser.email,
-          changes: Object.keys(updateData),
-        }),
       },
     });
 
@@ -153,64 +136,37 @@ export async function PUT(
   }
 }
 
-// DELETE /api/admin/users/[id] - Delete a user
+// DELETE /api/admin/users/[id] - Delete user
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user.isAdmin) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Check if user exists
-    const existingUser = await prisma.user.findUnique({
-      where: { id },
+    // Delete related records first
+    await prisma.classMember.deleteMany({
+      where: { userId: params.id },
     });
 
-    if (!existingUser) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
-    }
-
-    // Don't allow deleting yourself
-    if (id === session.user.id) {
-      return NextResponse.json(
-        { error: 'Cannot delete your own account' },
-        { status: 400 }
-      );
-    }
-
-    // Delete all related data first
-    await prisma.classMember.deleteMany({
-      where: { userId: id },
+    await prisma.classTeacher.deleteMany({
+      where: { teacherId: params.id },
     });
 
     await prisma.auditLog.deleteMany({
-      where: { userId: id },
+      where: { userId: params.id },
     });
 
     // Delete the user
     await prisma.user.delete({
-      where: { id },
+      where: { id: params.id },
     });
 
-    // Create audit log
-    await prisma.auditLog.create({
-      data: {
-        userId: session.user.id,
-        action: 'DELETE_USER',
-        entityId: id,
-        entityType: 'USER',
-        metadata: JSON.stringify({
-          deletedUser: existingUser.email,
-        }),
-      },
-    });
-
-    return NextResponse.json({ message: 'User deleted successfully' });
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error deleting user:', error);
     return NextResponse.json(
