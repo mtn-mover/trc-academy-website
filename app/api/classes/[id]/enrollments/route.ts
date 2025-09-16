@@ -89,20 +89,25 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (!session.user.isTeacher) {
+    // Allow both teachers and admins to enroll students
+    if (!session.user.isTeacher && !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Verify the teacher owns this class
-    const classData = await prisma.class.findFirst({
-      where: {
-        id: id,
-        teachers: {
-          some: {
-            teacherId: session.user.id,
+    // For admins, get any class; for teachers, only their classes
+    const whereClause = session.user.isAdmin
+      ? { id: id }
+      : {
+          id: id,
+          teachers: {
+            some: {
+              teacherId: session.user.id,
+            },
           },
-        },
-      },
+        };
+
+    const classData = await prisma.class.findFirst({
+      where: whereClause,
     });
 
     if (!classData) {
@@ -187,20 +192,25 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (!session.user.isTeacher) {
+    // Allow both teachers and admins to remove students
+    if (!session.user.isTeacher && !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Verify the teacher owns this class
-    const classData = await prisma.class.findFirst({
-      where: {
-        id: id,
-        teachers: {
-          some: {
-            teacherId: session.user.id,
+    // For admins, get any class; for teachers, only their classes
+    const whereClause = session.user.isAdmin
+      ? { id: id }
+      : {
+          id: id,
+          teachers: {
+            some: {
+              teacherId: session.user.id,
+            },
           },
-        },
-      },
+        };
+
+    const classData = await prisma.class.findFirst({
+      where: whereClause,
     });
 
     if (!classData) {
