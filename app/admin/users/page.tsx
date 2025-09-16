@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 import Link from 'next/link';
 
@@ -19,7 +19,7 @@ interface User {
   createdAt: string;
 }
 
-export default function ManageUsersPage() {
+function ManageUsersContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -253,22 +253,16 @@ export default function ManageUsersPage() {
                     </button>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {user.accessExpiry ? (
-                      new Date(user.accessExpiry) < new Date() ? (
-                        <span className="text-red-600">
-                          Expired {new Date(user.accessExpiry).toLocaleDateString()}
-                        </span>
-                      ) : (
-                        new Date(user.accessExpiry).toLocaleDateString()
-                      )
-                    ) : (
-                      '-'
-                    )}
+                    {user.accessExpiry
+                      ? new Date(user.accessExpiry) < new Date()
+                        ? <span className="text-red-600">Expired</span>
+                        : new Date(user.accessExpiry).toLocaleDateString()
+                      : 'Never'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <Link
-                      href={`/admin/users/${user.id}`}
-                      className="text-purple-600 hover:text-purple-900 mr-3"
+                      href={`/admin/users/${user.id}/edit`}
+                      className="text-purple-600 hover:text-purple-900 mr-4"
                     >
                       Edit
                     </Link>
@@ -291,5 +285,17 @@ export default function ManageUsersPage() {
         </div>
       </div>
     </DashboardLayout>
+  );
+}
+
+export default function ManageUsersPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+      </div>
+    }>
+      <ManageUsersContent />
+    </Suspense>
   );
 }
