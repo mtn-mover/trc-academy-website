@@ -140,9 +140,21 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days - keeps you logged in for a month
+    maxAge: 7 * 24 * 60 * 60, // 7 days default
   },
   jwt: {
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 7 * 24 * 60 * 60, // 7 days default
+  },
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60, // 7 days
+      },
+    },
   },
 };
