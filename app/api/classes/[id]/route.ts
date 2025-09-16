@@ -16,19 +16,25 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (!session.user.isTeacher) {
+    // Allow both teachers and admins to access class details
+    if (!session.user.isTeacher && !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const classData = await prisma.class.findFirst({
-      where: {
-        id: id,
-        teachers: {
-          some: {
-            teacherId: session.user.id,
+    // For admins, get any class; for teachers, only their classes
+    const whereClause = session.user.isAdmin
+      ? { id: id }
+      : {
+          id: id,
+          teachers: {
+            some: {
+              teacherId: session.user.id,
+            },
           },
-        },
-      },
+        };
+
+    const classData = await prisma.class.findFirst({
+      where: whereClause,
       include: {
         members: {
           include: {
@@ -71,23 +77,28 @@ export async function PUT(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (!session.user.isTeacher) {
+    // Allow both teachers and admins to update classes
+    if (!session.user.isTeacher && !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const body = await request.json();
     const { name, description, startDate, endDate } = body;
 
-    // Check if class exists and belongs to teacher
-    const existingClass = await prisma.class.findFirst({
-      where: {
-        id: id,
-        teachers: {
-          some: {
-            teacherId: session.user.id,
+    // For admins, check any class; for teachers, only their classes
+    const whereClause = session.user.isAdmin
+      ? { id: id }
+      : {
+          id: id,
+          teachers: {
+            some: {
+              teacherId: session.user.id,
+            },
           },
-        },
-      },
+        };
+
+    const existingClass = await prisma.class.findFirst({
+      where: whereClause,
     });
 
     if (!existingClass) {
@@ -147,20 +158,25 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    if (!session.user.isTeacher) {
+    // Allow both teachers and admins to delete classes
+    if (!session.user.isTeacher && !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Check if class exists and belongs to teacher
-    const existingClass = await prisma.class.findFirst({
-      where: {
-        id: id,
-        teachers: {
-          some: {
-            teacherId: session.user.id,
+    // For admins, check any class; for teachers, only their classes
+    const whereClause = session.user.isAdmin
+      ? { id: id }
+      : {
+          id: id,
+          teachers: {
+            some: {
+              teacherId: session.user.id,
+            },
           },
-        },
-      },
+        };
+
+    const existingClass = await prisma.class.findFirst({
+      where: whereClause,
     });
 
     if (!existingClass) {
