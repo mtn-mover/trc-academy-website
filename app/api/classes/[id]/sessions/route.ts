@@ -5,9 +5,10 @@ import { prisma } from '@/src/lib/prisma';
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const resolvedParams = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
@@ -17,7 +18,7 @@ export async function POST(
     // Check if user is a teacher for this class
     const classTeacher = await prisma.classTeacher.findFirst({
       where: {
-        classId: params.id,
+        classId: resolvedParams.id,
         teacher: {
           email: session.user.email
         }
@@ -45,7 +46,7 @@ export async function POST(
     // Create the session
     const newSession = await prisma.session.create({
       data: {
-        classId: params.id,
+        classId: resolvedParams.id,
         title,
         description: description || null,
         date: new Date(date),
@@ -68,9 +69,10 @@ export async function POST(
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const resolvedParams = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
@@ -80,7 +82,7 @@ export async function GET(
     // Get all sessions for the class
     const sessions = await prisma.session.findMany({
       where: {
-        classId: params.id
+        classId: resolvedParams.id
       },
       include: {
         documents: true,
