@@ -1,43 +1,72 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 
-export default function EditClassPage({ params }: { params: { id: string } }) {
+interface Teacher {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export default function EditClassPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [teachers, setTeachers] = useState<Teacher[]>([]);
+  const [currentTeacherId, setCurrentTeacherId] = useState<string>('');
   const [formData, setFormData] = useState({
     name: '',
     description: '',
     startDate: '',
     endDate: '',
+    timezone: 'Europe/Zurich',
+    isActive: true,
+    teacherId: ''
   });
 
   useEffect(() => {
-    fetchClass();
+    fetchClassAndTeachers();
   }, []);
 
-  const fetchClass = async () => {
+  const fetchClassAndTeachers = async () => {
     try {
-      const response = await fetch(`/api/classes/${params.id}`);
-      if (!response.ok) {
+      // Fetch class details
+      const classResponse = await fetch(`/api/admin/classes/${resolvedParams.id}`);
+      if (!classResponse.ok) {
         throw new Error('Failed to fetch class');
       }
-      const data = await response.json();
+      const classData = await classResponse.json();
+
+      // Fetch available teachers
+      const teachersResponse = await fetch('/api/admin/teachers');
+      if (!teachersResponse.ok) {
+        throw new Error('Failed to fetch teachers');
+      }
+      const teachersData = await teachersResponse.json();
+      setTeachers(teachersData);
 
       // Format dates for input fields
-      const startDate = new Date(data.startDate).toISOString().split('T')[0];
-      const endDate = new Date(data.endDate).toISOString().split('T')[0];
+      const startDate = new Date(classData.startDate).toISOString().split('T')[0];
+      const endDate = new Date(classData.endDate).toISOString().split('T')[0];
+
+      // Get the primary teacher if exists
+      const primaryTeacher = classData.teachers?.find((t: any) => t.isPrimary);
+      const teacherId = primaryTeacher?.teacher?.id || '';
+      setCurrentTeacherId(teacherId);
 
       setFormData({
-        name: data.name,
-        description: data.description || '',
+        name: classData.name,
+        description: classData.description || '',
         startDate,
         endDate,
+        timezone: classData.timezone || 'Europe/Zurich',
+        isActive: classData.isActive !== false,
+        teacherId
       });
     } catch (err) {
       setError('Failed to load class details');
@@ -47,12 +76,21 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData(prev => ({
+        ...prev,
+        [name]: checked
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
     setError(''); // Clear error when user types
   };
 
@@ -94,12 +132,25 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
     setError('');
 
     try {
-      const response = await fetch(`/api/classes/${params.id}`, {
+      // Prepare teacher data
+      const teachers = formData.teacherId
+        ? [{ id: formData.teacherId, isPrimary: true }]
+        : [];
+
+      const response = await fetch(`/api/admin/classes/${resolvedParams.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          description: formData.description,
+          startDate: formData.startDate,
+          endDate: formData.endDate,
+          timezone: formData.timezone,
+          isActive: formData.isActive,
+          teachers
+        }),
       });
 
       const data = await response.json();
@@ -121,7 +172,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
     return (
       <DashboardLayout>
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-trc-blue-600"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
         </div>
       </DashboardLayout>
     );
@@ -138,8 +189,8 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
           >
             ← Back to Classes
           </Link>
-          <h1 className="text-3xl font-bold text-trc-gray-900">Edit Class</h1>
-          <p className="text-trc-gray-600 mt-2">Update your class information</p>
+          <h1 className="text-3xl font-bold text-gray-900">Edit Class</h1>
+          <p className="text-gray-600 mt-2">Update class information and assignments</p>
         </div>
 
         {/* Form */}
@@ -147,7 +198,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Class Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-trc-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Class Name *
               </label>
               <input
@@ -157,14 +208,14 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500 focus:border-trc-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 placeholder="e.g., Professional Coach Certification - October 2025"
               />
             </div>
 
             {/* Description */}
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-trc-gray-700 mb-2">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
                 Description (Optional)
               </label>
               <textarea
@@ -173,15 +224,39 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
                 value={formData.description}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500 focus:border-trc-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 placeholder="Provide a brief description of the class..."
               />
+            </div>
+
+            {/* Teacher Assignment */}
+            <div>
+              <label htmlFor="teacherId" className="block text-sm font-medium text-gray-700 mb-2">
+                Primary Teacher
+              </label>
+              <select
+                id="teacherId"
+                name="teacherId"
+                value={formData.teacherId}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+              >
+                <option value="">No teacher assigned</option>
+                {teachers.map(teacher => (
+                  <option key={teacher.id} value={teacher.id}>
+                    {teacher.name} ({teacher.email})
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-500 mt-1">
+                Select a teacher to be the primary instructor for this class
+              </p>
             </div>
 
             {/* Date Fields */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="startDate" className="block text-sm font-medium text-trc-gray-700 mb-2">
+                <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-2">
                   Start Date *
                 </label>
                 <input
@@ -191,12 +266,12 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
                   value={formData.startDate}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500 focus:border-trc-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="endDate" className="block text-sm font-medium text-trc-gray-700 mb-2">
+                <label htmlFor="endDate" className="block text-sm font-medium text-gray-700 mb-2">
                   End Date *
                 </label>
                 <input
@@ -207,8 +282,55 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
                   onChange={handleChange}
                   min={formData.startDate}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500 focus:border-trc-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 />
+              </div>
+            </div>
+
+            {/* Timezone and Active Status */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="timezone" className="block text-sm font-medium text-gray-700 mb-2">
+                  Timezone
+                </label>
+                <select
+                  id="timezone"
+                  name="timezone"
+                  value={formData.timezone}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="UTC">UTC</option>
+                  <option value="Europe/Zurich">Europe/Zurich</option>
+                  <option value="Europe/London">Europe/London</option>
+                  <option value="Europe/Paris">Europe/Paris</option>
+                  <option value="America/New_York">America/New York</option>
+                  <option value="America/Chicago">America/Chicago</option>
+                  <option value="America/Denver">America/Denver</option>
+                  <option value="America/Los_Angeles">America/Los Angeles</option>
+                  <option value="Asia/Tokyo">Asia/Tokyo</option>
+                  <option value="Asia/Shanghai">Asia/Shanghai</option>
+                  <option value="Asia/Dubai">Asia/Dubai</option>
+                  <option value="Australia/Sydney">Australia/Sydney</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Status
+                </label>
+                <div className="mt-2">
+                  <label className="inline-flex items-center">
+                    <input
+                      type="checkbox"
+                      name="isActive"
+                      checked={formData.isActive}
+                      onChange={handleChange}
+                      className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                    />
+                    <span className="ml-2 text-sm text-gray-700">Class is active</span>
+                  </label>
+                </div>
               </div>
             </div>
 
@@ -230,7 +352,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
               <button
                 type="submit"
                 disabled={saving}
-                className="px-4 py-2 bg-trc-blue-600 text-white rounded-md hover:bg-trc-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? 'Saving...' : 'Save Changes'}
               </button>

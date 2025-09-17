@@ -97,24 +97,6 @@ export async function PUT(
       return NextResponse.json({ error: 'Class not found' }, { status: 404 });
     }
 
-    // If teachers are being updated, verify them
-    if (teachers && teachers.length > 0) {
-      const teacherIds = teachers.map((t: { id: string; isPrimary?: boolean }) => t.id);
-      const verifiedTeachers = await prisma.user.findMany({
-        where: {
-          id: { in: teacherIds },
-          isTeacher: true,
-        },
-      });
-
-      if (verifiedTeachers.length !== teacherIds.length) {
-        return NextResponse.json(
-          { error: 'One or more selected users are not valid teachers' },
-          { status: 400 }
-        );
-      }
-    }
-
     // Build update data
     const updateData: Record<string, unknown> = {};
     if (name !== undefined) updateData.name = name;
@@ -124,19 +106,38 @@ export async function PUT(
     if (endDate !== undefined) updateData.endDate = new Date(endDate);
     if (isActive !== undefined) updateData.isActive = isActive;
 
-    // If teachers are being updated, handle the relationship update
-    if (teachers && teachers.length > 0) {
+    // Handle teacher updates
+    if (teachers !== undefined) {
       // Delete existing teacher relationships
       await prisma.classTeacher.deleteMany({
         where: { classId: id },
       });
-      // Create new teacher relationships
-      updateData.teachers = {
-        create: teachers.map((t: { id: string; isPrimary?: boolean }) => ({
-          teacherId: t.id,
-          isPrimary: t.isPrimary || false,
-        })),
-      };
+
+      // If teachers array is not empty, verify and create new relationships
+      if (teachers.length > 0) {
+        const teacherIds = teachers.map((t: { id: string; isPrimary?: boolean }) => t.id);
+        const verifiedTeachers = await prisma.user.findMany({
+          where: {
+            id: { in: teacherIds },
+            isTeacher: true,
+          },
+        });
+
+        if (verifiedTeachers.length !== teacherIds.length) {
+          return NextResponse.json(
+            { error: 'One or more selected users are not valid teachers' },
+            { status: 400 }
+          );
+        }
+
+        // Create new teacher relationships
+        updateData.teachers = {
+          create: teachers.map((t: { id: string; isPrimary?: boolean }) => ({
+            teacherId: t.id,
+            isPrimary: t.isPrimary || false,
+          })),
+        };
+      }
     }
 
     const updatedClass = await prisma.class.update({
