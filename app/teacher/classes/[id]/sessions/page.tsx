@@ -6,6 +6,19 @@ import { useEffect, useState, use } from 'react';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 import Link from 'next/link';
 
+interface Document {
+  id: string;
+  title: string;
+  fileName: string;
+  fileUrl: string;
+}
+
+interface Recording {
+  id: string;
+  title: string;
+  videoUrl: string;
+}
+
 interface SessionData {
   id: string;
   title: string;
@@ -15,8 +28,8 @@ interface SessionData {
   duration: number;
   status: string;
   materialsVisible: boolean;
-  documents: any[];
-  recordings: any[];
+  documents: Document[];
+  recordings: Recording[];
 }
 
 export default function SessionsListPage({ params }: { params: Promise<{ id: string }> }) {
@@ -60,7 +73,7 @@ export default function SessionsListPage({ params }: { params: Promise<{ id: str
       } else {
         setError('Failed to fetch sessions');
       }
-    } catch (err) {
+    } catch {
       setError('An error occurred while loading sessions');
     } finally {
       setLoading(false);
