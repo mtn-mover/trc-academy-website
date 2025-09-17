@@ -19,7 +19,7 @@ export default function ForgotPasswordPage() {
       // In production, this would send a password reset email
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitted(true);
-    } catch (err) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);

@@ -35,8 +35,6 @@ export async function GET() {
       }
     });
 
-    const classIds = teacherClasses.map(tc => tc.classId);
-
     // Calculate statistics
     const totalClasses = teacherClasses.length;
 
