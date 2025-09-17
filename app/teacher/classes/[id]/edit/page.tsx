@@ -19,6 +19,7 @@ export default function EditClassPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     fetchClass();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchClass = async () => {

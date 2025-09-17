@@ -24,7 +24,7 @@ interface ClassData {
 }
 
 export default function TeacherDashboard() {
-  const { data: session } = useSession();
+  const { } = useSession();
   const [stats, setStats] = useState<TeacherStats | null>(null);
   const [classes, setClasses] = useState<ClassData[]>([]);
   const [loading, setLoading] = useState(true);

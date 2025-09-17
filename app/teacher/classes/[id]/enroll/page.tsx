@@ -31,6 +31,7 @@ export default function EnrollStudentsPage({ params }: { params: { id: string } 
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = async () => {
