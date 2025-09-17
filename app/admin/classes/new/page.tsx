@@ -44,7 +44,7 @@ export default function NewClassPage() {
         const data = await response.json();
         setTeachers(data);
       }
-    } catch {
+    } catch (error) {
       console.error('Failed to fetch teachers:', error);
     }
   };

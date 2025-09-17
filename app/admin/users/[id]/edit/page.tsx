@@ -60,7 +60,7 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
       } else {
         setError('Failed to load user details');
       }
-    } catch (error) {
+    } catch {
       setError('An error occurred while loading user details');
     } finally {
       setLoading(false);

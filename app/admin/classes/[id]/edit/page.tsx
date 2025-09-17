@@ -18,7 +18,6 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [teachers, setTeachers] = useState<Teacher[]>([]);
-  const [currentTeacherId, setCurrentTeacherId] = useState<string>('');
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -31,6 +30,7 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
 
   useEffect(() => {
     fetchClassAndTeachers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchClassAndTeachers = async () => {
@@ -55,9 +55,14 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
       const endDate = new Date(classData.endDate).toISOString().split('T')[0];
 
       // Get the primary teacher if exists
-      const primaryTeacher = classData.teachers?.find((t: any) => t.isPrimary);
+      interface TeacherRelation {
+        isPrimary: boolean;
+        teacher?: {
+          id: string;
+        };
+      }
+      const primaryTeacher = classData.teachers?.find((t: TeacherRelation) => t.isPrimary);
       const teacherId = primaryTeacher?.teacher?.id || '';
-      setCurrentTeacherId(teacherId);
 
       setFormData({
         name: classData.name,
