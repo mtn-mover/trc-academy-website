@@ -38,6 +38,7 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
     if (session?.user.isAdmin && params.id) {
       fetchUser();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, params.id]);
 
   const fetchUser = async () => {

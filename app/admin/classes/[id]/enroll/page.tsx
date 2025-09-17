@@ -31,6 +31,7 @@ export default function AdminEnrollStudentsPage({ params }: { params: { id: stri
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = async () => {

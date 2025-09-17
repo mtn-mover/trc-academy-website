@@ -36,6 +36,7 @@ export default function AdminClassDetailsPage({ params }: { params: { id: string
 
   useEffect(() => {
     fetchClassDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchClassDetails = async () => {

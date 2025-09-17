@@ -11,6 +11,11 @@ interface Teacher {
   email: string;
 }
 
+interface SelectedTeacher {
+  id: string;
+  isPrimary: boolean;
+}
+
 export default function EditClassPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const router = useRouter();
@@ -18,6 +23,7 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [teachers, setTeachers] = useState<Teacher[]>([]);
+  const [selectedTeachers, setSelectedTeachers] = useState<SelectedTeacher[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -25,7 +31,6 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
     endDate: '',
     timezone: 'Europe/Zurich',
     isActive: true,
-    teacherId: ''
   });
 
   useEffect(() => {
@@ -54,15 +59,19 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
       const startDate = new Date(classData.startDate).toISOString().split('T')[0];
       const endDate = new Date(classData.endDate).toISOString().split('T')[0];
 
-      // Get the primary teacher if exists
+      // Get existing teachers
       interface TeacherRelation {
-        isPrimary: boolean;
-        teacher?: {
-          id: string;
-        };
+        teacher?: { id: string };
+        teacherId?: string;
+        isPrimary?: boolean;
       }
-      const primaryTeacher = classData.teachers?.find((t: TeacherRelation) => t.isPrimary);
-      const teacherId = primaryTeacher?.teacher?.id || '';
+
+      const existingTeachers: SelectedTeacher[] = classData.teachers?.map((t: TeacherRelation) => ({
+        id: t.teacher?.id || t.teacherId || '',
+        isPrimary: t.isPrimary || false
+      })) || [];
+
+      setSelectedTeachers(existingTeachers.length > 0 ? existingTeachers : []);
 
       setFormData({
         name: classData.name,
@@ -71,7 +80,6 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
         endDate,
         timezone: classData.timezone || 'Europe/Zurich',
         isActive: classData.isActive !== false,
-        teacherId
       });
     } catch (err) {
       setError('Failed to load class details');
@@ -79,6 +87,37 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
     } finally {
       setLoading(false);
     }
+  };
+
+  const addTeacher = () => {
+    const newTeacher: SelectedTeacher = {
+      id: '',
+      isPrimary: selectedTeachers.length === 0
+    };
+    setSelectedTeachers([...selectedTeachers, newTeacher]);
+  };
+
+  const updateTeacher = (index: number, teacherId: string) => {
+    const updated = [...selectedTeachers];
+    updated[index].id = teacherId;
+    setSelectedTeachers(updated);
+  };
+
+  const removeTeacher = (index: number) => {
+    const updated = selectedTeachers.filter((_, i) => i !== index);
+    // If removing primary teacher, make first remaining teacher primary
+    if (selectedTeachers[index].isPrimary && updated.length > 0) {
+      updated[0].isPrimary = true;
+    }
+    setSelectedTeachers(updated);
+  };
+
+  const setPrimaryTeacher = (index: number) => {
+    const updated = selectedTeachers.map((teacher, i) => ({
+      ...teacher,
+      isPrimary: i === index
+    }));
+    setSelectedTeachers(updated);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -123,6 +162,15 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
       return false;
     }
 
+    // Validate teachers if any are added
+    if (selectedTeachers.length > 0) {
+      const validTeachers = selectedTeachers.filter(t => t.id);
+      if (validTeachers.length === 0) {
+        setError('Please select teachers from the dropdown or remove empty entries');
+        return false;
+      }
+    }
+
     return true;
   };
 
@@ -137,10 +185,8 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
     setError('');
 
     try {
-      // Prepare teacher data
-      const teachers = formData.teacherId
-        ? [{ id: formData.teacherId, isPrimary: true }]
-        : [];
+      // Filter out empty teacher selections
+      const validTeachers = selectedTeachers.filter(t => t.id);
 
       const response = await fetch(`/api/admin/classes/${resolvedParams.id}`, {
         method: 'PUT',
@@ -154,7 +200,7 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
           endDate: formData.endDate,
           timezone: formData.timezone,
           isActive: formData.isActive,
-          teachers
+          teachers: validTeachers
         }),
       });
 
@@ -236,26 +282,63 @@ export default function EditClassPage({ params }: { params: Promise<{ id: string
 
             {/* Teacher Assignment */}
             <div>
-              <label htmlFor="teacherId" className="block text-sm font-medium text-gray-700 mb-2">
-                Primary Teacher
-              </label>
-              <select
-                id="teacherId"
-                name="teacherId"
-                value={formData.teacherId}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-              >
-                <option value="">No teacher assigned</option>
-                {teachers.map(teacher => (
-                  <option key={teacher.id} value={teacher.id}>
-                    {teacher.name} ({teacher.email})
-                  </option>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">Teacher Assignment</h3>
+              <div className="space-y-4">
+                {selectedTeachers.map((selectedTeacher, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <select
+                      value={selectedTeacher.id}
+                      onChange={(e) => updateTeacher(index, e.target.value)}
+                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    >
+                      <option value="">Select a teacher...</option>
+                      {teachers
+                        .filter(t => !selectedTeachers.some((st, i) => i !== index && st.id === t.id))
+                        .map((teacher) => (
+                          <option key={teacher.id} value={teacher.id}>
+                            {teacher.name} ({teacher.email})
+                          </option>
+                        ))}
+                    </select>
+                    <button
+                      type="button"
+                      onClick={() => setPrimaryTeacher(index)}
+                      className={`px-3 py-2 rounded-lg transition-colors ${
+                        selectedTeacher.isPrimary
+                          ? 'bg-purple-600 text-white'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      title={selectedTeacher.isPrimary ? 'Primary Teacher' : 'Set as Primary'}
+                    >
+                      {selectedTeacher.isPrimary ? 'Primary' : 'Secondary'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => removeTeacher(index)}
+                      className="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors"
+                    >
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
                 ))}
-              </select>
-              <p className="text-xs text-gray-500 mt-1">
-                Select a teacher to be the primary instructor for this class
-              </p>
+                <button
+                  type="button"
+                  onClick={addTeacher}
+                  className="flex items-center px-4 py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-purple-500 hover:text-purple-600 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  Add Teacher
+                </button>
+                {selectedTeachers.length > 0 && (
+                  <p className="text-sm text-gray-500">
+                    The primary teacher will be the main contact for this class. Secondary teachers can also manage the class.
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Date Fields */}
