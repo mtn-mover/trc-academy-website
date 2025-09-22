@@ -24,23 +24,369 @@ export default function CoachingTrainingPage() {
         <div className="relative z-20 h-full flex items-start justify-center pt-24 lg:pt-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="text-center">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-                Professional Coach Certification
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                UNLOCK YOUR COACHING POTENTIAL
               </h1>
-              <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
-                Transform your wisdom into professional coaching excellence with our
-                comprehensive certification program designed for mature professionals.
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                Master the Art of Transformational Coaching with
+              </p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-8" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                TABULA RASA COACH TRAINING ACADEMY
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Program Details */}
+      {/* Introduction Section with Image */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+                Your Journey to Becoming a Certified Professional Coach
+              </h2>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
+                Imagine the impact you can make as a Certified Professional Coach, helping
+                individuals and groups navigate their internal landscapes, providing them the tools
+                to comprehend their own selves better, aiding them to shape their own destiny
+                personally and professionally.
+              </p>
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
+                Our academy is rooted in the belief that coaching is not just about solving
+                problems, but about understanding the human being as a holistic entity, a rich
+                tapestry of experiences, emotions, and ideas. We offer you an immersive learning
+                journey, focusing on the art and science of meaningful coaching, allowing you to
+                connect deeply with your clients, serving as a bridge between their present and
+                their envisioned future.
+              </p>
+            </div>
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/Image1.jpg"
+                alt="Professional coaching journey"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Coaching Impact Section */}
+      <section className="py-24 bg-trc-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-4">
+            Coaching: The Key to Unlocking Potential in Every Sphere
+          </h2>
+          <p className="text-lg text-trc-gray-700 text-center max-w-4xl mx-auto mb-16 leading-relaxed">
+            In an increasingly complex and rapidly changing world, the need for coaching—both within
+            corporate environments and across all walks of life—has never been more critical. Coaching
+            is not just about performance enhancement or problem-solving; it&apos;s about unlocking potential,
+            creating a culture of continuous growth, and instilling a deeper sense of purpose and direction.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Corporate World Card */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-[250px]">
+                <Image
+                  src="/images/Image2.jpg"
+                  alt="Corporate coaching environment"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
+                  Coaching and the Corporate World
+                </h3>
+                <p className="text-lg text-trc-gray-700 leading-relaxed">
+                  Coaching has evolved from a remedial role to a strategic asset in the corporate world,
+                  embraced by high-performing organizations to enhance productivity and spur innovation.
+                  It aids leaders in creating inspiring environments, using the diverse abilities and
+                  perspectives of their teams to tackle corporate challenges with agility.
+                </p>
+                <p className="text-lg text-trc-gray-700 leading-relaxed mt-4">
+                  By fostering a coaching culture, organizations not only boost performance but also
+                  enhance employee engagement, satisfaction, and retention, thereby driving sustainable growth.
+                </p>
+              </div>
+            </div>
+
+            {/* Personal Transformation Card */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-[250px]">
+                <Image
+                  src="/images/Image3.jpg"
+                  alt="Personal transformation through coaching"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center 60%' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">
+                  Coaching: A Catalyst for Personal Transformation
+                </h3>
+                <p className="text-lg text-trc-gray-700 leading-relaxed">
+                  Beyond the corporate world, coaching plays an equally vital role in facilitating
+                  personal transformation. Whether navigating life transitions, overcoming personal
+                  obstacles, or pursuing a path of personal growth and self-discovery, coaching
+                  serves as a beacon of guidance and empowerment.
+                </p>
+                <p className="text-lg text-trc-gray-700 leading-relaxed mt-4">
+                  Coaching provides a safe space for individuals to explore their values, beliefs,
+                  and aspirations, empowering them to tap into their innate potential and write
+                  their own unique story of success.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Psychosynthesis Methodology Section */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/Image4.jpg"
+                alt="Psychosynthesis methodology"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+                Psychosynthesis Methodology: A Unique Approach
+              </h2>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
+                Beyond traditional coaching methodologies, we introduce you to the profound world of
+                Psychosynthesis. This holistic approach, founded by Roberto Assagioli, combines
+                psychological and spiritual dimensions, acknowledging the complexities of human nature.
+              </p>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
+                It helps clients delve beneath their surface reality to discover a symphony of
+                subconscious desires, fears, strengths, and potential that forms their unique inner cosmos.
+              </p>
+              <div className="bg-trc-blue-50 border-l-4 border-trc-blue-600 p-6 rounded-r-lg">
+                <p className="text-lg text-trc-gray-900">
+                  Our unique curriculum encapsulates this transformative approach, enabling you to guide
+                  your clients towards achieving harmonious integration, promoting personal growth,
+                  increased self-awareness, and ultimately, the manifestation of the client&apos;s true Self.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comprehensive Training Programs */}
+      <section className="py-24 bg-gradient-to-b from-trc-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-4">
+            Comprehensive Executive/Career Coaching
+          </h2>
+          <p className="text-lg text-trc-gray-700 text-center max-w-4xl mx-auto mb-16 leading-relaxed">
+            Our comprehensive coaching curriculum has been expertly designed to equip you with the skills,
+            knowledge, and confidence to embark on your coaching journey in various niche fields. Each
+            module has been crafted with a unique blend of theory and practice, empowering you to guide,
+            inspire, and transform lives.
+          </p>
+
+          {/* Training Modules Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Career Coaching Module */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <div className="relative h-[200px] rounded-lg overflow-hidden mb-6">
+                <Image
+                  src="/images/Image5.jpg"
+                  alt="Career coaching training"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Career Coaching</h3>
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
+                Step into the world of Career Coaching. Learn how to help clients navigate their
+                professional paths, identify their unique strengths, and align their passions with
+                their career goals. Gain the skills to support those making fresh starts or those
+                considering significant career transitions.
+              </p>
+            </div>
+
+            {/* Executive Coaching Module */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <div className="relative h-[200px] rounded-lg overflow-hidden mb-6">
+                <Image
+                  src="/images/Image6.jpg"
+                  alt="Executive coaching training"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Executive Coaching</h3>
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
+                Our Executive Coaching Training prepares you to guide leaders in the fast-paced
+                corporate world. You will learn how to foster strategic thinking, enhance
+                decision-making capabilities, and nurture leadership skills to overcome specific
+                leadership challenges.
+              </p>
+            </div>
+
+            {/* Outplacement Services Module */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <div className="relative h-[200px] rounded-lg overflow-hidden mb-6">
+                <Image
+                  src="/images/Image7.jpg"
+                  alt="Outplacement services training"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Outplacement Services Training</h3>
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
+                Become a beacon of support during challenging corporate transitions. This module
+                equips you with the expertise to provide personalized guidance to displaced employees,
+                helping them discover new career opportunities and prepare effectively for job searches.
+              </p>
+            </div>
+
+            {/* Building Your Practice Module */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <div className="relative h-[200px] rounded-lg overflow-hidden mb-6">
+                <Image
+                  src="/images/Image8.jpg"
+                  alt="Building coaching practice"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: '50% 25%' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Building Your Own Coaching Practice</h3>
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
+                If you dream of establishing your own coaching practice, this training is the perfect
+                stepping stone. Learn how to create a unique coaching model, market your services, and
+                build strong client relationships for a thriving practice.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Transformational Beauty Quote Section */}
+      <section className="relative py-32">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Image9.jpg"
+            alt="Transformational coaching beauty"
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              The Transformational Beauty of Coaching
+            </h2>
+            <p className="text-xl lg:text-2xl text-white italic max-w-4xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+              &ldquo;Coaching is the gentle art of awakening potential, a transformative dance that
+              illuminates paths unknown, and a voyage of discovery that celebrates the beautiful
+              evolution of the human spirit&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+                Our Unique Community of Transformational Coaches
+              </h2>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
+                As you embark on your coaching journey with us, you become part of a network of
+                change-makers. You&apos;ll be joining hands with individuals who, like you, believe in
+                the power of human potential and are passionate about igniting it in others.
+              </p>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
+                Here, every voice is valued, every experience is a learning opportunity, and every
+                success is celebrated collectively. Our community fosters a culture of continuous
+                learning and mutual support.
+              </p>
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
+                The experience you gain here goes beyond the confines of your training. It&apos;s about
+                building lifelong relationships, creating synergies, and being part of a collective
+                movement that aims to make a positive difference in the world.
+              </p>
+            </div>
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/Image10.jpg"
+                alt="Community of coaches"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Your Journey Section */}
+      <section className="py-24 bg-gradient-to-b from-trc-gold-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/Image11.jpg"
+                alt="Your coaching journey"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+                Your Journey Begins Here
+              </h2>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
+                Our commitment is to provide you with a comprehensive, immersive, and deeply personal
+                learning experience. As you walk through our virtual doors, you&apos;re not just beginning
+                an educational journey; you&apos;re starting a voyage of self-discovery and growth.
+              </p>
+              <p className="text-lg text-trc-gray-700 leading-relaxed mb-8">
+                You will develop the skills to guide others through their unique life narratives,
+                empowering them to reach their fullest potential, and in the process, you&apos;ll discover
+                your own potential blooming.
+              </p>
+              <div className="bg-trc-gold-100 border-2 border-trc-gold-300 rounded-lg p-6">
+                <p className="text-xl font-bold text-trc-gray-900 mb-2">Limited Places Available</p>
+                <p className="text-lg text-trc-gray-800">
+                  Course Dates: October 25th, 2025 – June 06th, 2026
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Program Details Card */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            {/* Main Program Card */}
             <div className="bg-white border-2 border-trc-gold-200 rounded-lg overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-trc-gold-600 to-trc-gold-700 text-white p-10">
                 <div className="text-center">
@@ -48,7 +394,7 @@ export default function CoachingTrainingPage() {
                     Professional Coach Certification Program
                   </h2>
                   <p className="text-xl lg:text-2xl text-white opacity-95 mb-6">
-                    Complete Your Transformation • October 18, 2025
+                    Transform Your Wisdom • October 25, 2025
                   </p>
                   <div className="inline-flex items-baseline bg-white/20 rounded-lg px-6 py-3">
                     <span className="text-4xl font-bold">$6,999</span>
@@ -58,23 +404,6 @@ export default function CoachingTrainingPage() {
               </div>
 
               <div className="p-10">
-                {/* Program Overview */}
-                <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">Program Overview</h3>
-                  <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
-                    Our flagship Professional Coach Certification Program is a comprehensive 12-lesson 
-                    journey that transforms your accumulated wisdom and life experience into professional 
-                    coaching excellence. Using the revolutionary Tabula Rasa methodology, you&apos;ll master 
-                    the art of soul-centered coaching while building a sustainable practice that honors 
-                    your unique gifts.
-                  </p>
-                  <div className="bg-trc-blue-50 border-l-4 border-trc-blue-600 p-6 rounded-r-lg">
-                    <p className="text-lg font-semibold text-trc-gray-900">
-                      &ldquo;Where your wisdom meets your calling, transformation begins.&rdquo;
-                    </p>
-                  </div>
-                </div>
-
                 {/* What's Included */}
                 <div className="mb-12">
                   <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h3>
@@ -84,25 +413,25 @@ export default function CoachingTrainingPage() {
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">12 comprehensive training lessons</span>
+                        <span className="text-lg text-trc-gray-700">Comprehensive 8-month program</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">TRC Methodology mastery training</span>
+                        <span className="text-lg text-trc-gray-700">Psychosynthesis methodology training</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">Soul-centered coaching techniques</span>
+                        <span className="text-lg text-trc-gray-700">Career & Executive coaching modules</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">Business building essentials</span>
+                        <span className="text-lg text-trc-gray-700">Outplacement services training</span>
                       </li>
                     </ul>
                     <ul className="space-y-4">
@@ -110,13 +439,13 @@ export default function CoachingTrainingPage() {
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">Personal mentor coaching sessions</span>
+                        <span className="text-lg text-trc-gray-700">Business building essentials</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">Practice labs and peer coaching</span>
+                        <span className="text-lg text-trc-gray-700">Personal mentorship included</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -128,69 +457,9 @@ export default function CoachingTrainingPage() {
                         <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-lg text-trc-gray-700">TRC Professional Certification</span>
+                        <span className="text-lg text-trc-gray-700">Professional certification</span>
                       </li>
                     </ul>
-                  </div>
-                </div>
-
-                {/* Program Structure */}
-                <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">Program Structure</h3>
-                  <div className="bg-trc-gray-50 rounded-lg p-8">
-                    <div className="grid md:grid-cols-3 gap-8 text-center">
-                      <div>
-                        <div className="text-3xl font-bold text-trc-gold-600 mb-2">12</div>
-                        <p className="text-lg text-trc-gray-700">Comprehensive Lessons</p>
-                      </div>
-                      <div>
-                        <div className="text-3xl font-bold text-trc-gold-600 mb-2">6</div>
-                        <p className="text-lg text-trc-gray-700">Months Duration</p>
-                      </div>
-                      <div>
-                        <div className="text-3xl font-bold text-trc-gold-600 mb-2">Oct 18</div>
-                        <p className="text-lg text-trc-gray-700">2025 Start Date</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Perfect For */}
-                <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">Perfect For</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start">
-                      <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                      <p className="text-lg text-trc-gray-700">
-                        Mature professionals seeking meaningful second-act careers
-                      </p>
-                    </div>
-                    <div className="flex items-start">
-                      <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                      <p className="text-lg text-trc-gray-700">
-                        Leaders ready to transform their wisdom into coaching excellence
-                      </p>
-                    </div>
-                    <div className="flex items-start">
-                      <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                      <p className="text-lg text-trc-gray-700">
-                        Individuals called to make a profound impact through coaching
-                      </p>
-                    </div>
-                    <div className="flex items-start">
-                      <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                      <p className="text-lg text-trc-gray-700">
-                        Those seeking depth, authenticity, and soul in their professional practice
-                      </p>
-                    </div>
                   </div>
                 </div>
 
@@ -215,115 +484,101 @@ export default function CoachingTrainingPage() {
         </div>
       </section>
 
-      {/* Why Choose TRC */}
+      {/* Why Choose TRC Section with Images */}
       <section className="py-24 bg-trc-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-center text-trc-gray-900 mb-16">
             The TRC Training Advantage
           </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-8 shadow-lg text-center">
-              <div className="w-20 h-20 bg-trc-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-trc-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-trc-gray-900 mb-4">TRC Certified</h3>
-              <p className="text-lg text-trc-gray-600 leading-relaxed">
-                Earn your TRC certification and join an elite community of transformational coaches.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-8 shadow-lg text-center">
-              <div className="w-20 h-20 bg-trc-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-trc-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-trc-gray-900 mb-4">Small Cohorts</h3>
-              <p className="text-lg text-trc-gray-600 leading-relaxed">
-                Intimate learning environments ensure personalized attention and deep connections.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-8 shadow-lg text-center">
-              <div className="w-20 h-20 bg-trc-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-trc-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-trc-gray-900 mb-4">Lifetime Support</h3>
-              <p className="text-lg text-trc-gray-600 leading-relaxed">
-                Join our alumni community for ongoing mentorship, resources, and connection.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonial Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-12">
-              What Our Graduates Say
-            </h2>
-            <div className="bg-trc-blue-50 rounded-lg p-10 relative">
-              <svg className="absolute top-4 left-4 w-8 h-8 text-trc-blue-200" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-              </svg>
-              <p className="text-xl text-trc-gray-700 leading-relaxed italic mb-6">
-                &ldquo;The TRC program didn&apos;t just teach me coaching skills—it helped me discover my true calling. 
-                At 52, I thought my best years were behind me. Now I&apos;m building a thriving practice that 
-                combines everything I&apos;ve learned with a purpose that lights me up every day.&rdquo;
-              </p>
-              <p className="text-lg font-semibold text-trc-gray-900">
-                Sarah M., TRC Certified Coach
-              </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-[200px]">
+                <Image
+                  src="/images/Image12.jpg"
+                  alt="TRC certification"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-trc-gray-900 mb-4">Internationally Recognized</h3>
+                <p className="text-lg text-trc-gray-600 leading-relaxed">
+                  Earn your certification and join an elite community of transformational coaches worldwide.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-[200px]">
+                <Image
+                  src="/images/Image13.jpg"
+                  alt="Small cohorts"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-trc-gray-900 mb-4">Personalized Learning</h3>
+                <p className="text-lg text-trc-gray-600 leading-relaxed">
+                  Small cohort sizes ensure personalized attention and deep, meaningful connections.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-[200px]">
+                <Image
+                  src="/images/Image14.jpg"
+                  alt="Lifetime support"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-trc-gray-900 mb-4">Ongoing Support</h3>
+                <p className="text-lg text-trc-gray-600 leading-relaxed">
+                  Join our vibrant alumni community for continuous learning, mentorship, and growth.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA Section with Summit Image */}
-      <div className="relative">
-        <Image
-          src="/images/Summit_3.jpg"
-          alt="Mountain summit representing transformation"
-          width={1920}
-          height={1080}
-          className="w-full h-auto block"
-          sizes="100vw"
-        />
-        {/* Subtle gradient overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
-
-        {/* Text Content - Positioned in Sky Area */}
-        <div className="absolute top-8 lg:top-16 left-0 right-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-              Your Coaching Journey Begins October 18, 2025
+      <section className="relative py-32">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Summit_3.jpg"
+            alt="Mountain summit representing transformation"
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              Your Transformation Begins October 25, 2025
             </h2>
-            <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+            <p className="text-xl lg:text-2xl text-white max-w-4xl mx-auto mb-8" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
               Limited seats available. Join our next cohort of transformational coaches
               and discover how your wisdom can change lives.
             </p>
-          </div>
-        </div>
-
-        {/* Button - Positioned Below Person */}
-        <div className="absolute bottom-6 md:bottom-8 lg:bottom-10 left-0 right-0">
-          <div className="text-center">
             <Link
               href="/contact"
-              className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
             >
-              Apply for October 2025 Cohort
+              Begin Your Journey Today
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
