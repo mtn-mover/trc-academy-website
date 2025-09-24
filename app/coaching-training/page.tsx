@@ -334,7 +334,7 @@ export default function CoachingTrainingPage() {
             </div>
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/images/Image10.jpg"
+                src="/images/Image 15.jpg"
                 alt="Community of coaches"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center center' }}
