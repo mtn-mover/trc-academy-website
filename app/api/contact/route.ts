@@ -59,8 +59,9 @@ export async function POST(request: Request) {
     `;
 
     // Send email to Karen
+    // Note: Using onboarding@resend.dev as sender until tabularasacoaching.com is verified
     const adminEmail = await resend.emails.send({
-      from: 'TRC Contact Form <noreply@tabularasacoaching.com>',
+      from: 'TRC Contact Form <onboarding@resend.dev>',
       to: 'karen@tabularasacoaching.com',
       subject: `New Contact Form Submission from ${name}`,
       html: adminEmailHtml,
@@ -69,7 +70,7 @@ export async function POST(request: Request) {
 
     // Send confirmation email to customer
     const customerEmail = await resend.emails.send({
-      from: 'TRC Training Academy <noreply@tabularasacoaching.com>',
+      from: 'TRC Training Academy <onboarding@resend.dev>',
       to: email,
       subject: 'Thank You for Contacting TRC Training Academy',
       html: customerEmailHtml,
