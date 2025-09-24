@@ -151,40 +151,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Professional Coach Certification Program - Enhanced CTA Section */}
-      <section className="relative py-20 lg:py-24 mt-8 bg-gradient-to-br from-trc-blue-50 via-white to-trc-gold-50">
+      {/* Professional Coach Certification Program - Program Details Section */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-block px-6 py-2 bg-trc-gold-100 text-trc-gold-700 rounded-full text-sm font-semibold mb-6">
-              LIMITED ENROLLMENT
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
-              Your wisdom, experience, and calling converge here.
-            </h2>
-            <p className="text-lg lg:text-xl text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Join our comprehensive certification program designed specifically for
-              mature professionals ready to make their mark in the coaching world.
-            </p>
-          </div>
-
-          {/* Single Course Card - Elevated Design */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-gray-100 overflow-hidden hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white border-2 border-trc-blue-200 rounded-lg overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white p-10">
-                <h3 className="text-2xl font-bold mb-3 text-white">
-                  Professional Coach Certification Program
-                </h3>
-                <p className="text-lg opacity-95 text-white">
-                  Complete Your Transformation • October 18, 2025
-                </p>
+                <div className="text-center">
+                  <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                    Professional Coach Certification Program
+                  </h2>
+                  <p className="text-xl lg:text-2xl text-white opacity-95">
+                    Transform Your Wisdom • Course Dates: October 25th, 2025 – June 06th, 2026
+                  </p>
+                </div>
               </div>
               
               <div className="p-10">
                 {/* What's Included */}
                 <div className="mb-12">
-                  <h3 className="text-3xl font-bold text-center text-trc-gray-900 mb-12">
-                    What&apos;s Included in Your Journey
-                  </h3>
+                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Core Program</h4>
