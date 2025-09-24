@@ -367,17 +367,11 @@ export default function CoachingTrainingPage() {
                 learning experience. As you walk through our virtual doors, you&apos;re not just beginning
                 an educational journey; you&apos;re starting a voyage of self-discovery and growth.
               </p>
-              <p className="text-lg text-trc-gray-700 leading-relaxed mb-8">
+              <p className="text-lg text-trc-gray-700 leading-relaxed">
                 You will develop the skills to guide others through their unique life narratives,
                 empowering them to reach their fullest potential, and in the process, you&apos;ll discover
                 your own potential blooming.
               </p>
-              <div className="bg-trc-gold-100 border-2 border-trc-gold-300 rounded-lg p-6">
-                <p className="text-xl font-bold text-trc-gray-900 mb-2">Limited Places Available</p>
-                <p className="text-lg text-trc-gray-800">
-                  Course Dates: October 25th, 2025 – June 06th, 2026
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -394,7 +388,7 @@ export default function CoachingTrainingPage() {
                     Professional Coach Certification Program
                   </h2>
                   <p className="text-xl lg:text-2xl text-white opacity-95 mb-6">
-                    Transform Your Wisdom • October 25, 2025
+                    Transform Your Wisdom • Course Dates: October 25th, 2025 – June 06th, 2026
                   </p>
                   <div className="inline-flex items-baseline bg-white/20 rounded-lg px-6 py-3">
                     <span className="text-4xl font-bold">$6,999</span>
