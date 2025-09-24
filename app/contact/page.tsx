@@ -13,6 +13,7 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -23,8 +24,41 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form is currently not functional - prevent submission
-    alert('Please contact us directly via email or phone. The contact form is currently being updated.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage(data.message || 'Thank you for your interest! We\'ll be in touch within 24 hours.');
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          interest: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setSubmitMessage('Unable to send your message. Please contact us directly via email or phone.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Obfuscate email to prevent spam crawlers
@@ -63,23 +97,24 @@ export default function ContactPage() {
                   to discuss your coaching journey.
                 </p>
 
-                {/* Notice that form is not working */}
-                <div className="mb-6 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
-                  <p className="text-yellow-800 font-medium">
-                    ⚠️ Please Note: This contact form is currently under maintenance.
-                    Please contact us directly via email or phone using the information provided.
-                  </p>
-                </div>
 
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-green-800 font-medium">
-                      Thank you for your interest! We&apos;ll be in touch within 24 hours.
+                      {submitMessage}
                     </p>
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md space-y-6 opacity-50">
+                {submitStatus === 'error' && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-800 font-medium">
+                      {submitMessage}
+                    </p>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-lg font-medium text-trc-gray-900 mb-2">
                       Full Name *
@@ -89,7 +124,7 @@ export default function ContactPage() {
                       id="name"
                       name="name"
                       required
-                      disabled
+                      disabled={isSubmitting}
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg disabled:cursor-not-allowed"
@@ -105,7 +140,7 @@ export default function ContactPage() {
                       id="email"
                       name="email"
                       required
-                      disabled
+                      disabled={isSubmitting}
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg disabled:cursor-not-allowed"
@@ -120,7 +155,7 @@ export default function ContactPage() {
                       type="tel"
                       id="phone"
                       name="phone"
-                      disabled
+                      disabled={isSubmitting}
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg disabled:cursor-not-allowed"
@@ -135,7 +170,7 @@ export default function ContactPage() {
                       id="interest"
                       name="interest"
                       required
-                      disabled
+                      disabled={isSubmitting}
                       value={formData.interest}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg disabled:cursor-not-allowed"
@@ -155,7 +190,7 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       rows={4}
-                      disabled
+                      disabled={isSubmitting}
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-trc-blue-500 focus:border-transparent text-lg disabled:cursor-not-allowed"
@@ -165,10 +200,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    disabled={true}
+                    disabled={isSubmitting}
                     className="w-full px-8 py-4 bg-trc-blue-600 text-white font-semibold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Form Currently Unavailable
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               </div>
