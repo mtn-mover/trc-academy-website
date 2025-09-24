@@ -499,7 +499,10 @@ export default function CoachingTrainingPage() {
                         href="/contact"
                         className="inline-block px-12 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
                       >
-                        Enroll Now for October 2025 or Schedule a Free Consultation
+                        <div className="text-center">
+                          <div>Enroll Now for October 2025</div>
+                          <div className="mt-1">Schedule a Free Consultation</div>
+                        </div>
                       </a>
                       <p className="text-sm text-orange-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
