@@ -31,9 +31,12 @@ export default function HomePage() {
               <p className="text-lg text-white mb-4 tracking-wide" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)'}}>
                 TRC Training Academy
               </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
                 Where Wisdom and Experience Impacts Transformation
               </h1>
+              <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl lg:mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+                Your wisdom, experience, and calling converge here.
+              </p>
               <div className="flex flex-col sm:flex-row gap-4 lg:justify-center">
                 <Link
                   href="/coaching-training"
