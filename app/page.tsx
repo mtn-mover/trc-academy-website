@@ -284,38 +284,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Statistics Section - Clean Cards */}
-      <section className="py-12 lg:py-16 bg-gradient-to-b from-trc-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-6">
-            <ScrollAnimation animation="fadeSlide" delay={0.1}>
-              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="text-3xl font-bold text-trc-blue-600 mb-3">78%</div>
-                <p className="text-lg text-trc-gray-600">of our souls are 40+</p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation animation="fadeSlide" delay={0.2}>
-              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="text-3xl font-bold text-trc-blue-600 mb-3">25+</div>
-                <p className="text-lg text-trc-gray-600">years of wisdom shared</p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation animation="fadeSlide" delay={0.3}>
-              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="text-3xl font-bold text-trc-blue-600 mb-3">500+</div>
-                <p className="text-lg text-trc-gray-600">coaches transformed</p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation animation="fadeSlide" delay={0.4}>
-              <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="text-3xl font-bold text-trc-blue-600 mb-3">TRC</div>
-                <p className="text-lg text-trc-gray-600">certified excellence</p>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section - Modern Cards */}
       <section className="py-12 lg:py-16 bg-trc-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
