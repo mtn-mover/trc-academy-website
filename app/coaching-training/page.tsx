@@ -608,7 +608,7 @@ export default function CoachingTrainingPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+              className="inline-block px-8 py-4 bg-white text-orange-600 font-bold rounded-md hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
             >
               Begin Your Journey Today
             </Link>
