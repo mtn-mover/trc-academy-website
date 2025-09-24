@@ -35,8 +35,7 @@ export default function HomePage() {
                 Your Soul&apos;s Work Awaits
               </h1>
               <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl lg:mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
-                Transform your decades of wisdom into a deeply meaningful coaching practice.
-                Join compassionate professionals who&apos;ve answered their inner calling after 45.
+                Where wisdom and experience impacts transformation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 lg:justify-center">
                 <Link
@@ -81,9 +80,9 @@ export default function HomePage() {
                 deep, transformative relationships that define exceptional coaching.
               </p>
               <p className="text-lg text-trc-gray-600 leading-relaxed">
-                Whether you&apos;re building a practice from home or expanding your reach globally, 
-                TRC equips you with the tools and techniques to deliver powerful coaching experiences 
-                in any setting.
+                Whether you are looking to build your own personal or executive coaching practice,
+                enhance your leadership skills, or simply want to experience deep personal growth,
+                TRC equips you with the tools and techniques to deliver powerful coaching in any setting.
               </p>
             </div>
           </div>
@@ -160,7 +159,7 @@ export default function HomePage() {
               LIMITED ENROLLMENT
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
-              Begin Your Transformation Journey
+              Your wisdom, experience, and calling converge here.
             </h2>
             <p className="text-lg lg:text-xl text-trc-gray-600 max-w-3xl mx-auto leading-relaxed">
               Join our comprehensive certification program designed specifically for
