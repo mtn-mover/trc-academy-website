@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import ScrollAnimation from '../src/components/ScrollAnimation';
 
 export default function HomePage() {
   return (
