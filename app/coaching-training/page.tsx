@@ -387,13 +387,9 @@ export default function CoachingTrainingPage() {
                   <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     Professional Coach Certification Program
                   </h2>
-                  <p className="text-xl lg:text-2xl text-white opacity-95 mb-6">
+                  <p className="text-xl lg:text-2xl text-white opacity-95">
                     Transform Your Wisdom • Course Dates: October 25th, 2025 – June 06th, 2026
                   </p>
-                  <div className="inline-flex items-baseline bg-white/20 rounded-lg px-6 py-3">
-                    <span className="text-4xl font-bold">$6,999</span>
-                    <span className="ml-2 text-lg opacity-90">Investment</span>
-                  </div>
                 </div>
               </div>
 
@@ -416,12 +412,6 @@ export default function CoachingTrainingPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <span className="text-lg text-trc-gray-700">All training materials and resources included</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Access to session recordings for 6 months after completion</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -486,32 +476,43 @@ export default function CoachingTrainingPage() {
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Lifetime alumni community access</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Professional certification</span>
+                          <span className="text-lg text-trc-gray-700">Access to session recordings for 6 months after completion</span>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
+                {/* Enhanced Call-to-Action Area */}
+                <div className="bg-gradient-to-r from-trc-blue-50 to-trc-gold-50 rounded-2xl p-8 mt-8 border border-trc-blue-100">
+                  <div className="flex flex-col md:flex-row items-center justify-between">
+                    <div className="text-center md:text-left mb-6 md:mb-0">
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <p className="text-3xl font-bold text-trc-gray-900">$6,999</p>
+                        <span className="text-lg text-trc-gray-600 line-through">$8,999</span>
+                      </div>
+                      <p className="text-lg font-semibold text-trc-gray-700">Complete Certification Program</p>
+                      <p className="text-sm text-trc-blue-600 mt-1 font-medium">✓ Payment plans available</p>
+                    </div>
+                    <div className="text-center">
+                      <a
+                        href="/contact"
+                        className="inline-block px-12 py-5 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                      >
+                        Enroll Now for October 2025
+                      </a>
+                      <p className="text-sm text-trc-gold-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="/contact"
-                    className="inline-block px-8 py-4 bg-trc-gold-600 text-white font-semibold rounded-md hover:bg-trc-gold-700 transition-all duration-200 shadow-lg text-center text-lg"
-                  >
-                    Apply Now for October 2025
-                  </a>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                   <a
                     href="/contact"
                     className="inline-block px-8 py-4 bg-white text-trc-gold-600 font-semibold rounded-md border-2 border-trc-gold-600 hover:bg-trc-gold-50 transition-all duration-200 text-center text-lg"
                   >
-                    Schedule a Consultation
+                    Schedule a Free Consultation
                   </a>
                 </div>
               </div>
