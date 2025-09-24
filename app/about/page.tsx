@@ -169,49 +169,43 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action with Summit Image */}
-      <div className="relative">
-        <Image
-          src="/images/Summit_3.jpg"
-          alt="Mountain summit representing transformation"
-          width={1920}
-          height={1080}
-          className="w-full h-auto block"
-          sizes="100vw"
-        />
-        {/* Subtle gradient overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
-
-        {/* Text Content - Positioned in Sky Area */}
-        <div className="absolute top-8 lg:top-16 left-0 right-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+      <section className="relative py-32">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Summit_3.jpg"
+            alt="Mountain summit representing transformation"
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Ready to Begin Your Journey?
             </h2>
-            <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+            <p className="text-xl lg:text-2xl text-white max-w-4xl mx-auto mb-8" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
               Join Karen and discover how your life experience can become your greatest
               professional asset in service to others.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/coaching-training"
+                className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+              >
+                Explore Our Programs
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-block px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+              >
+                Schedule a Consultation
+              </Link>
+            </div>
           </div>
         </div>
-
-        {/* Buttons - Positioned Below Person */}
-        <div className="absolute bottom-6 md:bottom-8 lg:bottom-10 left-0 right-0">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/coaching-training"
-              className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-            >
-              Explore Our Programs
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-            >
-              Schedule a Consultation
-            </Link>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
