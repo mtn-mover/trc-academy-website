@@ -53,7 +53,7 @@ export default function ContactPage() {
         setSubmitStatus('error');
         setSubmitMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
       setSubmitMessage('Unable to send your message. Please contact us directly via email or phone.');
     } finally {

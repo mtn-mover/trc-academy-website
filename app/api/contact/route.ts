@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       to: 'karen@tabularasacoaching.com',
       subject: `New Contact Form Submission from ${name}`,
       html: adminEmailHtml,
-      reply_to: email,
+      replyTo: email,
     });
 
     // Send confirmation email to customer
