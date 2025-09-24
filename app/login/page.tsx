@@ -220,26 +220,6 @@ function LoginForm() {
           </form>
 
         </div>
-
-        {/* Demo Accounts */}
-        <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h3 className="text-sm font-semibold text-blue-900 mb-3 flex items-center">
-            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Demo Accounts for Testing
-          </h3>
-          <div className="space-y-2 text-xs">
-            <div className="bg-white rounded p-2">
-              <div className="font-semibold text-blue-800 mb-1">Admin Access:</div>
-              <div className="font-mono text-gray-700">admin@trc-academy.com / admin123</div>
-            </div>
-            <div className="text-gray-600 text-xs mt-2">
-              <div><strong>Teacher:</strong> karen@trc-academy.com / teacher123</div>
-              <div><strong>Student:</strong> john.doe@example.com / student123</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
