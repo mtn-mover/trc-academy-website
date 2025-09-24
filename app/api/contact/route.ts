@@ -68,27 +68,33 @@ export async function POST(request: Request) {
       replyTo: email,
     });
 
-    // Send confirmation email to customer
+    // Check if admin email was sent successfully
+    if (adminEmail.error) {
+      console.error('Email send error:', JSON.stringify(adminEmail.error, null, 2));
+      console.error('Admin email result:', adminEmail);
+      return NextResponse.json(
+        { error: 'Failed to send email notification', details: adminEmail.error?.message || 'Unknown error' },
+        { status: 500 }
+      );
+    }
+
+    // Note: Customer confirmation email is temporarily disabled until domain verification
+    // Once domain is verified in Resend, we can re-enable sending confirmation emails to customers
+    console.log(`Contact form submission from ${name} (${email}) - Admin notified successfully`);
+
+    /* Temporarily disabled - uncomment after domain verification
     const customerEmail = await resend.emails.send({
       from: 'TRC Training Academy <onboarding@resend.dev>',
       to: email,
       subject: 'Thank You for Contacting TRC Training Academy',
       html: customerEmailHtml,
     });
-
-    // Check if emails were sent successfully
-    if (adminEmail.error || customerEmail.error) {
-      console.error('Email send error:', adminEmail.error || customerEmail.error);
-      return NextResponse.json(
-        { error: 'Failed to send emails' },
-        { status: 500 }
-      );
-    }
+    */
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Your message has been sent successfully. You will receive a confirmation email shortly.'
+        message: 'Your message has been sent successfully. Karen will respond within 24 hours.'
       },
       { status: 200 }
     );
