@@ -495,15 +495,20 @@ export default function CoachingTrainingPage() {
                       <p className="text-sm text-orange-600 mt-1 font-medium">✓ Payment plans available</p>
                     </div>
                     <div className="text-center">
-                      <a
-                        href="/contact"
-                        className="inline-block px-12 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                      >
-                        <div className="text-center">
-                          <div>Enroll Now for October 2025</div>
-                          <div className="mt-1">Schedule a Free Consultation</div>
-                        </div>
-                      </a>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a
+                          href="/contact"
+                          className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                        >
+                          Enroll Now for October 2025
+                        </a>
+                        <a
+                          href="/contact"
+                          className="inline-block px-8 py-4 bg-white text-orange-600 font-bold rounded-lg border-2 border-orange-500 hover:bg-orange-50 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                        >
+                          Schedule a Free Consultation
+                        </a>
+                      </div>
                       <p className="text-sm text-orange-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
                   </div>
