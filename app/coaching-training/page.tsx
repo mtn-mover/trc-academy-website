@@ -4,12 +4,12 @@ import Link from 'next/link';
 export default function CoachingTrainingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section with Virtual Meeting Background */}
+      {/* Hero Section with Header Coaching Background */}
       <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Virtual_Meeting_1.jpg"
-            alt="Virtual coaching session"
+            src="/images/Image_Header_Coaching.jpg"
+            alt="Professional coaching header"
             fill
             sizes="100vw"
             style={{ objectFit: 'cover' }}
@@ -17,21 +17,21 @@ export default function CoachingTrainingPage() {
           />
         </div>
 
-        {/* Dark overlay for text contrast - focused on upper area */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-10"></div>
+        {/* Dark overlay only at bottom 40% for text area - matching main page */}
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/90 via-black/70 to-transparent z-10"></div>
 
-        {/* Content positioned in upper third */}
-        <div className="relative z-20 h-full flex items-start justify-center pt-24 lg:pt-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-                UNLOCK YOUR COACHING POTENTIAL
-              </h1>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-                Master the Art of Transformational Coaching with
+        {/* Content positioned at absolute bottom - matching main page */}
+        <div className="absolute bottom-0 left-0 right-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 lg:pb-12">
+            <div className="text-left lg:text-center">
+              <p className="text-lg text-white mb-4 tracking-wide" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)'}}>
+                TRC Training Academy
               </p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-8" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-                TABULA RASA COACH TRAINING ACADEMY
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                Unlock Your Coaching Potential
+              </h1>
+              <p className="text-lg lg:text-xl text-white mb-8 leading-relaxed max-w-3xl lg:mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+                Master the Art of Transformational Coaching with Tabula Rasa Coach Training Academy
               </p>
             </div>
           </div>
