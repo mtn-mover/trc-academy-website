@@ -32,7 +32,7 @@ export default function HomePage() {
                 TRC Training Academy
               </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-                Where wisdom and experience impacts transformation
+                Where Wisdom and Experience Impacts Transformation
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 lg:justify-center">
                 <Link
