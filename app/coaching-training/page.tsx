@@ -481,12 +481,10 @@ export default function CoachingTrainingPage() {
                 <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 mt-8 border border-orange-200">
                   <div className="flex flex-col md:flex-row items-center justify-between">
                     <div className="text-center md:text-left mb-6 md:mb-0">
-                      <div className="flex items-baseline gap-2 mb-2">
-                        <p className="text-3xl font-bold text-trc-gray-900">$6,999</p>
-                        <span className="text-lg text-trc-gray-600 line-through">$8,999</span>
-                      </div>
+                      <p className="text-3xl font-bold text-trc-gray-900 mb-2">$6,999</p>
                       <p className="text-lg font-semibold text-trc-gray-700">Complete Certification Program</p>
                       <p className="text-sm text-orange-600 mt-1 font-medium">✓ Payment plans available</p>
+                      <p className="text-sm text-orange-600 mt-1 font-medium">✓ One Full and one 50% scholarship available</p>
                     </div>
                     <div className="text-center">
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -497,7 +495,9 @@ export default function CoachingTrainingPage() {
                           Enroll Now for October 2025
                         </a>
                         <a
-                          href="/contact"
+                          href="https://tabularasacoaching.as.me/"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-block px-8 py-4 bg-white text-orange-600 font-bold rounded-lg border-2 border-orange-500 hover:bg-orange-50 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
                         >
                           Schedule a Free Consultation
