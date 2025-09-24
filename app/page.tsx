@@ -183,7 +183,7 @@ export default function HomePage() {
                 {/* What's Included */}
                 <div className="mb-12">
                   <h3 className="text-3xl font-bold text-center text-trc-gray-900 mb-12">
-                    What's Included in Your Journey
+                    What&apos;s Included in Your Journey
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
