@@ -597,7 +597,7 @@ export default function CoachingTrainingPage() {
               Your Transformation Begins Today
             </h2>
             <p className="text-xl lg:text-2xl text-white max-w-4xl mx-auto mb-8" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
-              Take the first step toward your soul's work.
+              Take the first step toward your soul&apos;s work.
               Discover how your unique wisdom can create lasting impact in the world.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
