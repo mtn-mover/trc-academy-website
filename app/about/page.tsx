@@ -191,17 +191,19 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/coaching-training"
+                href="/contact"
                 className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
               >
-                Explore Our Programs
+                Begin Your Sacred Journey
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="https://tabularasacoaching.as.me/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
               >
                 Schedule a Consultation
-              </Link>
+              </a>
             </div>
           </div>
         </div>

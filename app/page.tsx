@@ -74,8 +74,8 @@ export default function HomePage() {
             <div className="order-1 lg:order-2">
               <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">Transform Lives From Anywhere</h3>
               <p className="text-lg text-trc-gray-700 leading-relaxed mb-6">
-                Join our global community of professional coaches making a difference. Our remote coaching 
-                methodology enables you to connect with clients worldwide while maintaining the 
+                Join our global community of professional coaches making a difference. Our remote coaching
+                methodology enables you to connect with clients worldwide while maintaining the
                 deep, transformative relationships that define exceptional coaching.
               </p>
               <p className="text-lg text-trc-gray-600 leading-relaxed">
@@ -96,11 +96,11 @@ export default function HomePage() {
               The TRC Methodology
             </h2>
             <p className="text-lg text-trc-gray-600 max-w-3xl mx-auto leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal', width: '100%'}}>
-              Tabula Rasa Coach Training Academy transforms professionals through 
+              Tabula Rasa Coach Training Academy transforms professionals through
               our proven methodology that honors your wisdom and experience.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-trc-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="w-16 h-16 bg-trc-blue-100 rounded-full flex items-center justify-center mb-8">
@@ -112,11 +112,11 @@ export default function HomePage() {
                 Wisdom-Centered Learning
               </h3>
               <p className="text-lg text-trc-gray-600 leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
-                Your decades of experience become the foundation for transformative coaching. 
+                Your decades of experience become the foundation for transformative coaching.
                 We honor and integrate your life wisdom into professional practice.
               </p>
             </div>
-            
+
             <div className="bg-trc-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="w-16 h-16 bg-trc-gold-100 rounded-full flex items-center justify-center mb-8">
                 <svg className="w-8 h-8 text-trc-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -127,11 +127,11 @@ export default function HomePage() {
                 Heart-Centered Approach
               </h3>
               <p className="text-lg text-trc-gray-600 leading-relaxed" style={{whiteSpace: 'normal', wordBreak: 'normal'}}>
-                Beyond techniques and certifications, discover coaching that touches souls. 
+                Beyond techniques and certifications, discover coaching that touches souls.
                 Create authentic connections that transform both you and your clients.
               </p>
             </div>
-            
+
             <div className="bg-trc-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="w-16 h-16 bg-trc-blue-100 rounded-full flex items-center justify-center mb-8">
                 <svg className="w-8 h-8 text-trc-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +165,7 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="p-10">
                 {/* What's Included */}
                 <div className="mb-12">
@@ -249,7 +249,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Enhanced Call-to-Action Area */}
                 <div className="bg-gradient-to-r from-trc-blue-50 to-trc-gold-50 rounded-2xl p-8 mt-8 border border-trc-blue-100">
                   <div className="flex flex-col md:flex-row items-center justify-between">
@@ -297,7 +297,7 @@ export default function HomePage() {
               Real journeys from professionals who found their calling
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="bg-white border border-trc-gray-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="flex mb-6">
@@ -308,8 +308,8 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
-                &ldquo;At 52, I thought my best career years were behind me. TRC Academy showed me 
-                they were just beginning. The depth of training and community support helped 
+                &ldquo;At 52, I thought my best career years were behind me. TRC Academy showed me
+                they were just beginning. The depth of training and community support helped
                 me launch a thriving coaching practice that honors my life experience.&rdquo;
               </p>
               <div>
@@ -317,7 +317,7 @@ export default function HomePage() {
                 <p className="text-trc-gray-600">Executive Coach, Class of 2023</p>
               </div>
             </div>
-            
+
             <div className="bg-white border border-trc-gray-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
               <div className="flex mb-6">
                 {[...Array(5)].map((_, i) => (
@@ -327,8 +327,8 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
-                &ldquo;Karen&apos;s approach transcends traditional coaching education. She creates a 
-                sacred space where wisdom meets purpose. I found not just a new career, 
+                &ldquo;Karen&apos;s approach transcends traditional coaching education. She creates a
+                sacred space where wisdom meets purpose. I found not just a new career,
                 but my soul&apos;s true calling through TRC&apos;s transformative methodology.&rdquo;
               </p>
               <div>
@@ -361,12 +361,22 @@ export default function HomePage() {
               Take the first step toward your soul&apos;s work.
               Discover how your unique wisdom can create lasting impact in the world.
             </p>
-            <Link
-              href="/coaching-training"
-              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-            >
-              Begin Your Sacred Journey
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+              >
+                Begin Your Sacred Journey
+              </Link>
+              <a
+                href="https://tabularasacoaching.as.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+              >
+                Schedule a Consultation
+              </a>
+            </div>
           </div>
         </div>
       </section>
