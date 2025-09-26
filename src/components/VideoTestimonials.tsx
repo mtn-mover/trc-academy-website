@@ -122,12 +122,9 @@ export default function VideoTestimonials() {
               </div>
 
               <div className="p-6">
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 mb-4">
                   {testimonial.title}
                 </h3>
-                <p className="text-base text-gray-600 mb-4">
-                  {testimonial.description}
-                </p>
                 <div className="border-t pt-4">
                   <p className="font-semibold text-base text-gray-900">{testimonial.name}</p>
                   {testimonial.role && (
