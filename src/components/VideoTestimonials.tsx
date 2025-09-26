@@ -99,6 +99,7 @@ export default function VideoTestimonials() {
                     ref={(el) => { videoRefs.current[testimonial.id] = el }}
                     className="w-full h-full object-cover"
                     controls
+                    controlsList="nodownload"
                     preload="metadata"
                     poster={testimonial.thumbnailUrl}
                     onPlay={() => handlePlay(testimonial.id)}
