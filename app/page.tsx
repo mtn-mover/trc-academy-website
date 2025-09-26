@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoTestimonials from '@/src/components/VideoTestimonials';
-import TestimonialsCarousel from '@/src/components/TestimonialsCarousel';
 
 export default function HomePage() {
   return (
@@ -289,7 +288,6 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section - Carousel */}
-      <TestimonialsCarousel />
 
       {/* Video Testimonials Section */}
       <VideoTestimonials />

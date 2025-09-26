@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import TestimonialsCarousel from '@/src/components/TestimonialsCarousel';
 
 export default function CoachingTrainingPage() {
   return (
@@ -578,6 +579,9 @@ export default function CoachingTrainingPage() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsCarousel />
 
       {/* Final CTA Section with Summit Image */}
       <section className="relative py-32">
