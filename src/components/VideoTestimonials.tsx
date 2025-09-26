@@ -17,7 +17,7 @@ const testimonials: VideoTestimonial[] = [
     id: '1',
     title: 'From Corporate Consultant to Purpose-Driven Coach',
     description: 'The peer-to-peer coaching was incredibly rewarding. It made me realize how fulfilling coaching can be when you put the person at the center and get to the core issues with them.',
-    videoUrl: '/video/Tris.mp4',
+    videoUrl: '/video/Tris_lr.mp4',
     name: 'Tris C.',
     role: 'TRC Graduate'
   },
@@ -25,7 +25,7 @@ const testimonials: VideoTestimonial[] = [
     id: '2',
     title: 'Discovering the Art of Listening',
     description: "The listening skills and learning to ask 'one more question' opened things up tremendously. It's transformed how I connect with people at work and in life.",
-    videoUrl: '/video/Joseph.mp4',
+    videoUrl: '/video/Joseph_lr.mp4',
     name: 'Joseph C.',
     role: 'TRC Graduate'
   },
@@ -33,7 +33,7 @@ const testimonials: VideoTestimonial[] = [
     id: '3',
     title: 'From Skeptic to Confident Coach',
     description: 'I started skeptical, but now understand that to be a good coach, you must go through the rabbit hole yourself first. That insight changed everything for me.',
-    videoUrl: '/video/Flavio.mp4',
+    videoUrl: '/video/Flavio_lr.mp4',
     name: 'Flavio S.',
     role: 'TRC Graduate'
   },
@@ -41,7 +41,7 @@ const testimonials: VideoTestimonial[] = [
     id: '4',
     title: 'From Theory to Real Results',
     description: 'This training gave me the nuts and bolts I was missing. My niece got the job after our coaching sessions - I did nothing but ask questions, and it was immensely satisfying.',
-    videoUrl: '/video/Eve.mp4',
+    videoUrl: '/video/Eve_lr.mp4',
     name: 'Eve S.',
     role: 'TRC Graduate'
   }
