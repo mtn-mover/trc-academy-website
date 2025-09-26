@@ -30,9 +30,27 @@ const testimonials: Testimonial[] = [
   },
   {
     id: '4',
-    name: 'TRC Graduate',
-    role: 'Class of 2024',
-    quote: "[Waiting for the fourth testimonial text]"
+    name: 'Eve S.',
+    role: 'TRC Graduate',
+    quote: "Having previous psychosynthesis training, I needed the practical nuts and bolts this program provided perfectly. Working with different personalities stretched me out of my comfort zone in the best way. My first real success came when I coached my niece through job interviews using just questions - she got the job! This training gave me the complete toolkit I was missing to build a successful transition coaching practice."
+  },
+  {
+    id: '5',
+    name: 'Tris',
+    role: 'TRC Graduate',
+    quote: "This training transformed me both personally and professionally. The parts work created deep self-examination that was initially uncomfortable but led to profound insights about my relationships and character. The peer coaching was incredibly rewarding and showed me how fulfilling this profession can be when you put the person at the center. I've gone from consultancy to pure coaching focus."
+  },
+  {
+    id: '6',
+    name: 'Joseph C.',
+    role: 'TRC Graduate',
+    quote: "I thought I was a good listener until this training showed me how much I had to learn. The simple technique of asking 'one more question' opened up conversations tremendously and transformed how I connect with people at work and in life. I'm now developing a coaching niche at my workplace and moving toward life coaching. The listening skills alone were worth the entire program."
+  },
+  {
+    id: '7',
+    name: 'Flavio S.',
+    role: 'TRC Graduate',
+    quote: "I started this training quite skeptical about becoming a good coach. The breakthrough came when Karen taught us that to be effective, you must first go through the rabbit hole yourself and come out the other side. Now coaching a young professional, I see how real this insight is. I'm building confidence and considering integrating coaching with my CFO consulting to create a unique offering."
   }
 ]
 
