@@ -36,7 +36,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: '5',
-    name: 'Tris',
+    name: 'Tris C.',
     role: 'TRC Graduate',
     quote: "This training transformed me both personally and professionally. The parts work created deep self-examination that was initially uncomfortable but led to profound insights about my relationships and character. The peer coaching was incredibly rewarding and showed me how fulfilling this profession can be when you put the person at the center. I've gone from consultancy to pure coaching focus."
   },
