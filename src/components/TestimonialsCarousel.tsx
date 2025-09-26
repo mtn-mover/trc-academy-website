@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface Testimonial {
   id: string
@@ -38,17 +38,38 @@ const testimonials: Testimonial[] = [
 
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    setIsAutoPlaying(false) // Stop auto-play when user interacts
+    // Resume auto-play after 10 seconds of no interaction
+    setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setIsAutoPlaying(false) // Stop auto-play when user interacts
+    // Resume auto-play after 10 seconds of no interaction
+    setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
+    setIsAutoPlaying(false) // Stop auto-play when user interacts
+    // Resume auto-play after 10 seconds of no interaction
+    setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
   return (
