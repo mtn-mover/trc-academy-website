@@ -121,11 +121,11 @@ export default function VideoTestimonials() {
                 )}
               </div>
 
-              <div className="p-6">
-                <h3 className="font-bold text-lg text-gray-900 mb-4">
+              <div className="p-6 flex flex-col">
+                <h3 className="font-bold text-lg text-gray-900 mb-4" style={{ minHeight: '56px' }}>
                   {testimonial.title}
                 </h3>
-                <div className="border-t pt-4">
+                <div className="border-t pt-4 mt-auto">
                   <p className="font-semibold text-base text-gray-900">{testimonial.name}</p>
                   {testimonial.role && (
                     <p className="text-base text-teal-600">{testimonial.role}</p>
