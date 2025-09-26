@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoTestimonials from '@/src/components/VideoTestimonials';
+import TestimonialsCarousel from '@/src/components/TestimonialsCarousel';
 
 export default function HomePage() {
   return (
@@ -287,59 +288,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials Section - Modern Cards */}
-      <section className="py-12 lg:py-16 bg-trc-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-trc-gray-900 mb-6">
-              Stories of Transformation
-            </h2>
-            <p className="text-lg text-trc-gray-600">
-              Real journeys from professionals who found their calling
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white border border-trc-gray-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
-              <div className="flex mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-trc-gold-500 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
-                &ldquo;At 52, I thought my best career years were behind me. TRC Academy showed me
-                they were just beginning. The depth of training and community support helped
-                me launch a thriving coaching practice that honors my life experience.&rdquo;
-              </p>
-              <div>
-                <p className="font-bold text-trc-gray-900 text-lg">Sarah Mitchell</p>
-                <p className="text-trc-gray-600">Executive Coach, Class of 2023</p>
-              </div>
-            </div>
-
-            <div className="bg-white border border-trc-gray-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 shadow-md">
-              <div className="flex mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-trc-gold-500 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-lg text-trc-gray-700 mb-8 italic leading-relaxed">
-                &ldquo;Karen&apos;s approach transcends traditional coaching education. She creates a
-                sacred space where wisdom meets purpose. I found not just a new career,
-                but my soul&apos;s true calling through TRC&apos;s transformative methodology.&rdquo;
-              </p>
-              <div>
-                <p className="font-bold text-trc-gray-900 text-lg">Michael Chen</p>
-                <p className="text-trc-gray-600">Life Transformation Coach, Class of 2024</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Testimonials Section - Carousel */}
+      <TestimonialsCarousel />
 
       {/* Video Testimonials Section */}
       <VideoTestimonials />
