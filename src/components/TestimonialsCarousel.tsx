@@ -185,11 +185,11 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Mobile: Show 1 testimonial */}
-        <div className="lg:hidden relative">
+        <div className="lg:hidden relative px-4">
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg"
             aria-label="Previous testimonial"
           >
             <svg
@@ -205,7 +205,7 @@ export default function TestimonialsCarousel() {
 
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg"
             aria-label="Next testimonial"
           >
             <svg
@@ -220,8 +220,8 @@ export default function TestimonialsCarousel() {
           </button>
 
           {/* Mobile Carousel */}
-          <div className="mx-12">
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="px-12">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
               {/* Stars */}
               <div className="flex mb-4 justify-center">
                 {[...Array(5)].map((_, i) => (
