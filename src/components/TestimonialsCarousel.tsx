@@ -51,6 +51,12 @@ const testimonials: Testimonial[] = [
     name: 'Flavio S.',
     role: 'TRC Graduate',
     quote: "I started this training quite skeptical about becoming a good coach. The breakthrough came when Karen taught us that to be effective, you must first go through the rabbit hole yourself and come out the other side. Now coaching a young professional, I see how real this insight is. I'm building confidence and considering integrating coaching with my CFO consulting to create a unique offering."
+  },
+  {
+    id: '8',
+    name: 'Rojina R.',
+    role: 'TRC Graduate',
+    quote: "I wanted to become a coach but had no idea how to get proper certification until Joyce introduced me to Karen's program. The peer coaching sessions provided incredible healing I didn't know I needed, and the psychosynthesis tools are perfect for anxious clients. I learned the complete step-by-step coaching process and now run 'Rise with Rojina' - combining financial expertise with mindset work. My first major success was helping a nurse earning $150k who had only $80 in the bank avoid eviction and start saving 20% monthly."
   }
 ]
 
