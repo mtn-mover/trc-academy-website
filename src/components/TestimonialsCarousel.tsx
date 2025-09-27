@@ -64,13 +64,13 @@ export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
-  // Auto-slide every 5 seconds
+  // Auto-slide every 10 seconds
   useEffect(() => {
     if (!isAutoPlaying) return
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
+    }, 10000)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying])
@@ -148,11 +148,11 @@ export default function TestimonialsCarousel() {
             <div
               className="flex transition-transform duration-700 ease-in-out"
               style={{
-                transform: `translateX(-${currentIndex * 50}%)`
+                transform: `translateX(-${currentIndex * 25}%)`
               }}
             >
-              {/* Create doubled array for seamless sliding */}
-              {[...testimonials, ...testimonials].map((testimonial, idx) => (
+              {/* Display testimonials */}
+              {testimonials.map((testimonial, idx) => (
                 <div
                   key={`${testimonial.id}-${idx}`}
                   className="px-4"
