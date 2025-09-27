@@ -148,7 +148,7 @@ export default function TestimonialsCarousel() {
             <div
               className="flex transition-transform duration-700 ease-in-out"
               style={{
-                transform: `translateX(-${currentIndex * 25}%)`
+                transform: `translateX(-${currentIndex * 50}%)`
               }}
             >
               {/* Display testimonials */}
