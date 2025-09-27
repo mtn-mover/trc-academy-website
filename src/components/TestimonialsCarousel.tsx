@@ -69,36 +69,21 @@ export default function TestimonialsCarousel() {
     if (!isAutoPlaying) return
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        // With 8 testimonials showing 2 at a time, we have positions 0,2,4,6
-        // After 6, go back to 0
-        if (prev >= 6) return 0
-        return prev + 2
-      })
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
     }, 10000)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying])
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => {
-      // With 8 testimonials showing 2 at a time, we have positions 0,2,4,6
-      // After 6, go back to 0
-      if (prev >= 6) return 0
-      return prev + 2
-    })
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
     setIsAutoPlaying(false) // Stop auto-play when user interacts
     // Resume auto-play after 10 seconds of no interaction
     setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => {
-      // With 8 testimonials showing 2 at a time, we have positions 0,2,4,6
-      // Before 0, go to 6
-      if (prev <= 0) return 6
-      return prev - 2
-    })
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
     setIsAutoPlaying(false) // Stop auto-play when user interacts
     // Resume auto-play after 10 seconds of no interaction
     setTimeout(() => setIsAutoPlaying(true), 10000)
@@ -166,8 +151,8 @@ export default function TestimonialsCarousel() {
                 transform: `translateX(-${currentIndex * 50}%)`
               }}
             >
-              {/* Display testimonials */}
-              {testimonials.map((testimonial, idx) => (
+              {/* Create circular array for smooth sliding */}
+              {[...testimonials, testimonials[0]].map((testimonial, idx) => (
                 <div
                   key={`${testimonial.id}-${idx}`}
                   className="px-4"
@@ -208,7 +193,7 @@ export default function TestimonialsCarousel() {
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">
-            {[0, 2, 4, 6].map((index) => (
+            {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
@@ -217,7 +202,7 @@ export default function TestimonialsCarousel() {
                     ? 'w-12 h-3 bg-teal-600 rounded-full'
                     : 'w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400'
                 }`}
-                aria-label={`Go to testimonial pair ${index / 2 + 1}`}
+                aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
