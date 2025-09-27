@@ -69,21 +69,21 @@ export default function TestimonialsCarousel() {
     if (!isAutoPlaying) return
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+      setCurrentIndex((prev) => (prev >= 6 ? 0 : prev + 1))
     }, 10000)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying])
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    setCurrentIndex((prev) => (prev >= 6 ? 0 : prev + 1))
     setIsAutoPlaying(false) // Stop auto-play when user interacts
     // Resume auto-play after 10 seconds of no interaction
     setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrentIndex((prev) => (prev <= 0 ? 6 : prev - 1))
     setIsAutoPlaying(false) // Stop auto-play when user interacts
     // Resume auto-play after 10 seconds of no interaction
     setTimeout(() => setIsAutoPlaying(true), 10000)
@@ -151,8 +151,8 @@ export default function TestimonialsCarousel() {
                 transform: `translateX(-${currentIndex * 50}%)`
               }}
             >
-              {/* Create circular array for smooth sliding */}
-              {[...testimonials, testimonials[0]].map((testimonial, idx) => (
+              {/* Display testimonials */}
+              {testimonials.map((testimonial, idx) => (
                 <div
                   key={`${testimonial.id}-${idx}`}
                   className="px-4"
@@ -191,9 +191,9 @@ export default function TestimonialsCarousel() {
             </div>
           </div>
 
-          {/* Dots Indicator */}
+          {/* Dots Indicator - only show 7 positions */}
           <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
+            {[0, 1, 2, 3, 4, 5, 6].map((index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
@@ -202,7 +202,7 @@ export default function TestimonialsCarousel() {
                     ? 'w-12 h-3 bg-teal-600 rounded-full'
                     : 'w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400'
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Go to testimonial pair ${index + 1}`}
               />
             ))}
           </div>
