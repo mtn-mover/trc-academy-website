@@ -153,7 +153,7 @@ export default function HomePage() {
 
       {/* Professional Coach Certification Program - Program Details Section */}
       <section className="py-24 bg-white">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="w-full">
             <div className="bg-white border-2 border-trc-blue-200 rounded-lg overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white p-10">
