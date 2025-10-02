@@ -4,7 +4,6 @@ import './globals.css';
 import Header from '@/src/components/Header';
 import Footer from '@/src/components/Footer';
 import AuthSessionProvider from '@/src/components/providers/SessionProvider';
-import CookieBanner from '@/src/components/CookieBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -87,8 +86,30 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <CookieBanner />
         </AuthSessionProvider>
+
+        <div id="cookieBanner" style={{display:'none',position:'fixed',bottom:0,left:0,right:0,background:'white',padding:'16px 40px',boxShadow:'0 -2px 10px rgba(0,0,0,0.1)',zIndex:1000}}>
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',maxWidth:'1400px',margin:'0 auto'}}>
+            <div style={{display:'flex',alignItems:'center',gap:'12px'}}>
+              <span style={{color:'#4a5568',fontSize:'15px'}}>We use cookies to enhance your experience.</span>
+              <a href="/cookie-policy" style={{color:'#5b4cdb',textDecoration:'none',fontSize:'14px'}}>Cookie Policy</a>
+              <span style={{color:'#d1d5db'}}>|</span>
+              <a href="/privacy-policy" style={{color:'#5b4cdb',textDecoration:'none',fontSize:'14px'}}>Privacy Policy</a>
+            </div>
+            <div style={{display:'flex',gap:'12px',flexShrink:0}}>
+              <button onClick={() => {localStorage.setItem('cookieConsent','rejected');document.getElementById('cookieBanner')!.style.display='none';}} style={{padding:'10px 24px',border:'1px solid #d1d5db',background:'white',color:'#6b7280',borderRadius:'6px',cursor:'pointer',fontSize:'15px'}}>Reject</button>
+              <button onClick={() => {localStorage.setItem('cookieConsent','accepted');document.getElementById('cookieBanner')!.style.display='none';}} style={{padding:'10px 28px',background:'#5b4cdb',color:'white',border:'none',borderRadius:'6px',cursor:'pointer',fontSize:'15px',fontWeight:500}}>Accept All</button>
+            </div>
+          </div>
+        </div>
+
+        <script dangerouslySetInnerHTML={{__html: `
+          window.addEventListener('load',function(){
+            if(!localStorage.getItem('cookieConsent')){
+              document.getElementById('cookieBanner').style.display='block';
+            }
+          });
+        `}} />
       </body>
     </html>
   );
