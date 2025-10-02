@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   // Check if API key is properly configured
   if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_YOUR_RESEND_API_KEY') {
     return NextResponse.json(
-      { error: 'Email service is not configured. Please contact us directly at karen@tabularasacoaching.com' },
+      { error: 'Email service is not configured. Please contact us directly at karen@tabularasacoaching.com or call (610) 228-4145' },
       { status: 503 }
     );
   }

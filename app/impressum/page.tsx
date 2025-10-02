@@ -11,10 +11,10 @@ export default function Impressum() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Company Information</h2>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <p className="font-bold text-xl mb-2">Tabula Rasa Coaching Academy</p>
-                <p>Karen Williams, Founder & CEO</p>
-                <p>123 Coaching Lane</p>
-                <p>San Francisco, CA 94102</p>
+                <p className="font-bold text-xl mb-2">Tabula Rasa Coaching</p>
+                <p>Karen Florence CPC, CPRWC</p>
+                <p>967 Swedesford Rd</p>
+                <p>Malvern, PA 19355</p>
                 <p>United States</p>
               </div>
             </section>
@@ -22,9 +22,9 @@ export default function Impressum() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Information</h2>
               <div className="space-y-2">
-                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                <p><strong>Email:</strong> info@trc-academy.com</p>
-                <p><strong>Website:</strong> www.trc-academy.com</p>
+                <p><strong>Phone:</strong> (610) 228-4145</p>
+                <p><strong>Email:</strong> karen@tabularasacoaching.com</p>
+                <p><strong>Website:</strong> www.tabularasacoaching.com</p>
               </div>
             </section>
 
@@ -43,9 +43,9 @@ export default function Impressum() {
                 According to Section 5 TMG (German Telemedia Act) and applicable international laws:
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="font-semibold">Karen Williams</p>
-                <p>Founder & CEO</p>
-                <p>Tabula Rasa Coaching Academy</p>
+                <p className="font-semibold">Karen Florence CPC, CPRWC</p>
+                <p>Founder</p>
+                <p>Tabula Rasa Coaching</p>
               </div>
             </section>
 
@@ -76,11 +76,11 @@ export default function Impressum() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Copyright Notice</h2>
               <p className="mb-4">
                 All content on this website, including text, images, graphics, logos, and software,
-                is the property of Tabula Rasa Coaching Academy and is protected by international
+                is the property of Tabula Rasa Coaching and is protected by international
                 copyright laws.
               </p>
               <p>
-                © 2025 Tabula Rasa Coaching Academy. All rights reserved.
+                © 2025 Tabula Rasa Coaching. All rights reserved.
               </p>
             </section>
 

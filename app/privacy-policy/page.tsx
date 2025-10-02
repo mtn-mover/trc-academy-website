@@ -87,9 +87,10 @@ export default function PrivacyPolicy() {
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="font-semibold">Tabula Rasa Coaching Academy</p>
-                <p>Email: privacy@trc-academy.com</p>
-                <p>Phone: +1 (555) 123-4567</p>
+                <p className="font-semibold">Tabula Rasa Coaching</p>
+                <p>Email: karen@tabularasacoaching.com</p>
+                <p>Phone: (610) 228-4145</p>
+                <p>967 Swedesford Rd, Malvern, PA 19355</p>
               </div>
             </section>
 
