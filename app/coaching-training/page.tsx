@@ -400,6 +400,7 @@ export default function CoachingTrainingPage() {
                   <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
+                      {/* Core Program - Left Column */}
                       <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Core Program</h4>
                       <ul className="space-y-4">
                         <li className="flex items-start">
@@ -445,8 +446,11 @@ export default function CoachingTrainingPage() {
                           <span className="text-lg text-trc-gray-700">Business building essentials</span>
                         </li>
                       </ul>
-                    </div>
-                    <div>
+
+                      {/* Divider */}
+                      <div className="my-6 border-t border-trc-gold-200"></div>
+
+                      {/* Additional Benefits - Below Core Program in Left Column */}
                       <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Additional Benefits</h4>
                       <ul className="space-y-4">
                         <li className="flex items-start">
@@ -474,11 +478,10 @@ export default function CoachingTrainingPage() {
                           <span className="text-lg text-trc-gray-700">Access to digital library</span>
                         </li>
                       </ul>
+                    </div>
+                    <div>
 
-                      {/* Divider */}
-                      <div className="my-6 border-t border-trc-gold-200"></div>
-
-                      {/* Program Schedule */}
+                      {/* Program Schedule - Right Column */}
                       <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Program Schedule</h4>
                       <ul className="space-y-4">
                         <li className="flex items-start">
