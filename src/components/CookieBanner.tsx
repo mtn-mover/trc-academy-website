@@ -21,8 +21,15 @@ export default function CookieBanner() {
     // Show banner with animation delay
     setTimeout(() => {
       setShowBanner(true)
+      // Add padding to body to prevent overlap
+      document.body.style.paddingBottom = '80px'
       setTimeout(() => setIsVisible(true), 50)
     }, 1000)
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.paddingBottom = '0'
+    }
   }, [])
 
   const handleAccept = () => {
@@ -30,6 +37,7 @@ export default function CookieBanner() {
     setTimeout(() => {
       localStorage.setItem('cookieConsent', 'accepted')
       localStorage.setItem('cookieConsentDate', new Date().toISOString())
+      document.body.style.paddingBottom = '0'
       setShowBanner(false)
     }, 300)
   }
@@ -39,6 +47,7 @@ export default function CookieBanner() {
     setTimeout(() => {
       localStorage.setItem('cookieConsent', 'rejected')
       localStorage.setItem('cookieConsentDate', new Date().toISOString())
+      document.body.style.paddingBottom = '0'
       setShowBanner(false)
     }, 300)
   }
@@ -48,19 +57,31 @@ export default function CookieBanner() {
   return (
     <div className={`cookie-banner ${isVisible ? 'visible' : ''}`}>
       <div className="cookie-content">
-        <p>
-          We use cookies to enhance your experience.{' '}
-          <a href="/cookie-policy">Cookie Policy</a>
-          <span className="separator"> | </span>
-          <a href="/privacy-policy">Privacy Policy</a>
-        </p>
+        <div className="cookie-message">
+          <svg className="cookie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="7.5" cy="8.5" r="1.5" fill="currentColor"/>
+            <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
+            <circle cx="7.5" cy="15.5" r="1.5" fill="currentColor"/>
+            <circle cx="16.5" cy="15.5" r="1.5" fill="currentColor"/>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+          </svg>
+          <p>
+            We use cookies to enhance your experience.
+            <span className="policy-links">
+              <a href="/cookie-policy">Cookie Policy</a>
+              <span className="separator">|</span>
+              <a href="/privacy-policy">Privacy Policy</a>
+            </span>
+          </p>
+        </div>
       </div>
       <div className="cookie-buttons">
         <button className="reject" onClick={handleReject}>
           Reject
         </button>
         <button className="accept" onClick={handleAccept}>
-          Accept
+          Accept All
         </button>
       </div>
 
@@ -76,36 +97,76 @@ export default function CookieBanner() {
           width: 100%;
           z-index: 1000;
           background: white;
-          box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-          padding: 16px 32px;
+          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+          padding: 20px 40px;
           transform: translateY(100%);
-          transition: transform 0.3s ease-out;
+          transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+          opacity: 0;
         }
 
         .cookie-banner.visible {
           transform: translateY(0);
+          opacity: 1;
+        }
+
+        .cookie-content {
+          flex: 1;
+        }
+
+        .cookie-message {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .cookie-icon {
+          width: 24px;
+          height: 24px;
+          color: #5b4cdb;
+          flex-shrink: 0;
         }
 
         .cookie-content p {
           margin: 0;
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: #4a5568;
           line-height: 1.5;
+        }
+
+        .policy-links {
+          margin-left: 8px;
         }
 
         .cookie-content a {
           color: #5b4cdb;
           text-decoration: none;
-          transition: all 0.2s ease;
+          position: relative;
+          transition: color 0.2s ease;
+        }
+
+        .cookie-content a::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: #5b4cdb;
+          transform: scaleX(0);
+          transition: transform 0.2s ease;
+        }
+
+        .cookie-content a:hover::after {
+          transform: scaleX(1);
         }
 
         .cookie-content a:hover {
-          text-decoration: underline;
+          color: #4c3db8;
         }
 
-        .cookie-content .separator {
+        .separator {
           color: #cbd5e0;
-          margin: 0 2px;
+          margin: 0 8px;
         }
 
         .cookie-buttons {
@@ -114,12 +175,13 @@ export default function CookieBanner() {
         }
 
         .cookie-buttons button {
-          font-size: 0.95rem;
+          font-size: 1rem;
           cursor: pointer;
           transition: all 0.2s ease;
           font-family: inherit;
           border: none;
           outline: none;
+          font-weight: 500;
         }
 
         .cookie-buttons button:focus-visible {
@@ -128,50 +190,66 @@ export default function CookieBanner() {
         }
 
         .cookie-buttons .reject {
-          background: transparent;
-          border: 1px solid #d1d5db;
-          color: #6b7280;
-          padding: 8px 20px;
-          border-radius: 6px;
+          background: white;
+          border: 2px solid #e2e8f0;
+          color: #64748b;
+          padding: 10px 24px;
+          border-radius: 8px;
         }
 
         .cookie-buttons .reject:hover {
-          background: #f3f4f6;
+          background: #f8fafc;
+          border-color: #cbd5e0;
+          transform: translateY(-1px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .cookie-buttons .accept {
           background: #5b4cdb;
           color: white;
-          padding: 8px 24px;
-          border-radius: 6px;
-          font-weight: 500;
+          padding: 10px 28px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(91, 76, 219, 0.2);
         }
 
         .cookie-buttons .accept:hover {
           background: #4c3db8;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(91, 76, 219, 0.3);
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .cookie-banner {
             flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            padding: 20px 20px;
+          }
+
+          .cookie-message {
+            flex-direction: column;
             align-items: flex-start;
-            gap: 12px;
-            padding: 16px 20px;
+            gap: 8px;
           }
 
           .cookie-content p {
-            font-size: 0.875rem;
+            font-size: 0.95rem;
+          }
+
+          .policy-links {
+            display: block;
+            margin-left: 0;
+            margin-top: 4px;
           }
 
           .cookie-buttons {
             width: 100%;
-            gap: 8px;
+            gap: 10px;
           }
 
           .cookie-buttons button {
             flex: 1;
-            padding: 10px 16px;
-            font-size: 0.875rem;
+            padding: 12px 20px;
           }
         }
       `}</style>
