@@ -5,50 +5,36 @@ import Link from 'next/link'
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false)
-  const [showPreferences, setShowPreferences] = useState(false)
-  const [preferences, setPreferences] = useState({
-    essential: true, // Always true, cannot be disabled
-    functional: true,
-    analytics: true,
-    marketing: false
-  })
 
   useEffect(() => {
     // Check if user has already made a cookie choice
     const cookieConsent = localStorage.getItem('cookieConsent')
     if (!cookieConsent) {
       // Delay showing banner for better UX
-      setTimeout(() => setShowBanner(true), 1000)
+      setTimeout(() => setShowBanner(true), 1500)
     }
   }, [])
 
   const acceptAll = () => {
-    const allAccepted = {
+    const consent = {
       essential: true,
       functional: true,
       analytics: true,
       marketing: true
     }
-    localStorage.setItem('cookieConsent', JSON.stringify(allAccepted))
+    localStorage.setItem('cookieConsent', JSON.stringify(consent))
     localStorage.setItem('cookieConsentDate', new Date().toISOString())
     setShowBanner(false)
-  }
-
-  const acceptSelected = () => {
-    localStorage.setItem('cookieConsent', JSON.stringify(preferences))
-    localStorage.setItem('cookieConsentDate', new Date().toISOString())
-    setShowBanner(false)
-    setShowPreferences(false)
   }
 
   const rejectAll = () => {
-    const onlyEssential = {
+    const consent = {
       essential: true,
       functional: false,
       analytics: false,
       marketing: false
     }
-    localStorage.setItem('cookieConsent', JSON.stringify(onlyEssential))
+    localStorage.setItem('cookieConsent', JSON.stringify(consent))
     localStorage.setItem('cookieConsentDate', new Date().toISOString())
     setShowBanner(false)
   }
@@ -56,187 +42,50 @@ export default function CookieBanner() {
   if (!showBanner) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up">
-      <div className="bg-white shadow-2xl border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 sm:py-3">
-          {!showPreferences ? (
-            // Main Banner View - Compact
-            <div className="flex items-center justify-between gap-4">
-              {/* Icon */}
-              <svg className="hidden sm:block w-6 h-6 text-trc-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
+    <div className="fixed bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 lg:left-auto lg:right-6 lg:max-w-md z-50">
+      <div className="bg-white rounded-lg shadow-2xl border border-gray-200 p-4 md:p-5">
+        {/* Header with Icon */}
+        <div className="flex items-start mb-3">
+          <svg className="w-5 h-5 text-trc-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
+          </svg>
+          <div className="flex-1">
+            <h3 className="text-sm font-semibold text-gray-900">Cookie Notice</h3>
+          </div>
+        </div>
 
-              {/* Text Content - Full Width */}
-              <div className="flex-1">
-                <p className="text-sm text-gray-700 whitespace-normal">
-                  We use cookies to enhance your experience. By clicking &ldquo;Accept All&rdquo;, you agree to our{' '}
-                  <Link href="/cookie-policy" className="text-trc-blue-600 hover:text-trc-blue-700 underline">
-                    Cookie Policy
-                  </Link>
-                  .
-                </p>
-              </div>
+        {/* Message */}
+        <p className="text-sm text-gray-600 mb-4">
+          We use cookies to enhance your experience and analyze our traffic. Please choose your preference below.
+        </p>
 
-              {/* Buttons */}
-              <div className="flex items-center gap-2 flex-shrink-0">
-                <button
-                  onClick={() => setShowPreferences(true)}
-                  className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
-                >
-                  Customize
-                </button>
-                <button
-                  onClick={rejectAll}
-                  className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
-                >
-                  Reject All
-                </button>
-                <button
-                  onClick={acceptAll}
-                  className="px-3 py-1.5 text-sm font-medium text-white bg-trc-blue-600 rounded hover:bg-trc-blue-700 transition-colors"
-                >
-                  Accept All
-                </button>
-              </div>
-            </div>
-          ) : (
-            // Preferences View - Compact
-            <div className="max-w-4xl mx-auto">
-              {/* Header */}
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-gray-900">Cookie Preferences</h3>
-                <button
-                  onClick={() => setShowPreferences(false)}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                  </svg>
-                </button>
-              </div>
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-2">
+          <button
+            onClick={rejectAll}
+            className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
+          >
+            Reject All
+          </button>
+          <button
+            onClick={acceptAll}
+            className="flex-1 px-4 py-2 text-sm font-medium text-white bg-trc-blue-600 rounded-md hover:bg-trc-blue-700 transition-colors"
+          >
+            Accept All
+          </button>
+        </div>
 
-              {/* Cookie Options - Horizontal Layout */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-                {/* Essential */}
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">Essential</h4>
-                      <p className="text-xs text-gray-600 mt-0.5">Always active</p>
-                    </div>
-                    <div className="relative w-10 h-5">
-                      <input
-                        type="checkbox"
-                        checked={true}
-                        disabled
-                        className="sr-only"
-                      />
-                      <div className="block bg-green-600 w-full h-full rounded-full cursor-not-allowed"></div>
-                      <div className="absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform transform translate-x-5"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Functional */}
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">Functional</h4>
-                      <p className="text-xs text-gray-600 mt-0.5">Enhanced features</p>
-                    </div>
-                    <button
-                      onClick={() => setPreferences({...preferences, functional: !preferences.functional})}
-                      className="relative w-10 h-5"
-                    >
-                      <div className={`block w-full h-full rounded-full transition-colors ${
-                        preferences.functional ? 'bg-trc-blue-600' : 'bg-gray-300'
-                      }`}></div>
-                      <div className={`absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform transform ${
-                        preferences.functional ? 'translate-x-5' : 'translate-x-0'
-                      }`}></div>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Analytics */}
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">Analytics</h4>
-                      <p className="text-xs text-gray-600 mt-0.5">Help us improve</p>
-                    </div>
-                    <button
-                      onClick={() => setPreferences({...preferences, analytics: !preferences.analytics})}
-                      className="relative w-10 h-5"
-                    >
-                      <div className={`block w-full h-full rounded-full transition-colors ${
-                        preferences.analytics ? 'bg-trc-blue-600' : 'bg-gray-300'
-                      }`}></div>
-                      <div className={`absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform transform ${
-                        preferences.analytics ? 'translate-x-5' : 'translate-x-0'
-                      }`}></div>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Marketing */}
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">Marketing</h4>
-                      <p className="text-xs text-gray-600 mt-0.5">Targeted ads</p>
-                    </div>
-                    <button
-                      onClick={() => setPreferences({...preferences, marketing: !preferences.marketing})}
-                      className="relative w-10 h-5"
-                    >
-                      <div className={`block w-full h-full rounded-full transition-colors ${
-                        preferences.marketing ? 'bg-trc-blue-600' : 'bg-gray-300'
-                      }`}></div>
-                      <div className={`absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform transform ${
-                        preferences.marketing ? 'translate-x-5' : 'translate-x-0'
-                      }`}></div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="flex justify-end gap-2">
-                <button
-                  onClick={rejectAll}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  Reject All
-                </button>
-                <button
-                  onClick={acceptSelected}
-                  className="px-4 py-2 text-sm font-medium text-white bg-trc-blue-600 rounded-lg hover:bg-trc-blue-700 transition-colors"
-                >
-                  Save Preferences
-                </button>
-              </div>
-            </div>
-          )}
+        {/* Links */}
+        <div className="mt-3 pt-3 border-t border-gray-200 flex items-center justify-center gap-3 text-xs">
+          <Link href="/cookie-policy" className="text-gray-500 hover:text-trc-blue-600 transition-colors">
+            Cookie Policy
+          </Link>
+          <span className="text-gray-300">•</span>
+          <Link href="/privacy-policy" className="text-gray-500 hover:text-trc-blue-600 transition-colors">
+            Privacy Policy
+          </Link>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes slide-up {
-          from {
-            transform: translateY(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-        .animate-slide-up {
-          animation: slide-up 0.3s ease-out;
-        }
-      `}</style>
     </div>
   )
 }
