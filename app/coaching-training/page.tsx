@@ -474,6 +474,50 @@ export default function CoachingTrainingPage() {
                           <span className="text-lg text-trc-gray-700">Access to digital library</span>
                         </li>
                       </ul>
+
+                      {/* Divider */}
+                      <div className="my-6 border-t border-trc-gold-200"></div>
+
+                      {/* Program Schedule */}
+                      <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Program Schedule</h4>
+                      <ul className="space-y-3">
+                        <li className="flex items-start">
+                          <svg className="w-5 h-5 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-base text-trc-gray-700">Orientation: Saturday, November 1st, 2025</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-5 h-5 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-base text-trc-gray-700">Classes: Second weekend monthly + two Wednesdays</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-5 h-5 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-base text-trc-gray-700">Wednesday evenings: 3 hours</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-5 h-5 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-base text-trc-gray-700">Saturday: 6 hours | Sunday: 4 hours</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-5 h-5 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-base text-trc-gray-700">Program Start: November 8th-9th, 2025</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-5 h-5 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-base text-trc-gray-700">Graduation: Saturday, June 6th, 2026</span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
