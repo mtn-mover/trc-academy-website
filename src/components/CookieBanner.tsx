@@ -23,7 +23,7 @@ export default function CookieBanner() {
       try {
         const savedPrefs = JSON.parse(cookieConsent)
         setPreferences(savedPrefs)
-      } catch (e) {
+      } catch {
         setShowBanner(true)
       }
     }
@@ -77,7 +77,7 @@ export default function CookieBanner() {
                 </h3>
                 <p className="text-sm text-gray-600">
                   We use cookies to enhance your browsing experience, analyze site traffic, and personalize content.
-                  By clicking "Accept All", you consent to our use of cookies. Read our{' '}
+                  By clicking &ldquo;Accept All&rdquo;, you consent to our use of cookies. Read our{' '}
                   <Link href="/cookie-policy" className="text-trc-blue-600 hover:text-trc-blue-700 underline">
                     Cookie Policy
                   </Link>{' '}

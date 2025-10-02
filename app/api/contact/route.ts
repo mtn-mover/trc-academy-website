@@ -38,26 +38,6 @@ export async function POST(request: Request) {
       <p><small>Submitted on ${new Date().toLocaleString()}</small></p>
     `;
 
-    // Confirmation email to customer
-    const customerEmailHtml = `
-      <h2>Thank You for Contacting TRC Training Academy</h2>
-      <p>Dear ${name},</p>
-      <p>We have received your inquiry and appreciate your interest in our coaching certification program.</p>
-      <p>Karen will personally review your message and respond within 24 hours.</p>
-      <br>
-      <h3>Your Submission Details:</h3>
-      <p><strong>Interest:</strong> ${interest}</p>
-      <p><strong>Message:</strong> ${message || 'No message provided'}</p>
-      <br>
-      <p>In the meantime, feel free to explore our <a href="https://trc-academy-website.vercel.app/coaching-training">coaching training program</a> for more information.</p>
-      <br>
-      <p>Warm regards,</p>
-      <p><strong>Karen Walker</strong><br>
-      Founder, TRC Training Academy<br>
-      Email: karen@tabularasacoaching.com<br>
-      Phone: +1 610 228 4145</p>
-    `;
-
     // Send email to Karen
     // Note: Using onboarding@resend.dev as sender until tabularasacoaching.com is verified
     const adminEmail = await resend.emails.send({
