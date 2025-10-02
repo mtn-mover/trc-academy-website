@@ -58,43 +58,43 @@ export default function CookieBanner() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up">
       <div className="bg-white shadow-2xl border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 sm:py-5">
+        <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 sm:py-3">
           {!showPreferences ? (
             // Main Banner View - Compact
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-              {/* Text Content */}
-              <div className="flex items-center gap-3 flex-1">
-                <svg className="hidden sm:block w-8 h-8 text-trc-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                <div className="text-center lg:text-left">
-                  <p className="text-sm sm:text-base text-gray-700">
-                    We use cookies to enhance your experience. By clicking &ldquo;Accept All&rdquo;, you agree to our{' '}
-                    <Link href="/cookie-policy" className="text-trc-blue-600 hover:text-trc-blue-700 underline">
-                      Cookie Policy
-                    </Link>
-                    .
-                  </p>
-                </div>
+            <div className="flex items-center justify-between gap-4">
+              {/* Icon */}
+              <svg className="hidden sm:block w-6 h-6 text-trc-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+
+              {/* Text Content - Full Width */}
+              <div className="flex-1">
+                <p className="text-sm text-gray-700 whitespace-normal">
+                  We use cookies to enhance your experience. By clicking &ldquo;Accept All&rdquo;, you agree to our{' '}
+                  <Link href="/cookie-policy" className="text-trc-blue-600 hover:text-trc-blue-700 underline">
+                    Cookie Policy
+                  </Link>
+                  .
+                </p>
               </div>
 
               {/* Buttons */}
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={() => setShowPreferences(true)}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
                 >
                   Customize
                 </button>
                 <button
                   onClick={rejectAll}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
                 >
                   Reject All
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="px-4 py-2 text-sm font-medium text-white bg-trc-blue-600 rounded-lg hover:bg-trc-blue-700 transition-colors"
+                  className="px-3 py-1.5 text-sm font-medium text-white bg-trc-blue-600 rounded hover:bg-trc-blue-700 transition-colors"
                 >
                   Accept All
                 </button>
