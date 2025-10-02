@@ -388,7 +388,7 @@ export default function CoachingTrainingPage() {
                     Professional Coach Certification Program
                   </h2>
                   <p className="text-xl lg:text-2xl text-white opacity-95">
-                    Transform Your Wisdom • October 2025 – June 2026
+                    Transform Your Wisdom • November 2025 – June 2026
                   </p>
                 </div>
               </div>
