@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Banner - Simple Implementation</title>
+</head>
+<body style="margin:0;padding:0;min-height:100vh;display:flex;flex-direction:column;">
+
+    <!-- Your page content goes here -->
+    <div style="flex:1;padding:20px;">
+        <h1>Your Website Content</h1>
+        <p>This is a demo page showing the cookie banner implementation.</p>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-out;
+    ">
+        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+            <!-- Cookie Icon -->
+            <svg style="width: 24px; height: 24px; color: #5b4cdb;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="7.5" cy="8.5" r="1.5" fill="currentColor"/>
+                <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
+                <circle cx="7.5" cy="15.5" r="1.5" fill="currentColor"/>
+                <circle cx="16.5" cy="15.5" r="1.5" fill="currentColor"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+            </svg>
+            <div>
+                <span style="color: #4a5568; font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+                    We use cookies to enhance your experience.
+                </span>
+                <span style="margin-left: 12px;">
+                    <a href="/cookie-policy" style="color: #5b4cdb; text-decoration: none; font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Cookie Policy</a>
+                    <span style="color: #cbd5e0; margin: 0 8px;">|</span>
+                    <a href="/privacy-policy" style="color: #5b4cdb; text-decoration: none; font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Privacy Policy</a>
+                </span>
+            </div>
+        </div>
+        <div style="display: flex; gap: 12px;">
+            <button onclick="dismissCookie()" style="
+                padding: 10px 24px;
+                border: 2px solid #e2e8f0;
+                background: white;
+                color: #64748b;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                transition: all 0.2s ease;
+            " onmouseover="this.style.background='#f8fafc';this.style.borderColor='#cbd5e0';" onmouseout="this.style.background='white';this.style.borderColor='#e2e8f0';">
+                Reject
+            </button>
+            <button onclick="acceptCookie()" style="
+                padding: 10px 28px;
+                background: #5b4cdb;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 4px rgba(91, 76, 219, 0.2);
+            " onmouseover="this.style.background='#4c3db8';this.style.boxShadow='0 4px 8px rgba(91, 76, 219, 0.3)';" onmouseout="this.style.background='#5b4cdb';this.style.boxShadow='0 2px 4px rgba(91, 76, 219, 0.2)';">
+                Accept All
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Styles -->
+    <style>
+        @media (max-width: 768px) {
+            #cookieBanner {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 16px;
+                padding: 20px !important;
+            }
+            #cookieBanner > div:first-child {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+            #cookieBanner > div:last-child {
+                width: 100%;
+            }
+            #cookieBanner button {
+                width: 50%;
+            }
+        }
+    </style>
+
+    <script>
+        // Cookie Banner Management
+        function acceptCookie() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            hideBanner();
+        }
+
+        function dismissCookie() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            hideBanner();
+        }
+
+        function hideBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.style.transform = 'translateY(100%)';
+            // Remove body padding after animation
+            setTimeout(() => {
+                banner.style.display = 'none';
+                document.body.style.paddingBottom = '0';
+            }, 300);
+        }
+
+        function showBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.style.display = 'flex';
+            // Add body padding to prevent content overlap
+            document.body.style.paddingBottom = '80px';
+            document.body.style.transition = 'padding-bottom 0.3s ease';
+
+            // Trigger animation after a brief delay
+            setTimeout(() => {
+                banner.style.transform = 'translateY(0)';
+            }, 100);
+        }
+
+        // Check consent on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const consent = localStorage.getItem('cookieConsent');
+            const consentDate = localStorage.getItem('cookieConsentDate');
+
+            // Check if consent exists and is less than 365 days old
+            if (consent && consentDate) {
+                const daysSinceConsent = (Date.now() - new Date(consentDate).getTime()) / (1000 * 60 * 60 * 24);
+                if (daysSinceConsent < 365) {
+                    document.getElementById('cookieBanner').style.display = 'none';
+                    return;
+                }
+            }
+
+            // Show banner after a delay
+            setTimeout(showBanner, 1000);
+        });
+    </script>
+
+</body>
+</html>
