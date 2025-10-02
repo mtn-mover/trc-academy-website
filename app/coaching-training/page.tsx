@@ -411,6 +411,12 @@ export default function CoachingTrainingPage() {
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
+                          <span className="text-lg text-trc-gray-700">105+ hours professional coaching</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
                           <span className="text-lg text-trc-gray-700">Comprehensive coaching curriculum</span>
                         </li>
                         <li className="flex items-start">
@@ -449,12 +455,6 @@ export default function CoachingTrainingPage() {
                         <h4 className="text-xl font-bold text-trc-gray-900">Benefits & Support</h4>
                       </div>
                       <ul className="space-y-4">
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">105+ hours professional coaching</span>
-                        </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
