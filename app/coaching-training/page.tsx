@@ -571,7 +571,6 @@ export default function CoachingTrainingPage() {
 
               </div>
             </div>
-          </div>
         </div>
       </section>
 
