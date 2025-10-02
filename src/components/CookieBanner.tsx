@@ -82,7 +82,7 @@ export default function CookieBanner() {
                 </h2>
                 <p className="text-base text-gray-600 leading-relaxed">
                   We use cookies to enhance your browsing experience, provide personalized content,
-                  and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
+                  and analyze our traffic. By clicking &ldquo;Accept&rdquo;, you consent to our use of cookies.
                 </p>
                 <div className="mt-3 flex items-center space-x-4">
                   <Link
@@ -151,7 +151,7 @@ export default function CookieBanner() {
             {/* Message */}
             <p className="text-sm text-gray-600 leading-relaxed mb-4">
               We use cookies to enhance your browsing experience, provide personalized content,
-              and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
+              and analyze our traffic. By clicking &ldquo;Accept&rdquo;, you consent to our use of cookies.
             </p>
 
             {/* Policy Links */}
