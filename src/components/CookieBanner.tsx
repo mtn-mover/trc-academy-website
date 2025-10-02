@@ -6,7 +6,6 @@ export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false)
 
   useEffect(() => {
-    // Check if user has already made a cookie choice
     const cookieConsent = localStorage.getItem('cookieConsent')
     if (!cookieConsent) {
       setShowBanner(true)
@@ -26,64 +25,100 @@ export default function CookieBanner() {
   if (!showBanner) return null
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        width: '100%',
-        zIndex: 1000,
-        backgroundColor: 'white',
-        borderTop: '1px solid #e5e7eb',
-        padding: '16px 24px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}
-    >
-      <div style={{ flex: 1 }}>
-        <p style={{ margin: 0, fontSize: '14px', color: '#374151' }}>
+    <div className="cookie-banner">
+      <div className="cookie-content">
+        <p>
           We use cookies to enhance your experience.{' '}
-          <a href="/cookie-policy" style={{ color: '#5b4cdb', textDecoration: 'underline' }}>
-            Cookie Policy
-          </a>{' '}
-          |{' '}
-          <a href="/privacy-policy" style={{ color: '#5b4cdb', textDecoration: 'underline' }}>
-            Privacy Policy
-          </a>
+          <a href="/cookie-policy">Cookie Policy</a> |{' '}
+          <a href="/privacy-policy">Privacy Policy</a>
         </p>
       </div>
-      <div style={{ display: 'flex', gap: '8px' }}>
-        <button
-          onClick={handleReject}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: 'white',
-            border: '1px solid #d1d5db',
-            color: '#6b7280',
-            borderRadius: '4px',
-            fontSize: '14px',
-            cursor: 'pointer'
-          }}
-        >
+      <div className="cookie-buttons">
+        <button className="reject" onClick={handleReject}>
           Reject
         </button>
-        <button
-          onClick={handleAccept}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: '#5b4cdb',
-            border: 'none',
-            color: 'white',
-            borderRadius: '4px',
-            fontSize: '14px',
-            cursor: 'pointer'
-          }}
-        >
+        <button className="accept" onClick={handleAccept}>
           Accept
         </button>
       </div>
+
+      <style jsx>{`
+        .cookie-banner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          z-index: 1000;
+          background: white;
+          border-top: 1px solid #e5e7eb;
+          padding: 16px 24px;
+        }
+
+        .cookie-content p {
+          margin: 0;
+          font-size: 14px;
+          color: #374151;
+        }
+
+        .cookie-content a {
+          color: #5b4cdb;
+          text-decoration: underline;
+        }
+
+        .cookie-content a:hover {
+          text-decoration: none;
+        }
+
+        .cookie-buttons {
+          display: flex;
+          gap: 8px;
+        }
+
+        .cookie-buttons button {
+          padding: 8px 16px;
+          border-radius: 4px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        }
+
+        .cookie-buttons button:hover {
+          opacity: 0.9;
+        }
+
+        .cookie-buttons .reject {
+          background: white;
+          border: 1px solid #d1d5db;
+          color: #6b7280;
+        }
+
+        .cookie-buttons .accept {
+          background: #5b4cdb;
+          border: none;
+          color: white;
+        }
+
+        @media (max-width: 640px) {
+          .cookie-banner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+          }
+
+          .cookie-buttons {
+            width: 100%;
+          }
+
+          .cookie-buttons button {
+            flex: 1;
+          }
+        }
+      `}</style>
     </div>
   )
 }
