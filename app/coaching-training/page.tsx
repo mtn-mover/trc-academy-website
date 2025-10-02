@@ -507,7 +507,7 @@ export default function CoachingTrainingPage() {
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">2nd weekend monthly + 2 Wednesdays</span>
+                          <span className="text-lg text-trc-gray-700">2nd weekend every month plus two Wednesdays</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
