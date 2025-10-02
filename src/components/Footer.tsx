@@ -90,9 +90,15 @@ const Footer = () => {
             <p className="text-white text-sm">
               © {currentYear} TRC Training Academy. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy" className="text-white hover:text-white text-sm transition-colors duration-200">
+            <div className="flex flex-wrap gap-4 mt-4 md:mt-0">
+              <Link href="/privacy-policy" className="text-white hover:text-white text-sm transition-colors duration-200">
                 Privacy Policy
+              </Link>
+              <Link href="/cookie-policy" className="text-white hover:text-white text-sm transition-colors duration-200">
+                Cookie Policy
+              </Link>
+              <Link href="/impressum" className="text-white hover:text-white text-sm transition-colors duration-200">
+                Impressum
               </Link>
               <Link href="/terms" className="text-white hover:text-white text-sm transition-colors duration-200">
                 Terms of Service
