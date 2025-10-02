@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,58 +8,52 @@ datasource db {
 }
 
 model User {
-  id           String    @id @default(cuid())
-  email        String    @unique
-  password     String
-  name         String    // Full name (kept for backward compatibility)
-  givenName    String?   // First/Given name
-  familyName   String?   // Last/Family name
-  timezone     String    @default("UTC") // IANA timezone identifier
-  isStudent    Boolean   @default(false)
-  isTeacher    Boolean   @default(false)
-  isAdmin      Boolean   @default(false)
-  accessExpiry DateTime? // For students - access cutoff date
-  isActive     Boolean   @default(true)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-
-  // Relationships
-  taughtClasses ClassTeacher[] // Classes taught by this teacher
+  id            String                @id @default(cuid())
+  email         String                @unique
+  password      String
+  name          String
+  timezone      String                @default("UTC")
+  isStudent     Boolean               @default(false)
+  isTeacher     Boolean               @default(false)
+  isAdmin       Boolean               @default(false)
+  accessExpiry  DateTime?
+  isActive      Boolean               @default(true)
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+  familyName    String?
+  givenName     String?
+  auditLogs     AuditLog[]
   classMembers  ClassMember[]
-  auditLogs     AuditLog[]    // Actions performed by this user
+  taughtClasses ClassTeacher[]
   peerCoaching1 PeerCoachingSession[] @relation("PeerStudent1")
   peerCoaching2 PeerCoachingSession[] @relation("PeerStudent2")
 }
 
 model Class {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  timezone    String   @default("Europe/Zurich") // Course origin timezone
-  startDate   DateTime
-  endDate     DateTime
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relationships
-  teachers  ClassTeacher[]
-  members   ClassMember[]
-  classDays ClassDay[]
-  sessions  Session[]
+  id                   String                @id @default(cuid())
+  name                 String
+  description          String?
+  timezone             String                @default("Europe/Zurich")
+  startDate            DateTime
+  endDate              DateTime
+  isActive             Boolean               @default(true)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  classDays            ClassDay[]
+  members              ClassMember[]
+  teachers             ClassTeacher[]
   peerCoachingSessions PeerCoachingSession[]
+  sessions             Session[]
 }
 
 model ClassTeacher {
   id         String   @id @default(cuid())
   classId    String
   teacherId  String
-  isPrimary  Boolean  @default(false) // Primary teacher vs co-teacher
+  isPrimary  Boolean  @default(false)
   assignedAt DateTime @default(now())
-
-  // Relationships
-  class   Class @relation(fields: [classId], references: [id])
-  teacher User  @relation(fields: [teacherId], references: [id])
+  class      Class    @relation(fields: [classId], references: [id])
+  teacher    User     @relation(fields: [teacherId], references: [id])
 
   @@unique([classId, teacherId])
 }
@@ -71,12 +62,10 @@ model ClassMember {
   id       String   @id @default(cuid())
   userId   String
   classId  String
-  role     String   @default("STUDENT") // STUDENT only (teachers use ClassTeacher)
+  role     String   @default("STUDENT")
   joinedAt DateTime @default(now())
-
-  // Relationships
-  user  User  @relation(fields: [userId], references: [id])
-  class Class @relation(fields: [classId], references: [id])
+  class    Class    @relation(fields: [classId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, classId])
 }
@@ -84,31 +73,26 @@ model ClassMember {
 model ClassDay {
   id        String   @id @default(cuid())
   classId   String
-  dayOfWeek Int      // 0 = Sunday, 6 = Saturday
-  startTime String   // HH:MM format in class timezone
-  endTime   String   // HH:MM format in class timezone
+  dayOfWeek Int
+  startTime String
+  endTime   String
   createdAt DateTime @default(now())
-
-  // Relationships
-  class Class @relation(fields: [classId], references: [id])
+  class     Class    @relation(fields: [classId], references: [id])
 }
 
 model AuditLog {
-  id        String   @id @default(cuid())
-  userId    String
-  action    String   // CREATE_USER, UPDATE_USER, DELETE_USER, etc.
-  entityId  String?  // ID of affected entity
-  entityType String? // USER, CLASS, CLASS_MEMBER
-  metadata  String?  // JSON string with additional details
-  ipAddress String?
-  userAgent String?
-  createdAt DateTime @default(now())
-
-  // Relationships
-  user User @relation(fields: [userId], references: [id])
+  id         String   @id @default(cuid())
+  userId     String
+  action     String
+  entityId   String?
+  entityType String?
+  metadata   String?
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
 }
 
-// Legacy Enrollment model - will be migrated to ClassMember
 model Enrollment {
   id         String   @id @default(cuid())
   userId     String
@@ -119,25 +103,23 @@ model Enrollment {
   @@unique([userId, classId])
 }
 
-// Session management models
 model Session {
   id                   String        @id @default(cuid())
   classId              String
   title                String
   description          String?
   date                 DateTime
-  startTime            String        // "14:00"
-  duration             Int           // minutes
+  startTime            String
+  duration             Int
   status               SessionStatus @default(PLANNED)
-  summary              String?       @db.Text
+  summary              String?
   materialsVisible     Boolean       @default(false)
   materialsReleaseDate DateTime?
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
-
-  class                Class         @relation(fields: [classId], references: [id], onDelete: Cascade)
   documents            Document[]
   recordings           Recording[]
+  class                Class         @relation(fields: [classId], references: [id], onDelete: Cascade)
 }
 
 model Document {
@@ -146,23 +128,21 @@ model Document {
   title      String
   fileName   String
   fileUrl    String
-  fileSize   Int?     // bytes
+  fileSize   Int?
   mimeType   String?
   isVisible  Boolean  @default(false)
   uploadedAt DateTime @default(now())
-
   session    Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 }
 
 model Recording {
-  id         String   @id @default(cuid())
-  sessionId  String
-  title      String
-  videoUrl   String
-  isVisible  Boolean  @default(false)
-  addedAt    DateTime @default(now())
-
-  session    Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  id        String   @id @default(cuid())
+  sessionId String
+  title     String
+  videoUrl  String
+  isVisible Boolean  @default(false)
+  addedAt   DateTime @default(now())
+  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 }
 
 model PeerCoachingSession {
@@ -171,14 +151,13 @@ model PeerCoachingSession {
   student1Id    String
   student2Id    String
   scheduledDate DateTime
-  startTime     String   // "14:00"
-  endTime       String   // "15:00"
-  duration      Int      // minutes
-  status        String   @default("SCHEDULED") // SCHEDULED, COMPLETED, CANCELLED
-  notes         String?  @db.Text
+  startTime     String
+  endTime       String
+  duration      Int
+  status        String   @default("SCHEDULED")
+  notes         String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-
   class         Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
   student1      User     @relation("PeerStudent1", fields: [student1Id], references: [id])
   student2      User     @relation("PeerStudent2", fields: [student2Id], references: [id])

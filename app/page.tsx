@@ -162,48 +162,48 @@ export default function HomePage() {
                     Professional Coach Certification Program
                   </h2>
                   <p className="text-xl lg:text-2xl text-white opacity-95">
-                    Transform Your Wisdom • Course Dates: October 25th, 2025 – June 06th, 2026
+                    Transform Your Wisdom • November 2025 – June 2026
                   </p>
                 </div>
               </div>
 
               <div className="p-10">
-                {/* What's Included */}
+                {/* Program Details - 3 Column Layout */}
                 <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">What&apos;s Included</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Core Program</h4>
+                  <h3 className="text-2xl font-bold text-trc-gray-900 mb-6">Program Details</h3>
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Core Curriculum - First Column */}
+                    <div className="bg-gray-50 rounded-xl p-6">
+                      <div className="flex items-center mb-4">
+                        <svg className="w-8 h-8 text-trc-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <h4 className="text-xl font-bold text-trc-gray-900">Core Curriculum</h4>
+                      </div>
                       <ul className="space-y-4">
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">105+ class hours covering all aspects of professional coaching</span>
+                          <span className="text-lg text-trc-gray-700">105+ hours professional coaching</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">All training materials and resources included</span>
+                          <span className="text-lg text-trc-gray-700">Comprehensive coaching curriculum</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Comprehensive coaching curriculum and resources</span>
+                          <span className="text-lg text-trc-gray-700">Psychosynthesis methodology</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Psychosynthesis methodology training</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Career & Executive coaching modules</span>
+                          <span className="text-lg text-trc-gray-700">Career & Executive coaching</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -219,9 +219,22 @@ export default function HomePage() {
                         </li>
                       </ul>
                     </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-trc-gray-900 mb-4">Additional Benefits</h4>
+
+                    {/* Benefits & Support - Second Column */}
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+                      <div className="flex items-center mb-4">
+                        <svg className="w-8 h-8 text-trc-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <h4 className="text-xl font-bold text-trc-gray-900">Benefits & Support</h4>
+                      </div>
                       <ul className="space-y-4">
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">All training materials included</span>
+                        </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -232,19 +245,67 @@ export default function HomePage() {
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Lifetime membership in TRC Alumni Network</span>
+                          <span className="text-lg text-trc-gray-700">Lifetime TRC Alumni Network</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Ongoing community support and networking</span>
+                          <span className="text-lg text-trc-gray-700">Ongoing community support</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <span className="text-lg text-trc-gray-700">Access to digital library</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Schedule & Dates - Third Column */}
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+                      <div className="flex items-center mb-4">
+                        <svg className="w-8 h-8 text-trc-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <h4 className="text-xl font-bold text-trc-gray-900">Schedule & Dates</h4>
+                      </div>
+                      <ul className="space-y-4">
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">Monthly schedule: 2nd weekend + 2 Wed evenings</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">Weekend: Sat (9am-6pm), Sun (9am-3pm)</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">Evening Sessions: 6pm-8:30pm PT</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">Orientation: Sat, Nov 1st, 9am-12pm PT</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">Program Start: Nov 8/9, 2025</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-6 h-6 text-trc-blue-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-lg text-trc-gray-700">Graduation: Sat, Jun 6, 2026</span>
                         </li>
                       </ul>
                     </div>
