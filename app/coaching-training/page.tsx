@@ -501,37 +501,37 @@ export default function CoachingTrainingPage() {
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Orientation: Saturday, November 1st, 2025</span>
+                          <span className="text-lg text-trc-gray-700">Orientation: Sat, Nov 1st, 2025</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">2nd weekend every month plus two Wednesdays</span>
+                          <span className="text-lg text-trc-gray-700">2nd weekend monthly + 2 Wed evenings</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Wednesday evenings: 3 hours</span>
+                          <span className="text-lg text-trc-gray-700">Wed evenings: 3 hours</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Saturday: 6 hours | Sunday: 4 hours</span>
+                          <span className="text-lg text-trc-gray-700">Sat: 6 hours | Sun: 4 hours</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Program Start: November 8th-9th, 2025</span>
+                          <span className="text-lg text-trc-gray-700">Program Start: Nov 8th-9th, 2025</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Graduation: Saturday, June 6th, 2026</span>
+                          <span className="text-lg text-trc-gray-700">Graduation: Sat, Jun 6th, 2026</span>
                         </li>
                       </ul>
                     </div>
