@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoTestimonials from '@/src/components/VideoTestimonials';
+import ScrollToEnrollButton from '@/src/components/ScrollToEnrollButton';
 
 export default function HomePage() {
   return (
@@ -44,12 +45,7 @@ export default function HomePage() {
                 >
                   Answer Your Inner Calling
                 </Link>
-                <Link
-                  href="/about"
-                  className="px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-                >
-                  Meet Karen Florence
-                </Link>
+                <ScrollToEnrollButton />
               </div>
             </div>
           </div>
@@ -152,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* Professional Coach Certification Program - Program Details Section */}
-      <section className="py-24 bg-white">
+      <section id="enrollment-section" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="w-full">
             <div className="bg-white border-2 border-trc-blue-200 rounded-lg overflow-hidden shadow-xl">
