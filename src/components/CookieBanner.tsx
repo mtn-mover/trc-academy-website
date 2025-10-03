@@ -88,7 +88,7 @@ export default function CookieBanner() {
         {/* Description */}
         <p className="text-sm text-gray-600 leading-relaxed mb-4 text-center">
           We use cookies to enhance your browsing experience, provide personalized content, and analyze our traffic.
-          By clicking "Accept All", you consent to our use of cookies.{' '}
+          By clicking &ldquo;Accept All&rdquo;, you consent to our use of cookies.{' '}
           <Link href="/cookie-policy" className="text-trc-blue-600 hover:text-trc-blue-700 underline font-medium">
             Learn more
           </Link>
