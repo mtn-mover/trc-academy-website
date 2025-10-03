@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/src/components/Header';
 import Footer from '@/src/components/Footer';
 import AuthSessionProvider from '@/src/components/providers/SessionProvider';
+import CookieBanner from '@/src/components/CookieBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -86,6 +87,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <CookieBanner />
         </AuthSessionProvider>
       </body>
     </html>

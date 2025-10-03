@@ -1,10 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
     const cookieConsent = localStorage.getItem('cookieConsent')
@@ -21,33 +23,24 @@ export default function CookieBanner() {
     // Show banner with animation delay
     setTimeout(() => {
       setShowBanner(true)
-      // Add padding to body to prevent overlap
-      document.body.style.paddingBottom = '80px'
       setTimeout(() => setIsVisible(true), 50)
     }, 1000)
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.paddingBottom = '0'
-    }
   }, [])
 
-  const handleAccept = () => {
+  const handleAcceptAll = () => {
     setIsVisible(false)
     setTimeout(() => {
       localStorage.setItem('cookieConsent', 'accepted')
       localStorage.setItem('cookieConsentDate', new Date().toISOString())
-      document.body.style.paddingBottom = '0'
       setShowBanner(false)
     }, 300)
   }
 
-  const handleReject = () => {
+  const handleRejectAll = () => {
     setIsVisible(false)
     setTimeout(() => {
       localStorage.setItem('cookieConsent', 'rejected')
       localStorage.setItem('cookieConsentDate', new Date().toISOString())
-      document.body.style.paddingBottom = '0'
       setShowBanner(false)
     }, 300)
   }
@@ -55,204 +48,107 @@ export default function CookieBanner() {
   if (!showBanner) return null
 
   return (
-    <div className={`cookie-banner ${isVisible ? 'visible' : ''}`}>
-      <div className="cookie-content">
-        <div className="cookie-message">
-          <svg className="cookie-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10"/>
-            <circle cx="7.5" cy="8.5" r="1.5" fill="currentColor"/>
-            <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
-            <circle cx="7.5" cy="15.5" r="1.5" fill="currentColor"/>
-            <circle cx="16.5" cy="15.5" r="1.5" fill="currentColor"/>
-            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-          </svg>
-          <p>
-            We use cookies to enhance your experience.
-            <span className="policy-links">
-              <a href="/cookie-policy">Cookie Policy</a>
-              <span className="separator">|</span>
-              <a href="/privacy-policy">Privacy Policy</a>
-            </span>
-          </p>
+    <>
+      {/* Backdrop */}
+      <div
+        className={`fixed inset-0 bg-black/30 transition-opacity duration-300 z-[999] ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+        onClick={() => {
+          setIsVisible(false)
+          setTimeout(() => setShowBanner(false), 300)
+        }}
+      />
+
+      {/* Banner */}
+      <div
+        className={`fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[500px] bg-white rounded-2xl shadow-2xl p-6 z-[1000] transition-all duration-300 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}
+      >
+        {/* Cookie Icon */}
+        <div className="mb-4 flex justify-center">
+          <div className="w-12 h-12 bg-trc-blue-50 rounded-full flex items-center justify-center">
+            <svg className="w-6 h-6 text-trc-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="7.5" cy="8.5" r="1.5" fill="currentColor"/>
+              <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
+              <circle cx="7.5" cy="15.5" r="1.5" fill="currentColor"/>
+              <circle cx="16.5" cy="15.5" r="1.5" fill="currentColor"/>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
+          We Value Your Privacy
+        </h3>
+
+        {/* Description */}
+        <p className="text-sm text-gray-600 leading-relaxed mb-4 text-center">
+          We use cookies to enhance your browsing experience, provide personalized content, and analyze our traffic.
+          By clicking "Accept All", you consent to our use of cookies.{' '}
+          <Link href="/cookie-policy" className="text-trc-blue-600 hover:text-trc-blue-700 underline font-medium">
+            Learn more
+          </Link>
+        </p>
+
+        {/* Settings Section (Optional) */}
+        {showSettings && (
+          <div className="mb-4 p-4 bg-gray-50 rounded-lg space-y-3">
+            <label className="flex items-center justify-center gap-3 cursor-pointer">
+              <span className="text-sm font-medium text-gray-700">Essential Cookies</span>
+              <input type="checkbox" checked disabled className="w-4 h-4 text-trc-blue-600 rounded" />
+            </label>
+            <label className="flex items-center justify-center gap-3 cursor-pointer">
+              <span className="text-sm font-medium text-gray-700">Analytics Cookies</span>
+              <input type="checkbox" className="w-4 h-4 text-trc-blue-600 rounded" />
+            </label>
+            <label className="flex items-center justify-center gap-3 cursor-pointer">
+              <span className="text-sm font-medium text-gray-700">Marketing Cookies</span>
+              <input type="checkbox" className="w-4 h-4 text-trc-blue-600 rounded" />
+            </label>
+          </div>
+        )}
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={() => setShowSettings(!showSettings)}
+            className="px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
+          >
+            {showSettings ? 'Hide Settings' : 'Customize'}
+          </button>
+          <button
+            onClick={handleRejectAll}
+            className="px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
+          >
+            Reject All
+          </button>
+          <button
+            onClick={handleAcceptAll}
+            className="px-5 py-2.5 text-sm font-medium text-white bg-trc-blue-600 rounded-lg hover:bg-trc-blue-700 shadow-lg shadow-trc-blue-600/30 hover:shadow-trc-blue-600/40 transition-all duration-200"
+          >
+            Accept All
+          </button>
+        </div>
+
+        {/* Privacy Links */}
+        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-4 text-xs text-gray-500">
+          <Link href="/privacy-policy" className="hover:text-trc-blue-600 transition-colors">
+            Privacy Policy
+          </Link>
+          <span>•</span>
+          <Link href="/cookie-policy" className="hover:text-trc-blue-600 transition-colors">
+            Cookie Policy
+          </Link>
+          <span>•</span>
+          <Link href="/impressum" className="hover:text-trc-blue-600 transition-colors">
+            Legal Notice
+          </Link>
         </div>
       </div>
-      <div className="cookie-buttons">
-        <button className="reject" onClick={handleReject}>
-          Reject
-        </button>
-        <button className="accept" onClick={handleAccept}>
-          Accept All
-        </button>
-      </div>
-
-      <style jsx>{`
-        .cookie-banner {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          width: 100%;
-          z-index: 1000;
-          background: white;
-          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-          padding: 20px 40px;
-          transform: translateY(100%);
-          transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-          opacity: 0;
-        }
-
-        .cookie-banner.visible {
-          transform: translateY(0);
-          opacity: 1;
-        }
-
-        .cookie-content {
-          flex: 1;
-        }
-
-        .cookie-message {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .cookie-icon {
-          width: 24px;
-          height: 24px;
-          color: #5b4cdb;
-          flex-shrink: 0;
-        }
-
-        .cookie-content p {
-          margin: 0;
-          font-size: 1rem;
-          color: #4a5568;
-          line-height: 1.5;
-        }
-
-        .policy-links {
-          margin-left: 8px;
-        }
-
-        .cookie-content a {
-          color: #5b4cdb;
-          text-decoration: none;
-          position: relative;
-          transition: color 0.2s ease;
-        }
-
-        .cookie-content a::after {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background: #5b4cdb;
-          transform: scaleX(0);
-          transition: transform 0.2s ease;
-        }
-
-        .cookie-content a:hover::after {
-          transform: scaleX(1);
-        }
-
-        .cookie-content a:hover {
-          color: #4c3db8;
-        }
-
-        .separator {
-          color: #cbd5e0;
-          margin: 0 8px;
-        }
-
-        .cookie-buttons {
-          display: flex;
-          gap: 12px;
-        }
-
-        .cookie-buttons button {
-          font-size: 1rem;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          font-family: inherit;
-          border: none;
-          outline: none;
-          font-weight: 500;
-        }
-
-        .cookie-buttons button:focus-visible {
-          outline: 2px solid #5b4cdb;
-          outline-offset: 2px;
-        }
-
-        .cookie-buttons .reject {
-          background: white;
-          border: 2px solid #e2e8f0;
-          color: #64748b;
-          padding: 10px 24px;
-          border-radius: 8px;
-        }
-
-        .cookie-buttons .reject:hover {
-          background: #f8fafc;
-          border-color: #cbd5e0;
-          transform: translateY(-1px);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .cookie-buttons .accept {
-          background: #5b4cdb;
-          color: white;
-          padding: 10px 28px;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(91, 76, 219, 0.2);
-        }
-
-        .cookie-buttons .accept:hover {
-          background: #4c3db8;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 8px rgba(91, 76, 219, 0.3);
-        }
-
-        @media (max-width: 768px) {
-          .cookie-banner {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 16px;
-            padding: 20px 20px;
-          }
-
-          .cookie-message {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-          }
-
-          .cookie-content p {
-            font-size: 0.95rem;
-          }
-
-          .policy-links {
-            display: block;
-            margin-left: 0;
-            margin-top: 4px;
-          }
-
-          .cookie-buttons {
-            width: 100%;
-            gap: 10px;
-          }
-
-          .cookie-buttons button {
-            flex: 1;
-            padding: 12px 20px;
-          }
-        }
-      `}</style>
-    </div>
+    </>
   )
 }
