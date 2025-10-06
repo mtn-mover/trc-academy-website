@@ -138,12 +138,12 @@ export default function VideoTestimonials() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl lg:text-2xl text-gray-600 mb-8">
             Ready to write your own transformation story?
           </p>
           <Link
             href="/coaching-training"
-            className="inline-block px-10 py-5 bg-trc-blue-600 text-white font-bold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+            className="inline-block px-8 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
           >
             Learn More
           </Link>
