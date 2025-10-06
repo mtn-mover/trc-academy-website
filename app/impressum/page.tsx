@@ -13,8 +13,8 @@ export default function Impressum() {
               <div className="bg-gray-50 p-6 rounded-lg">
                 <p className="font-bold text-xl mb-2">Tabula Rasa Coaching</p>
                 <p>Karen Florence, CPC, CPRWC</p>
-                <p>967 Swedesford Rd</p>
-                <p>Malvern, PA 19355</p>
+                <p>641 Fairview Rd.</p>
+                <p>Glenmoore, PA 19343</p>
                 <p>United States</p>
               </div>
             </section>

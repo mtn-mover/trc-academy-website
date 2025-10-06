@@ -142,7 +142,7 @@ export default function CookiePolicy() {
                 <p className="font-semibold">Tabula Rasa Coaching</p>
                 <p>Email: karen@tabularasacoaching.com</p>
                 <p>Phone: (610) 228-4145</p>
-                <p>967 Swedesford Rd, Malvern, PA 19355</p>
+                <p>641 Fairview Rd. Glenmoore, PA 19343</p>
               </div>
             </section>
           </div>
