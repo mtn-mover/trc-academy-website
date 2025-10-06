@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoTestimonials from '@/src/components/VideoTestimonials';
-import ScrollToEnrollButton from '@/src/components/ScrollToEnrollButton';
 
 export default function HomePage() {
   return (
@@ -35,18 +34,9 @@ export default function HomePage() {
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 tracking-tight leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
                 Where Wisdom and Experience Impacts Transformation
               </h1>
-              <p className="text-xl lg:text-2xl text-white mb-8 leading-relaxed max-w-3xl lg:mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+              <p className="text-xl lg:text-2xl text-white leading-relaxed max-w-3xl lg:mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
                 Your wisdom, experience, and calling converge here.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 lg:justify-center">
-                <Link
-                  href="/coaching-training"
-                  className="px-8 py-4 bg-trc-blue-600 text-white font-bold rounded-md hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-                >
-                  Answer Your Inner Calling
-                </Link>
-                <ScrollToEnrollButton />
-              </div>
             </div>
           </div>
         </div>
@@ -318,22 +308,12 @@ export default function HomePage() {
                       <p className="text-sm text-trc-blue-600 mt-1 font-medium">✓ One Full and one 50% scholarship available</p>
                     </div>
                     <div className="text-center">
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                          href="/contact"
-                          className="inline-block px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                        >
-                          Enroll Now for November 2025
-                        </a>
-                        <a
-                          href="https://tabularasacoaching.as.me/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-lg border-2 border-trc-blue-500 hover:bg-trc-blue-50 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                        >
-                          Schedule a Free Consultation
-                        </a>
-                      </div>
+                      <Link
+                        href="/contact"
+                        className="inline-block px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                      >
+                        Schedule a Free Consultation
+                      </Link>
                       <p className="text-sm text-trc-gold-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
                   </div>
@@ -370,22 +350,12 @@ export default function HomePage() {
               Take the first step toward your soul&apos;s work.
               Discover how your unique wisdom can create lasting impact in the world.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-              >
-                Begin Your Sacred Journey
-              </Link>
-              <a
-                href="https://tabularasacoaching.as.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-              >
-                Schedule a Consultation
-              </a>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+            >
+              Schedule a Free Consultation
+            </Link>
           </div>
         </div>
       </section>

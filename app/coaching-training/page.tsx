@@ -548,22 +548,12 @@ export default function CoachingTrainingPage() {
                       <p className="text-sm text-orange-600 mt-1 font-medium">✓ One Full and one 50% scholarship available</p>
                     </div>
                     <div className="text-center">
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                          href="/contact"
-                          className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                        >
-                          Enroll Now for November 2025
-                        </a>
-                        <a
-                          href="https://tabularasacoaching.as.me/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block px-8 py-4 bg-white text-orange-600 font-bold rounded-lg border-2 border-orange-500 hover:bg-orange-50 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                        >
-                          Schedule a Free Consultation
-                        </a>
-                      </div>
+                      <Link
+                        href="/contact"
+                        className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                      >
+                        Schedule a Free Consultation
+                      </Link>
                       <p className="text-sm text-orange-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
                   </div>
@@ -663,22 +653,12 @@ export default function CoachingTrainingPage() {
               Take the first step toward your soul&apos;s work.
               Discover how your unique wisdom can create lasting impact in the world.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-              >
-                Begin Your Sacred Journey
-              </Link>
-              <a
-                href="https://tabularasacoaching.as.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-4 bg-transparent text-white font-bold rounded-md border-2 border-white hover:bg-white hover:text-trc-blue-600 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
-              >
-                Schedule a Consultation
-              </a>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+            >
+              Schedule a Free Consultation
+            </Link>
           </div>
         </div>
       </section>
