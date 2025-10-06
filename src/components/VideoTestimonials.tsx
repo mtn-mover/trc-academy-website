@@ -143,9 +143,9 @@ export default function VideoTestimonials() {
           </p>
           <Link
             href="/coaching-training"
-            className="inline-block px-8 py-4 bg-trc-blue-600 text-white font-bold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl text-lg min-w-[280px]"
+            className="inline-block px-12 py-5 bg-trc-blue-600 text-white font-bold rounded-lg hover:bg-trc-blue-700 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
           >
-            Learn More
+            Explore Our Program
           </Link>
         </div>
       </div>
