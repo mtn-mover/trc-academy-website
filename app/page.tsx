@@ -281,10 +281,10 @@ export default function HomePage() {
                           </svg>
                           <span className="text-lg text-trc-gray-700">Monthly schedule: 2nd weekend + 2 Wed evenings</span>
                         </li>
-                        <li className="ml-6">
+                        <li className="ml-12">
                           <span className="text-lg text-trc-gray-700">Wed evenings: 3 hours</span>
                         </li>
-                        <li className="ml-6">
+                        <li className="ml-12">
                           <span className="text-lg text-trc-gray-700">Sat: 6 hours | Sun: 4 hours</span>
                         </li>
                       </ul>
