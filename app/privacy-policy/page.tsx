@@ -82,7 +82,38 @@ export default function PrivacyPolicy() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Contact Information</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Google reCAPTCHA</h2>
+              <p className="mb-4">
+                We use Google reCAPTCHA v3 to protect our contact form from spam and abuse.
+                reCAPTCHA collects hardware and software information, such as device and application
+                data, and sends it to Google for analysis.
+              </p>
+              <p className="mb-4">
+                The information collected by reCAPTCHA is used to verify that you are not a bot and
+                to protect our website from malicious activities. This data is processed in accordance
+                with Google&apos;s Privacy Policy and Terms of Service.
+              </p>
+              <p className="mb-4">
+                By using our contact form, you consent to the processing of data about you by Google
+                in the manner and for the purposes set out above. For more information about Google
+                reCAPTCHA, please visit:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-trc-blue-600 hover:text-trc-blue-700 underline">
+                    Google Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-trc-blue-600 hover:text-trc-blue-700 underline">
+                    Google Terms of Service
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Contact Information</h2>
               <p className="mb-4">
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
@@ -95,7 +126,7 @@ export default function PrivacyPolicy() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Changes to This Policy</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Changes to This Policy</h2>
               <p>
                 We may update this privacy policy from time to time. We will notify you of any changes
                 by posting the new privacy policy on this page and updating the &ldquo;Last updated&rdquo; date.

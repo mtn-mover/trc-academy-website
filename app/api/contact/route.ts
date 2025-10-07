@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { verifyRecaptchaToken } from '@/src/lib/recaptcha';
 
 // Initialize Resend with API key (you'll need to add this to your .env file)
 // Use a placeholder key if not set to avoid build errors
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { name, email, phone, interest, message } = await request.json();
+    const { name, email, phone, interest, message, recaptchaToken } = await request.json();
 
     // Validate required fields
     if (!name || !email || !interest) {
@@ -23,6 +24,19 @@ export async function POST(request: Request) {
         { error: 'Missing required fields' },
         { status: 400 }
       );
+    }
+
+    // Verify reCAPTCHA token if provided
+    if (recaptchaToken) {
+      const recaptchaResult = await verifyRecaptchaToken(recaptchaToken, 'submit_contact_form');
+      if (!recaptchaResult.success) {
+        console.warn('reCAPTCHA verification failed:', recaptchaResult.error);
+        return NextResponse.json(
+          { error: recaptchaResult.error || 'Security verification failed. Please try again.' },
+          { status: 403 }
+        );
+      }
+      console.log(`reCAPTCHA verified successfully (score: ${recaptchaResult.score})`);
     }
 
     // Email to Karen
