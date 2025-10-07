@@ -1,5 +1,48 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Karen Florence | Founder & Master Coach | TRC Training Academy',
+  description: 'Meet Karen Florence, CPC, CPRWC - Master Coach and founder of TRC Training Academy. With 20+ years of experience in transformational coaching, Psychosynthesis methodology, and career development. Discover her journey and approach to coaching.',
+  keywords: [
+    'Karen Florence',
+    'master coach',
+    'TRC Training Academy founder',
+    'Certified Professional Coach',
+    'Psychosynthesis coach',
+    'career development coach',
+    'transformational coaching expert',
+    'ICF accredited trainer',
+    'professional coach trainer',
+    'executive coaching mentor',
+  ],
+  openGraph: {
+    title: 'About Karen Florence | Founder & Master Coach | TRC Training Academy',
+    description: 'Meet Karen Florence, CPC, CPRWC - Master Coach with 20+ years transforming lives through coaching. Founder of TRC Training Academy and expert in Psychosynthesis methodology.',
+    url: 'https://trctrainingacademy.com/about',
+    siteName: 'TRC Training Academy',
+    images: [
+      {
+        url: 'https://trctrainingacademy.com/images/karen.jpg',
+        width: 400,
+        height: 500,
+        alt: 'Karen Florence - Founder of TRC Training Academy',
+      },
+    ],
+    locale: 'en_US',
+    type: 'profile',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Karen Florence | Founder & Master Coach | TRC Training Academy',
+    description: 'Meet Karen Florence, CPC, CPRWC - Master Coach with 20+ years transforming lives through coaching and Psychosynthesis methodology.',
+    images: ['https://trctrainingacademy.com/images/karen.jpg'],
+  },
+  alternates: {
+    canonical: 'https://trctrainingacademy.com/about',
+  },
+};
 
 export default function AboutPage() {
   return (

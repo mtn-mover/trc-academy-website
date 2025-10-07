@@ -13,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://trctrainingacademy.com'),
   title: 'TRC Training Academy | Transform Your Soul\'s Work',
   description: 'Professional coach certification programs for mature professionals seeking transformation. Discover your calling and create meaningful impact in the second half of life.',
   keywords: 'coach certification, life coaching training, professional development, soul work, career transformation, mature professionals',
@@ -52,12 +53,6 @@ export const metadata: Metadata = {
     description: 'Transform your wisdom into impact. Professional coaching certification for 45+ professionals.',
     images: ['/images/karen.jpg'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: '#1e40af',
   icons: {
     icon: [
       { url: '/images/favicon.ico', type: 'image/x-icon' },
@@ -73,13 +68,65 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#1e40af',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'TRC Training Academy',
+    alternateName: 'Tabula Rasa Coaching Training Academy',
+    url: 'https://trctrainingacademy.com',
+    logo: 'https://trctrainingacademy.com/images/logo.png',
+    description: 'Professional coach certification programs specializing in transformational coaching, career coaching, and executive coaching with Psychosynthesis methodology.',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '641 Fairview Rd.',
+      addressLocality: 'Glenmoore',
+      addressRegion: 'PA',
+      postalCode: '19343',
+      addressCountry: 'US',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-610-228-4145',
+      email: 'karen@tabularasacoaching.com',
+      contactType: 'Customer Service',
+      availableLanguage: 'English',
+    },
+    founder: {
+      '@type': 'Person',
+      name: 'Karen Florence',
+      jobTitle: 'Master Coach & Founder',
+      description: 'Certified Professional Coach (CPC) and Certified Professional Resume Writer & Coach (CPRWC) with over 20 years of experience in transformational coaching.',
+    },
+    sameAs: [
+      'https://www.linkedin.com/company/trc-training-academy',
+      'https://trctrainingacademy.com',
+    ],
+    areaServed: {
+      '@type': 'Place',
+      name: 'United States',
+    },
+  };
+
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
         <AuthSessionProvider>
           <Header />

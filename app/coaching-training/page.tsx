@@ -1,10 +1,135 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import TestimonialsCarousel from '@/src/components/TestimonialsCarousel';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Professional Coach Certification Program | TRC Training Academy',
+  description: 'Earn your ICF-accredited professional coach certification with TRC Training Academy. Master transformational coaching, Psychosynthesis methodology, career & executive coaching. 105+ hours of comprehensive training. November 2025 enrollment open.',
+  keywords: [
+    'professional coach certification',
+    'ICF accredited coach training',
+    'career coaching certification',
+    'executive coaching training',
+    'Psychosynthesis coaching',
+    'transformational coach training',
+    'coach certification program',
+    'become a certified coach',
+    'coaching certification Pennsylvania',
+    'professional coaching program',
+  ],
+  openGraph: {
+    title: 'Professional Coach Certification Program | TRC Training Academy',
+    description: 'Master transformational coaching with ICF-accredited certification. 105+ hours of comprehensive training in career & executive coaching, Psychosynthesis methodology. November 2025 enrollment open.',
+    url: 'https://trctrainingacademy.com/coaching-training',
+    siteName: 'TRC Training Academy',
+    images: [
+      {
+        url: 'https://trctrainingacademy.com/images/Image_Header_Coaching.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'TRC Training Academy Professional Coach Certification Program',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Professional Coach Certification Program | TRC Training Academy',
+    description: 'Master transformational coaching with ICF-accredited certification. 105+ hours training in career & executive coaching, Psychosynthesis methodology.',
+    images: ['https://trctrainingacademy.com/images/Image_Header_Coaching.jpg'],
+  },
+  alternates: {
+    canonical: 'https://trctrainingacademy.com/coaching-training',
+  },
+};
 
 export default function CoachingTrainingPage() {
+  const courseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Professional Coach Certification Program',
+    description: 'Comprehensive ICF-accredited professional coach certification program featuring 105+ hours of training in transformational coaching, Psychosynthesis methodology, career coaching, and executive coaching.',
+    provider: {
+      '@type': 'EducationalOrganization',
+      name: 'TRC Training Academy',
+      url: 'https://trctrainingacademy.com',
+    },
+    courseCode: 'TRC-CPC-2025',
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'blended',
+      startDate: '2025-11-08',
+      endDate: '2026-06-06',
+      courseSchedule: {
+        '@type': 'Schedule',
+        repeatFrequency: 'Monthly',
+        byDay: ['Wednesday', 'Saturday', 'Sunday'],
+        duration: 'P8M',
+      },
+      location: {
+        '@type': 'VirtualLocation',
+        url: 'https://trctrainingacademy.com',
+      },
+      instructor: {
+        '@type': 'Person',
+        name: 'Karen Florence',
+        description: 'Certified Professional Coach (CPC) and Certified Professional Resume Writer & Coach (CPRWC)',
+      },
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '6999',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      validFrom: '2025-01-01',
+      url: 'https://trctrainingacademy.com/contact',
+    },
+    educationalCredentialAwarded: 'Certified Professional Coach (CPC)',
+    timeRequired: 'P8M',
+    teaches: [
+      'Transformational Coaching',
+      'Psychosynthesis Methodology',
+      'Career Coaching',
+      'Executive Coaching',
+      'Outplacement Services',
+      'Building a Coaching Practice',
+    ],
+    numberOfCredits: '105',
+    inLanguage: 'en',
+    isAccessibleForFree: false,
+    syllabusSections: [
+      {
+        '@type': 'Syllabus',
+        name: 'Core Coaching Skills',
+        description: '105+ hours of professional coaching training with comprehensive curriculum',
+      },
+      {
+        '@type': 'Syllabus',
+        name: 'Psychosynthesis Methodology',
+        description: 'Deep training in Psychosynthesis approach to coaching',
+      },
+      {
+        '@type': 'Syllabus',
+        name: 'Career & Executive Coaching',
+        description: 'Specialized training in career coaching and executive leadership coaching',
+      },
+      {
+        '@type': 'Syllabus',
+        name: 'Business Building',
+        description: 'Essential skills for building and growing your coaching practice',
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
+      <div className="min-h-screen bg-white">
       {/* Hero Section with Header Coaching Background */}
       <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -656,6 +781,7 @@ export default function CoachingTrainingPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
