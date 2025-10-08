@@ -304,9 +304,10 @@ export default function HomePage() {
                     <div className="text-center w-full md:w-auto">
                       <Link
                         href="/contact"
-                        className="flex items-center justify-center w-full max-w-xs mx-auto md:inline-block md:w-auto md:max-w-none px-8 py-6 md:py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg leading-relaxed md:leading-normal min-h-[4rem] md:min-h-0"
+                        className="inline-block px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
                       >
-                        Schedule a Free Consultation
+                        <span className="md:hidden">Free Consultation</span>
+                        <span className="hidden md:inline">Schedule a Free Consultation</span>
                       </Link>
                       <p className="text-sm text-trc-gold-700 font-semibold mt-4 sm:mt-6 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
