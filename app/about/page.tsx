@@ -213,60 +213,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The Tabula Rasa Methodology */}
-      <section className="py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-trc-gold-100 text-trc-gold-800 rounded-full text-sm font-semibold mb-6">
-              Our Unique Approach
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
-              The Tabula Rasa Methodology
-            </h2>
-            <p className="text-xl text-trc-gray-600 max-w-3xl mx-auto">
-              A revolutionary approach that honors the blank slate within each of us
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Transform */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-trc-blue-500 to-trc-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-3xl font-bold text-white">T</span>
-              </div>
-              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Transform</h3>
-              <p className="text-lg text-trc-gray-700 leading-relaxed">
-                Begin with your own transformation. Dive deep into your inner landscape,
-                releasing old patterns and discovering your authentic self.
-              </p>
-            </div>
-
-            {/* Realize */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-trc-gold-500 to-trc-gold-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-3xl font-bold text-white">R</span>
-              </div>
-              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Realize</h3>
-              <p className="text-lg text-trc-gray-700 leading-relaxed">
-                Realize your unique gifts and calling. Understand how your life experiences
-                have prepared you for this profound work.
-              </p>
-            </div>
-
-            {/* Connect */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-3xl font-bold text-white">C</span>
-              </div>
-              <h3 className="text-2xl font-bold text-trc-gray-900 mb-4">Connect</h3>
-              <p className="text-lg text-trc-gray-700 leading-relaxed">
-                Connect authentically with those you serve. Build a coaching practice
-                rooted in genuine presence and transformational impact.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action with Summit Image */}
       <section className="relative py-32">
