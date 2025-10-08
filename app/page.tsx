@@ -306,6 +306,7 @@ export default function HomePage() {
                         href="/contact"
                         className="inline-block px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
                       >
+                        {/* Mobile: Short text, Desktop: Full text */}
                         <span className="block md:hidden">Free Consultation</span>
                         <span className="hidden md:block">Schedule a Free Consultation</span>
                       </Link>
