@@ -669,7 +669,7 @@ export default function CoachingTrainingPage() {
                     <div className="text-center w-full md:w-auto">
                       <Link
                         href="/contact"
-                        className="inline-block w-full md:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-base sm:text-lg whitespace-nowrap"
+                        className="inline-block w-full md:w-auto px-6 py-4 sm:px-8 sm:py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg leading-tight md:whitespace-nowrap"
                       >
                         Schedule a Free Consultation
                       </Link>
