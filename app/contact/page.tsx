@@ -98,15 +98,21 @@ export default function ContactPage() {
       )}
 
       <div className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-trc-warm-50 to-white py-12 lg:py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
+        {/* Hero Section with Gradient */}
+        <section className="relative bg-gradient-to-br from-trc-blue-600 via-trc-blue-700 to-trc-blue-800 py-20 lg:py-24 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
                 Begin Your Journey
               </h1>
-              <p className="text-lg lg:text-xl text-trc-gray-700 leading-relaxed">
-                Take the first step toward discovering your soul&apos;s work.
+              <p className="text-xl lg:text-2xl text-trc-blue-100 leading-relaxed">
+                Take the first step toward discovering your soul&apos;s work.<br />
                 We&apos;re here to guide you on your transformation path.
               </p>
             </div>

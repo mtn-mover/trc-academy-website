@@ -301,14 +301,14 @@ export default function HomePage() {
                       <p className="text-sm text-trc-blue-600 mt-1 font-medium">✓ Payment plans available</p>
                       <p className="text-sm text-trc-blue-600 mt-1 font-medium">✓ One Full and one 50% scholarship available</p>
                     </div>
-                    <div className="text-center">
+                    <div className="text-center w-full md:w-auto">
                       <Link
                         href="/contact"
-                        className="inline-block px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                        className="inline-block w-full md:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-base sm:text-lg whitespace-nowrap"
                       >
                         Schedule a Free Consultation
                       </Link>
-                      <p className="text-sm text-trc-gold-700 font-semibold mt-8 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
+                      <p className="text-sm text-trc-gold-700 font-semibold mt-4 sm:mt-6 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
                     </div>
                   </div>
                 </div>
