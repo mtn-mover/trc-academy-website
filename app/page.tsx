@@ -306,7 +306,7 @@ export default function HomePage() {
                         href="/contact"
                         className="inline-block px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
                       >
-                        <span className="md:hidden">Free Consultation</span>
+                        <span className="md:hidden">Contact Us</span>
                         <span className="max-md:hidden">Schedule a Free Consultation</span>
                       </Link>
                       <p className="text-sm text-trc-gold-700 font-semibold mt-4 sm:mt-6 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>

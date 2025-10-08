@@ -326,6 +326,10 @@ span, a {
   .md\:inline {
     display: inline !important;
   }
+
+  .md\:flex {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 767px) {
