@@ -304,7 +304,7 @@ export default function HomePage() {
                     <div className="text-center w-full md:w-auto">
                       <Link
                         href="/contact"
-                        className="block w-full max-w-xs mx-auto md:inline-block md:w-auto md:max-w-none px-8 py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg leading-snug"
+                        className="block w-full max-w-xs mx-auto md:inline-block md:w-auto md:max-w-none px-8 py-5 md:py-4 bg-gradient-to-r from-trc-blue-600 to-trc-blue-700 text-white font-bold rounded-lg hover:from-trc-blue-700 hover:to-trc-blue-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg leading-relaxed md:leading-normal"
                       >
                         Schedule a Free Consultation
                       </Link>
