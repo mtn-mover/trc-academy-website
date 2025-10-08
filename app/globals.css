@@ -304,6 +304,36 @@ span, a {
   white-space: normal !important;
 }
 
+/* Allow Tailwind utility classes to override */
+.hidden {
+  display: none !important;
+}
+
+.block {
+  display: block !important;
+}
+
+/* Responsive display utilities */
+@media (min-width: 768px) {
+  .md\:hidden {
+    display: none !important;
+  }
+
+  .md\:block {
+    display: block !important;
+  }
+
+  .md\:inline {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .max-md\:hidden {
+    display: none !important;
+  }
+}
+
 /* Ensure containers work properly */
 section, main, div {
   width: 100%;
