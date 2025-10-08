@@ -332,8 +332,28 @@ span, a {
   }
 }
 
+@media (min-width: 1024px) {
+  .lg\:hidden {
+    display: none !important;
+  }
+
+  .lg\:block {
+    display: block !important;
+  }
+
+  .lg\:flex {
+    display: flex !important;
+  }
+}
+
 @media (max-width: 767px) {
   .max-md\:hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .max-lg\:hidden {
     display: none !important;
   }
 }
