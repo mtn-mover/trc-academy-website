@@ -274,6 +274,33 @@ export default function CoachingTrainingPage() {
         </div>
       </section>
 
+      {/* Training Preview Video Section */}
+      <section className="py-20 lg:py-24 bg-gradient-to-br from-trc-blue-50 via-white to-trc-gold-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-trc-gray-900 mb-6">
+              See Our Training in Action
+            </h2>
+            <p className="text-xl text-trc-gray-600 max-w-3xl mx-auto">
+              Watch this exclusive preview to get an inside look at our transformational coaching program
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="aspect-video bg-black">
+              <video
+                controls
+                preload="metadata"
+                className="w-full h-full"
+              >
+                <source src="/video/Coaching_Clip.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Psychosynthesis Methodology Section */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
