@@ -92,13 +92,6 @@ export default function AboutPage() {
             </div>
 
             <div className="order-1 lg:order-2">
-              <div className="inline-block px-4 py-2 bg-trc-gold-100 text-trc-gold-800 rounded-full text-sm font-semibold mb-6">
-                20+ Years of Transformational Impact
-              </div>
-
-              <h2 className="text-4xl lg:text-5xl font-bold text-trc-gray-900 mb-8 leading-tight">
-                From Crisis to Calling
-              </h2>
 
               <div className="space-y-6 text-lg text-trc-gray-700 leading-relaxed">
                 <p className="text-lg">
