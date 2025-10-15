@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'TRC Training Academy | Your Soul\'s Work Awaits',
-    description: 'Transform your wisdom into impact. Join our professional coaching programs designed for professionals 45+.',
+    description: 'Transform your wisdom into impact. Join our professional coaching programs designed for experienced professionals.',
     url: 'https://trctrainingacademy.com',
     type: 'website',
     locale: 'en_US',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'TRC Training Academy',
-    description: 'Transform your wisdom into impact. Professional coaching certification for 45+ professionals.',
+    description: 'Transform your wisdom into impact. Professional coaching certification for experienced professionals.',
     images: ['https://trctrainingacademy.com/images/Remote_Coaching_1.jpg'],
   },
   icons: {
