@@ -195,7 +195,11 @@ export async function GET(request: NextRequest) {
     const isVisible = searchParams.get('isVisible');
 
     // Build query filters
-    const where: any = {};
+    const where: {
+      uploadType?: string;
+      relatedId?: string;
+      isVisible?: boolean;
+    } = {};
 
     if (uploadType) {
       where.uploadType = uploadType;
