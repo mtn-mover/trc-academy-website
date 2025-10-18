@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
 
     // If uploading to a session, verify teacher has access to that class
     if (relatedId && uploadType.includes('SESSION_')) {
-      const session = await prisma.session.findUnique({
+      const trainingSession = await prisma.session.findUnique({
         where: { id: relatedId },
         include: {
           class: {
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
         },
       });
 
-      if (!session || (session.class.teachers.length === 0 && !user.isAdmin)) {
+      if (!trainingSession || (trainingSession.class.teachers.length === 0 && !user.isAdmin)) {
         return NextResponse.json(
           { error: 'You do not have permission to upload to this session' },
           { status: 403 }
