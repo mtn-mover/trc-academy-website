@@ -80,7 +80,7 @@ export async function GET(
     if (upload.relatedId && user.isStudent && !user.isTeacher && !user.isAdmin) {
       // Check if file is related to a session
       if (upload.uploadType.includes('SESSION_')) {
-        const session = await prisma.session.findUnique({
+        const trainingSession = await prisma.session.findUnique({
           where: { id: upload.relatedId },
           include: {
             class: {
@@ -93,7 +93,7 @@ export async function GET(
           },
         });
 
-        if (!session || session.class.members.length === 0) {
+        if (!trainingSession || trainingSession.class.members.length === 0) {
           return NextResponse.json(
             { error: 'You are not enrolled in the class for this file' },
             { status: 403 }
@@ -101,7 +101,7 @@ export async function GET(
         }
 
         // Check if materials are visible
-        if (!session.materialsVisible) {
+        if (!trainingSession.materialsVisible) {
           return NextResponse.json(
             { error: 'Materials for this session are not yet available' },
             { status: 403 }
