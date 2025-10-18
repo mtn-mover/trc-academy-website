@@ -44,7 +44,7 @@ export async function uploadFile(
     return {
       url: blob.url,
       pathname: blob.pathname,
-      size: blob.size,
+      size: file.size,
     };
   } catch (error) {
     console.error('File upload error:', error);
