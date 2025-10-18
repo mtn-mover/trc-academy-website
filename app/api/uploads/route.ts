@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/src/lib/auth';
 import { prisma } from '@/src/lib/prisma';
+import { UploadType } from '@prisma/client';
 import {
   uploadFile,
   validateFileType,
@@ -196,13 +197,13 @@ export async function GET(request: NextRequest) {
 
     // Build query filters
     const where: {
-      uploadType?: string;
+      uploadType?: UploadType;
       relatedId?: string;
       isVisible?: boolean;
     } = {};
 
     if (uploadType) {
-      where.uploadType = uploadType;
+      where.uploadType = uploadType as UploadType;
     }
 
     if (relatedId) {
