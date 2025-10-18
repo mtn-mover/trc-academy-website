@@ -13,7 +13,7 @@ import { deleteFile } from '@/lib/storage';
 // GET /api/uploads/[id] - Download file
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -25,9 +25,11 @@ export async function GET(
       );
     }
 
+    const { id } = await params;
+
     // Find the upload
     const upload = await prisma.upload.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         uploadedByUser: {
           select: {
@@ -145,7 +147,7 @@ export async function GET(
 // DELETE /api/uploads/[id] - Delete file
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -157,9 +159,11 @@ export async function DELETE(
       );
     }
 
+    const { id } = await params;
+
     // Find the upload
     const upload = await prisma.upload.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!upload) {
@@ -205,7 +209,7 @@ export async function DELETE(
 
     // Delete from database (this will cascade delete access logs)
     await prisma.upload.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     // Log the deletion
@@ -240,7 +244,7 @@ export async function DELETE(
 // PATCH /api/uploads/[id] - Update file visibility or metadata
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -252,9 +256,11 @@ export async function PATCH(
       );
     }
 
+    const { id } = await params;
+
     // Find the upload
     const upload = await prisma.upload.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!upload) {
@@ -295,7 +301,7 @@ export async function PATCH(
 
     // Update upload
     const updatedUpload = await prisma.upload.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         isVisible: isVisible !== undefined ? isVisible : upload.isVisible,
       },
