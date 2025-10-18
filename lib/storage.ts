@@ -13,7 +13,7 @@ export interface UploadResult {
 
 export interface UploadOptions {
   folder?: string;
-  access?: 'public' | 'private';
+  access?: 'public';
   addRandomSuffix?: boolean;
 }
 
