@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
         fileSize: uploadResult.size,
         mimeType: file.type,
         uploadedBy: session.user.id,
-        uploadType,
+        uploadType: uploadType as 'SESSION_DOCUMENT' | 'SESSION_RECORDING' | 'PEER_RECORDING' | 'GENERAL',
         relatedId,
         isVisible,
       },
