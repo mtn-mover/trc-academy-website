@@ -5,54 +5,40 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 
-interface TeacherStats {
-  totalClasses: number;
-  totalStudents: number;
-  upcomingSessions: number;
-  totalSessions: number;
-  pendingCoaching: number;
-}
-
 interface ClassData {
   id: string;
   name: string;
   description: string | null;
   startDate: string;
   endDate: string;
+  timezone: string;
+  isActive: boolean;
+  isPrimary: boolean;
   memberCount: number;
   sessionCount: number;
 }
 
 export default function TeacherDashboard() {
   const { } = useSession();
-  const [stats, setStats] = useState<TeacherStats | null>(null);
   const [classes, setClasses] = useState<ClassData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchDashboardData();
+    fetchClasses();
   }, []);
 
-  const fetchDashboardData = async () => {
+  const fetchClasses = async () => {
     try {
-      const [statsResponse, classesResponse] = await Promise.all([
-        fetch('/api/teacher/stats'),
-        fetch('/api/teacher/classes')
-      ]);
+      const response = await fetch('/api/teacher/classes');
 
-      if (!statsResponse.ok || !classesResponse.ok) {
-        throw new Error('Failed to fetch dashboard data');
+      if (!response.ok) {
+        throw new Error('Failed to fetch classes');
       }
 
-      const [statsData, classesData] = await Promise.all([
-        statsResponse.json(),
-        classesResponse.json()
-      ]);
-
-      setStats(statsData);
-      setClasses(classesData.classes || []);
+      const data = await response.json();
+      setClasses(data.classes || []);
     } catch (error) {
-      console.error('Error fetching dashboard data:', error);
+      console.error('Error fetching classes:', error);
     } finally {
       setLoading(false);
     }
@@ -60,16 +46,32 @@ export default function TeacherDashboard() {
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
       month: 'short',
       day: 'numeric',
-      year: 'numeric'
     });
   };
+
+  const getClassStatus = (startDate: string, endDate: string, isActive: boolean) => {
+    if (!isActive) return { text: 'Inactive', color: 'bg-gray-100 text-gray-800', isCompleted: true };
+
+    const now = new Date();
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    if (now < start) return { text: 'Upcoming', color: 'bg-yellow-100 text-yellow-800', isCompleted: false };
+    if (now > end) return { text: 'Completed', color: 'bg-gray-100 text-gray-800', isCompleted: true };
+    return { text: 'Active', color: 'bg-green-100 text-green-800', isCompleted: false };
+  };
+
+  // Separate active and completed classes
+  const activeClasses = classes.filter(c => !getClassStatus(c.startDate, c.endDate, c.isActive).isCompleted);
+  const completedClasses = classes.filter(c => getClassStatus(c.startDate, c.endDate, c.isActive).isCompleted);
 
   if (loading) {
     return (
       <DashboardLayout>
-          <div className="flex justify-center items-center h-64">
+        <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600"></div>
         </div>
       </DashboardLayout>
@@ -79,205 +81,234 @@ export default function TeacherDashboard() {
   return (
     <DashboardLayout>
       <div className="p-6">
-        {/* Welcome Section */}
+        {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Teacher Dashboard</h1>
+          <h1 className="text-3xl font-bold text-gray-900">My Classes</h1>
+          <p className="text-gray-600 mt-2">Manage your classes, sessions, and students</p>
         </div>
 
-        {/* Statistics Boxes - Orange Theme */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Link href="/teacher/classes" className="block">
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center">
-                <div className="p-3 bg-orange-100 rounded-full">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm text-gray-600">My Classes</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats?.totalClasses || 0}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/teacher/students" className="block">
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center">
-                <div className="p-3 bg-orange-100 rounded-full">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm text-gray-600">Total Students</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats?.totalStudents || 0}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/teacher/sessions" className="block">
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center">
-                <div className="p-3 bg-orange-100 rounded-full">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm text-gray-600">Upcoming Sessions</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats?.upcomingSessions || 0}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/teacher/peer-coaching" className="block">
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center">
-                <div className="p-3 bg-orange-100 rounded-full">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm text-gray-600">Peer Coaching</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats?.pendingCoaching || 0}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {classes.length > 0 ? (
-              <Link
-                href={`/teacher/classes/${classes[0].id}/sessions/new`}
-                className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors"
-              >
-                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                Create New Session
-              </Link>
-            ) : (
-              <div className="bg-gray-200 text-gray-500 px-4 py-3 rounded-lg text-center cursor-not-allowed">
-                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                Create New Session
-              </div>
-            )}
-
-            {classes.length > 0 ? (
-              <Link
-                href={`/teacher/classes/${classes[0].id}/sessions`}
-                className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors"
-              >
-                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                </svg>
-                Manage Sessions & Materials
-              </Link>
-            ) : (
-              <div className="bg-gray-200 text-gray-500 px-4 py-3 rounded-lg text-center cursor-not-allowed">
-                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                </svg>
-                Manage Sessions & Materials
-              </div>
-            )}
-
-            <Link
-              href="/teacher/classes"
-              className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors"
-            >
-              <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              View All Classes
-            </Link>
-          </div>
-          {classes.length === 0 && (
-            <p className="text-sm text-gray-500 mt-3 text-center">
-              You need to be assigned to a class before you can create sessions
-            </p>
-          )}
-        </div>
-
-        {/* My Classes */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-bold text-gray-900">My Classes</h2>
-              <Link href="/teacher/classes" className="text-orange-600 hover:text-orange-700">
-                View All →
-              </Link>
-            </div>
-          </div>
-          <div className="p-6">
-            {classes.length > 0 ? (
-              <div className="space-y-4">
-                {classes.slice(0, 3).map((classItem) => (
-                  <div key={classItem.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <Link href={`/teacher/classes/${classItem.id}`} className="text-lg font-semibold text-gray-900 hover:text-orange-600">
+        {/* Active Classes */}
+        {activeClasses.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Active Classes</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {activeClasses.map((classItem) => {
+                const status = getClassStatus(classItem.startDate, classItem.endDate, classItem.isActive);
+                return (
+                  <div key={classItem.id} className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow">
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900">
                           {classItem.name}
-                        </Link>
-                        <p className="text-sm text-gray-600 mt-1">{classItem.description}</p>
-                        <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                          <span className="flex items-center">
-                            <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            {classItem.memberCount} students
+                        </h3>
+                        <div className="flex flex-col items-end gap-1">
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${status.color}`}>
+                            {status.text}
                           </span>
-                          <span className="flex items-center">
-                            <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            {classItem.sessionCount} sessions
-                          </span>
-                          <span>{formatDate(classItem.startDate)} - {formatDate(classItem.endDate)}</span>
+                          {classItem.isPrimary && (
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                              Primary
+                            </span>
+                          )}
                         </div>
                       </div>
-                      <div className="flex gap-2 ml-4">
-                        <Link href={`/teacher/classes/${classItem.id}/sessions`} className="px-3 py-1 bg-orange-100 text-orange-700 rounded hover:bg-orange-200 text-sm">
+
+                      {classItem.description && (
+                        <p className="text-gray-600 mb-4 line-clamp-2">
+                          {classItem.description}
+                        </p>
+                      )}
+
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          {formatDate(classItem.startDate)} - {formatDate(classItem.endDate)}
+                        </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                          </svg>
+                          {classItem.memberCount} students enrolled
+                        </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                          {classItem.sessionCount} sessions
+                        </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {classItem.timezone}
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2">
+                        <Link
+                          href={`/teacher/classes/${classItem.id}`}
+                          className="flex-1 text-center px-3 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition-colors text-sm"
+                        >
+                          View Details
+                        </Link>
+                        <Link
+                          href={`/teacher/classes/${classItem.id}/sessions`}
+                          className="flex-1 text-center px-3 py-2 border border-orange-300 text-orange-700 rounded-md hover:bg-orange-50 transition-colors text-sm"
+                        >
                           Sessions
                         </Link>
-                        <Link href={`/teacher/classes/${classItem.id}/students`} className="px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm">
+                        <Link
+                          href={`/teacher/classes/${classItem.id}/students`}
+                          className="flex-1 text-center px-3 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors text-sm"
+                        >
                           Students
                         </Link>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
-                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-                <p>No classes assigned yet</p>
-                <p className="text-sm mt-2">Classes will appear here once the admin assigns them to you</p>
-              </div>
-            )}
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Info Box */}
+        {/* Completed Classes */}
+        {completedClasses.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Completed Classes</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {completedClasses.map((classItem) => {
+                const status = getClassStatus(classItem.startDate, classItem.endDate, classItem.isActive);
+                return (
+                  <div key={classItem.id} className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow opacity-75">
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900">
+                          {classItem.name}
+                        </h3>
+                        <div className="flex flex-col items-end gap-1">
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${status.color}`}>
+                            {status.text}
+                          </span>
+                          {classItem.isPrimary && (
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                              Primary
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {classItem.description && (
+                        <p className="text-gray-600 mb-4 line-clamp-2">
+                          {classItem.description}
+                        </p>
+                      )}
+
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          {formatDate(classItem.startDate)} - {formatDate(classItem.endDate)}
+                        </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                          </svg>
+                          {classItem.memberCount} students enrolled
+                        </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                          {classItem.sessionCount} sessions
+                        </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {classItem.timezone}
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2">
+                        <Link
+                          href={`/teacher/classes/${classItem.id}`}
+                          className="flex-1 text-center px-3 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors text-sm"
+                        >
+                          View Details
+                        </Link>
+                        <Link
+                          href={`/teacher/classes/${classItem.id}/sessions`}
+                          className="flex-1 text-center px-3 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors text-sm"
+                        >
+                          Sessions
+                        </Link>
+                        <Link
+                          href={`/teacher/classes/${classItem.id}/students`}
+                          className="flex-1 text-center px-3 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors text-sm"
+                        >
+                          Students
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Empty State */}
+        {classes.length === 0 && (
+          <div className="text-center py-12 bg-white rounded-lg shadow">
+            <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No classes assigned</h3>
+            <p className="text-gray-600 mb-4">You haven&apos;t been assigned to any classes yet.</p>
+            <p className="text-sm text-gray-500">Please contact your administrator to be assigned to classes.</p>
+          </div>
+        )}
+
+        {/* Info Section */}
         <div className="mt-8 bg-orange-50 border border-orange-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-orange-900 mb-2">Teacher Workspace</h3>
-          <p className="text-orange-800">
-            As a teacher, you can manage your classes, create and schedule sessions, upload learning materials,
-            and organize peer coaching sessions for your students. Use the quick actions above to get started.
+          <h3 className="text-lg font-semibold text-orange-900 mb-2">About Your Classes</h3>
+          <p className="text-orange-800 mb-3">
+            As a teacher, you can manage sessions, upload materials, and organize peer coaching for your assigned classes.
+            You cannot create or delete classes - these actions must be performed by an administrator.
           </p>
+          <div className="grid md:grid-cols-3 gap-4 mt-4">
+            <div className="flex items-start">
+              <svg className="w-5 h-5 text-orange-600 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p className="font-semibold text-orange-900">Manage Sessions</p>
+                <p className="text-sm text-orange-700">Create and schedule class sessions</p>
+              </div>
+            </div>
+            <div className="flex items-start">
+              <svg className="w-5 h-5 text-orange-600 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p className="font-semibold text-orange-900">Upload Materials</p>
+                <p className="text-sm text-orange-700">Share documents and recordings</p>
+              </div>
+            </div>
+            <div className="flex items-start">
+              <svg className="w-5 h-5 text-orange-600 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p className="font-semibold text-orange-900">Peer Coaching</p>
+                <p className="text-sm text-orange-700">Organize student peer sessions</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </DashboardLayout>
