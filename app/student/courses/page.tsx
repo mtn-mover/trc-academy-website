@@ -1,12 +1,19 @@
 'use client';
 
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
+import Link from 'next/link';
 
 export default function StudentCoursesPage() {
   return (
     <DashboardLayout>
       <div>
         <div className="mb-8">
+          <Link
+            href="/student/dashboard"
+            className="text-trc-blue-600 hover:text-trc-blue-700 text-sm mb-4 inline-block"
+          >
+            ← Back to Dashboard
+          </Link>
           <h1 className="text-3xl font-bold text-trc-gray-900">My Courses</h1>
           <p className="text-trc-gray-600 mt-2">Access your enrolled courses and materials</p>
         </div>
