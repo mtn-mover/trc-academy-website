@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
 import DashboardLayout from '@/src/components/layouts/DashboardLayout';
 import { useStudentEnrollments, useClassSessions } from '@/src/hooks/useStudentData';
 import { getFileIcon, formatFileSize, getFileTypeLabel } from '@/src/lib/fileHelpers';

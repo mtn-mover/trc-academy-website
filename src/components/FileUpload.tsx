@@ -12,6 +12,11 @@ interface UploadResult {
   uploadType: string;
   isVisible: boolean;
   createdAt: string;
+  uploadedByUser: {
+    id: string;
+    name: string;
+    email: string;
+  };
 }
 
 export interface FileUploadProps {
