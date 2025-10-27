@@ -10,7 +10,6 @@ import {
   getUpcomingSessions,
   getRecentSessions,
 } from '@/src/hooks/useStudentData';
-import { useEffect, useState } from 'react';
 
 export default function StudentDashboard() {
   const { data: session } = useSession();

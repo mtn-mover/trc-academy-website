@@ -94,7 +94,7 @@ export default function SessionMaterialsPage({
     }
   };
 
-  const handleUploadSuccess = (upload: any) => {
+  const handleUploadSuccess = (upload: Upload) => {
     setUploads((prev) => [upload, ...prev]);
   };
 

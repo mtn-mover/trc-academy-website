@@ -25,7 +25,6 @@ interface Upload {
 }
 
 export default function StudentMaterialsPage() {
-  const { data: session } = useSession();
   const { enrollments, loading: enrollmentsLoading } = useStudentEnrollments();
   const currentClass = enrollments.find((e) => e.class.isActive);
   const { sessions, loading: sessionsLoading } = useClassSessions(currentClass?.class.id || null);
@@ -146,7 +145,7 @@ export default function StudentMaterialsPage() {
               </label>
               <select
                 value={filterType}
-                onChange={(e) => setFilterType(e.target.value as any)}
+                onChange={(e) => setFilterType(e.target.value as 'ALL' | 'SESSION_DOCUMENT' | 'SESSION_RECORDING')}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500"
               >
                 <option value="ALL">All Types</option>

@@ -2,8 +2,20 @@
 
 import { useState, useRef } from 'react';
 
+interface UploadResult {
+  id: string;
+  fileName: string;
+  originalName: string;
+  fileUrl: string;
+  fileSize: number;
+  mimeType: string;
+  uploadType: string;
+  isVisible: boolean;
+  createdAt: string;
+}
+
 export interface FileUploadProps {
-  onUploadSuccess?: (upload: any) => void;
+  onUploadSuccess?: (upload: UploadResult) => void;
   onUploadError?: (error: string) => void;
   uploadType: 'SESSION_DOCUMENT' | 'SESSION_RECORDING' | 'PEER_RECORDING' | 'GENERAL';
   relatedId?: string;
