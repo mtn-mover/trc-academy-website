@@ -107,12 +107,20 @@ export default function StudentDashboard() {
                   {sessions.filter(s => s.status === 'COMPLETED').length} of {sessions.length} sessions completed
                 </p>
               </div>
-              <Link
-                href="/student/courses"
-                className="inline-block px-4 py-2 bg-trc-blue-600 text-white rounded-lg hover:bg-trc-blue-700 transition-colors"
-              >
-                View All Sessions
-              </Link>
+              <div className="flex gap-2">
+                <Link
+                  href="/student/courses"
+                  className="inline-block px-4 py-2 bg-trc-blue-600 text-white rounded-lg hover:bg-trc-blue-700 transition-colors"
+                >
+                  View All Sessions
+                </Link>
+                <Link
+                  href="/student/materials"
+                  className="inline-block px-4 py-2 bg-trc-warm-600 text-white rounded-lg hover:bg-trc-warm-700 transition-colors"
+                >
+                  Course Materials
+                </Link>
+              </div>
             </div>
 
             {/* Recent Sessions */}
@@ -161,7 +169,7 @@ export default function StudentDashboard() {
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Link
-                  href="/student/courses"
+                  href="/student/materials"
                   className="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <svg className="w-8 h-8 text-trc-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -173,7 +181,7 @@ export default function StudentDashboard() {
                   </div>
                 </Link>
                 <Link
-                  href="/student/courses"
+                  href="/student/materials"
                   className="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <svg className="w-8 h-8 text-trc-warm-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
