@@ -155,25 +155,59 @@ export default function TeacherDashboard() {
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/teacher/sessions/new" className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors">
+            {classes.length > 0 ? (
+              <Link
+                href={`/teacher/classes/${classes[0].id}/sessions/new`}
+                className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors"
+              >
+                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Create New Session
+              </Link>
+            ) : (
+              <div className="bg-gray-200 text-gray-500 px-4 py-3 rounded-lg text-center cursor-not-allowed">
+                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Create New Session
+              </div>
+            )}
+
+            {classes.length > 0 ? (
+              <Link
+                href={`/teacher/classes/${classes[0].id}/sessions`}
+                className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors"
+              >
+                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                Manage Sessions & Materials
+              </Link>
+            ) : (
+              <div className="bg-gray-200 text-gray-500 px-4 py-3 rounded-lg text-center cursor-not-allowed">
+                <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                Manage Sessions & Materials
+              </div>
+            )}
+
+            <Link
+              href="/teacher/classes"
+              className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors"
+            >
               <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
-              Create New Session
-            </Link>
-            <Link href="/teacher/materials/upload" className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors">
-              <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-              </svg>
-              Upload Materials
-            </Link>
-            <Link href="/teacher/peer-coaching/schedule" className="bg-orange-600 text-white px-4 py-3 rounded-lg text-center hover:bg-orange-700 transition-colors">
-              <svg className="w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Schedule Peer Coaching
+              View All Classes
             </Link>
           </div>
+          {classes.length === 0 && (
+            <p className="text-sm text-gray-500 mt-3 text-center">
+              You need to be assigned to a class before you can create sessions
+            </p>
+          )}
         </div>
 
         {/* My Classes */}
