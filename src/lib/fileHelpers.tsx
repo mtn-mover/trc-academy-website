@@ -3,7 +3,9 @@
  * Icons, formatting, and file type detection
  */
 
-export function getFileIcon(mimeType: string, fileName: string): JSX.Element {
+import React from 'react';
+
+export function getFileIcon(mimeType: string, fileName: string): React.ReactElement {
   const extension = fileName.split('.').pop()?.toLowerCase();
 
   // PDF
