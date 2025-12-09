@@ -32,9 +32,9 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Account is inactive. Please contact administrator.');
         }
 
-        // Check if user has any role assigned
-        if (!user.isStudent && !user.isTeacher && !user.isAdmin) {
-          throw new Error('Access denied - no permissions assigned');
+        // Check if user is admin
+        if (!user.isAdmin) {
+          throw new Error('Access denied - admin access required');
         }
 
         // Check password
@@ -44,71 +44,24 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Invalid email or password');
         }
 
-        // Check access expiry for students (simple date comparison)
-        if (user.isStudent && user.accessExpiry) {
-          const now = new Date();
-          if (user.accessExpiry < now) {
-            throw new Error('Access expired. Please contact administrator to renew.');
-          }
-        }
-
         // Return user data for session
         return {
           id: user.id,
           email: user.email,
           name: user.name,
-          timezone: user.timezone,
-          isStudent: user.isStudent,
-          isTeacher: user.isTeacher,
           isAdmin: user.isAdmin,
-          accessExpiry: user.accessExpiry?.toISOString() || null,
         };
       }
     })
   ],
   callbacks: {
-    async jwt({ token, user, trigger, session }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.email = user.email;
         token.name = user.name;
-        token.timezone = user.timezone;
-        token.isStudent = user.isStudent;
-        token.isTeacher = user.isTeacher;
         token.isAdmin = user.isAdmin;
-        token.accessExpiry = user.accessExpiry;
-
-        // Set initial current role based on hierarchy
-        if (user.isAdmin) {
-          token.currentRole = 'admin';
-        } else if (user.isTeacher) {
-          token.currentRole = 'teacher';
-        } else if (user.isStudent) {
-          token.currentRole = 'student';
-        }
       }
-
-      // Handle session updates (e.g., role switching or refresh)
-      if (trigger === 'update') {
-        if (session?.currentRole) {
-          token.currentRole = session.currentRole;
-        }
-        // If refreshing session, fetch updated user data
-        if (session?.refresh && token.id) {
-          const updatedUser = await prisma.user.findUnique({
-            where: { id: token.id as string }
-          });
-          if (updatedUser) {
-            token.isStudent = updatedUser.isStudent;
-            token.isTeacher = updatedUser.isTeacher;
-            token.isAdmin = updatedUser.isAdmin;
-            token.name = updatedUser.name;
-            token.timezone = updatedUser.timezone;
-            token.accessExpiry = updatedUser.accessExpiry?.toISOString() || null;
-          }
-        }
-      }
-
       return token;
     },
     async session({ session, token }) {
@@ -116,21 +69,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id as string;
         session.user.email = token.email as string;
         session.user.name = token.name as string;
-        session.user.timezone = token.timezone as string;
-        session.user.isStudent = token.isStudent as boolean;
-        session.user.isTeacher = token.isTeacher as boolean;
         session.user.isAdmin = token.isAdmin as boolean;
-        session.user.accessExpiry = token.accessExpiry as string | null;
-
-        // Add a roles array for easier checking
-        const roles = [];
-        if (token.isStudent) roles.push('STUDENT');
-        if (token.isTeacher) roles.push('TEACHER');
-        if (token.isAdmin) roles.push('ADMIN');
-        session.user.roles = roles;
-
-        // Include current role
-        session.user.currentRole = token.currentRole as 'student' | 'teacher' | 'admin' | undefined;
       }
       return session;
     },
@@ -141,6 +80,6 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
-    maxAge: 7 * 24 * 60 * 60, // 7 days for all users
+    maxAge: 7 * 24 * 60 * 60, // 7 days
   },
 };

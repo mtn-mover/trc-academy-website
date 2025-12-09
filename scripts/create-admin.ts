@@ -53,7 +53,6 @@ async function createAdmin() {
         password: hashedPassword,
         isAdmin: true,
         isActive: true,
-        timezone: 'America/New_York' // Adjust as needed
       }
     });
 

@@ -7,13 +7,7 @@ declare module "next-auth" {
       id: string
       email: string
       name: string
-      timezone: string
-      isStudent: boolean
-      isTeacher: boolean
       isAdmin: boolean
-      accessExpiry: string | null
-      roles: string[]
-      currentRole?: 'student' | 'teacher' | 'admin'
     }
   }
 
@@ -21,12 +15,7 @@ declare module "next-auth" {
     id: string
     email: string
     name: string
-    timezone: string
-    isStudent: boolean
-    isTeacher: boolean
     isAdmin: boolean
-    accessExpiry: string | null
-    currentRole?: 'student' | 'teacher' | 'admin'
   }
 }
 
@@ -35,11 +24,6 @@ declare module "next-auth/jwt" {
     id: string
     email: string
     name: string
-    timezone: string
-    isStudent: boolean
-    isTeacher: boolean
     isAdmin: boolean
-    accessExpiry: string | null
-    currentRole?: 'student' | 'teacher' | 'admin'
   }
 }
