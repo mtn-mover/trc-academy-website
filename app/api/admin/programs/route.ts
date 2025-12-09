@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { title, teacherName, description, startDate, endDate, price, paymentConditions, isActive } = body;
+    const { title, teacherName, description, startDate, endDate, price, paymentConditions, scheduleInfo, isActive } = body;
 
     // Validation
     if (!title || !teacherName || !startDate || !endDate) {
@@ -67,6 +67,7 @@ export async function POST(request: NextRequest) {
         endDate: new Date(endDate),
         price: price ? parseFloat(price) : null,
         paymentConditions: paymentConditions || null,
+        scheduleInfo: scheduleInfo || null,
         isActive: isActive ?? true,
       },
     });

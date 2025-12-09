@@ -20,6 +20,7 @@ export default function EditProgramPage() {
     endDate: '',
     price: '',
     paymentConditions: '',
+    scheduleInfo: '',
     isActive: true,
   });
   const [loading, setLoading] = useState(true);
@@ -53,6 +54,7 @@ export default function EditProgramPage() {
           endDate: program.endDate.split('T')[0],
           price: program.price || '',
           paymentConditions: program.paymentConditions || '',
+          scheduleInfo: program.scheduleInfo || '',
           isActive: program.isActive,
         });
       } else {
@@ -206,6 +208,21 @@ export default function EditProgramPage() {
                     onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Schedule Details
+                  </label>
+                  <textarea
+                    value={formData.scheduleInfo}
+                    onChange={(e) => setFormData({ ...formData, scheduleInfo: e.target.value })}
+                    rows={6}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="e.g., Orientation: Sat, Nov 1st, 2025&#10;Program Start: Nov 8th/9th, 2025&#10;Graduation: Sat, Jun 6th, 2026&#10;Monthly schedule: 2nd weekend + 2 Wed evenings&#10;Wed evenings: 3 hours&#10;Sat: 6 hours | Sun: 4 hours"
+                  />
+                  <p className="mt-1 text-sm text-gray-500">
+                    Enter each schedule item on a new line. This will be displayed on the programs page.
+                  </p>
                 </div>
               </div>
             </div>

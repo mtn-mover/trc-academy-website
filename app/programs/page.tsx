@@ -221,9 +221,31 @@ export default async function ProgramsPage() {
 
                     {/* Payment Conditions */}
                     {program.paymentConditions && (
-                      <p className="text-sm text-trc-gray-500 mb-6 bg-gray-50 p-3 rounded-lg">
+                      <p className="text-sm text-trc-gray-500 mb-4 bg-gray-50 p-3 rounded-lg">
                         {program.paymentConditions}
                       </p>
+                    )}
+
+                    {/* Schedule Details */}
+                    {program.scheduleInfo && (
+                      <div className="mb-6 bg-orange-50 p-4 rounded-lg">
+                        <div className="flex items-center mb-3">
+                          <svg className="w-5 h-5 text-orange-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          <h4 className="font-semibold text-trc-gray-900">Schedule & Dates</h4>
+                        </div>
+                        <ul className="space-y-1 text-sm text-trc-gray-700">
+                          {program.scheduleInfo.split('\n').map((line, index) => (
+                            <li key={index} className="flex items-start">
+                              <svg className="w-4 h-4 text-trc-gold-600 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span>{line}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
 
                     {/* Apply Button */}
