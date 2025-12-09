@@ -29,6 +29,7 @@ model Program {
   endDate           DateTime
   price             Decimal? @db.Decimal(10, 2)
   paymentConditions String?  @db.Text
+  scheduleInfo      String?  @db.Text // Schedule details (orientation, monthly schedule, etc.)
   isActive          Boolean  @default(true)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt

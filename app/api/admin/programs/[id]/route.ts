@@ -54,7 +54,7 @@ export async function PUT(
 
     const { id } = await params;
     const body = await request.json();
-    const { title, teacherName, description, startDate, endDate, price, paymentConditions, isActive } = body;
+    const { title, teacherName, description, startDate, endDate, price, paymentConditions, scheduleInfo, isActive } = body;
 
     // Check if program exists
     const existingProgram = await prisma.program.findUnique({
@@ -90,6 +90,7 @@ export async function PUT(
         endDate: new Date(endDate),
         price: price ? parseFloat(price) : null,
         paymentConditions: paymentConditions || null,
+        scheduleInfo: scheduleInfo || null,
         isActive: isActive ?? true,
       },
     });
