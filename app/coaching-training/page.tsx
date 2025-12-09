@@ -530,184 +530,21 @@ export default function CoachingTrainingPage() {
         </div>
       </section>
 
-      {/* Program Details Card */}
+      {/* Call to Action - View Programs */}
       <section className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white border border-trc-gold-200 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="bg-gradient-to-r from-trc-gold-600 to-trc-gold-700 text-white p-12">
-                <div className="text-center">
-                  <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-                    Professional Coach Certification Program
-                  </h2>
-                  <p className="text-xl lg:text-2xl text-white opacity-95">
-                    Transform Your Wisdom • November 2025 – June 2026
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-8 lg:p-12">
-                {/* What's Included */}
-                <div className="mb-12">
-                  <h3 className="text-3xl font-bold text-trc-gray-900 mb-8 text-center">What&apos;s Included in Your Journey</h3>
-                  <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Core Program - First Column */}
-                    <div className="bg-gray-50 rounded-xl p-6">
-                      <div className="flex items-center mb-4">
-                        <svg className="w-8 h-8 text-trc-gold-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                        <h4 className="text-xl font-bold text-trc-gray-900">Core Curriculum</h4>
-                      </div>
-                      <ul className="space-y-4">
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">105+ coaching class and training hours</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Comprehensive coaching curriculum</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Psychosynthesis methodology training</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Career & Executive coaching</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Outplacement services</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Business building essentials</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    {/* Additional Benefits - Second Column */}
-                    <div className="bg-teal-50 rounded-xl p-6">
-                      <div className="flex items-center mb-4">
-                        <svg className="w-8 h-8 text-teal-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                        </svg>
-                        <h4 className="text-xl font-bold text-trc-gray-900">Benefits & Support</h4>
-                      </div>
-                      <ul className="space-y-4">
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">All training materials included</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Personal mentorship included</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Lifetime membership in TRC Alumni Network</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Ongoing community support and networking</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Access to digital library</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    {/* Program Schedule - Third Column */}
-                    <div className="bg-orange-50 rounded-xl p-6">
-                      <div className="flex items-center mb-4">
-                        <svg className="w-8 h-8 text-orange-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <h4 className="text-xl font-bold text-trc-gray-900">Schedule & Dates</h4>
-                      </div>
-                      <ul className="space-y-4">
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Orientation: Sat, Nov 1st, 2025</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Program Start: Nov 8th/9th, 2025</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Graduation: Sat, Jun 6th, 2026</span>
-                        </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Monthly schedule: 2nd weekend + 2 Wed evenings</span>
-                        </li>
-                        <li className="ml-12">
-                          <span className="text-lg text-trc-gray-700">Wed evenings: 3 hours</span>
-                        </li>
-                        <li className="ml-12">
-                          <span className="text-lg text-trc-gray-700">Sat: 6 hours | Sun: 4 hours</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Enhanced Call-to-Action Area */}
-                <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 mt-8 border border-orange-200">
-                  <div className="flex flex-col md:flex-row items-center justify-between">
-                    <div className="text-center md:text-left mb-6 md:mb-0">
-                      <p className="text-3xl font-bold text-trc-gray-900 mb-2">$6,999</p>
-                      <p className="text-lg font-semibold text-trc-gray-700">Complete Certification Program</p>
-                      <p className="text-sm text-orange-600 mt-1 font-medium">✓ Payment plans available</p>
-                      <p className="text-sm text-orange-600 mt-1 font-medium">✓ One Full and one 50% scholarship available</p>
-                    </div>
-                    <div className="text-center w-full md:w-auto">
-                      <Link
-                        href="/contact"
-                        className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                      >
-                        <span className="md:hidden">Contact Us</span>
-                        <span className="max-md:hidden">Schedule a Free Consultation</span>
-                      </Link>
-                      <p className="text-sm text-orange-700 font-semibold mt-4 sm:mt-6 lg:mt-10 animate-pulse">⚡ Only 8 spots remaining</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
+            Ready to Start Your Coaching Journey?
+          </h2>
+          <p className="text-xl text-trc-gray-600 mb-8 max-w-2xl mx-auto">
+            Explore our professional coach certification programs and find the right fit for your career goals.
+          </p>
+          <Link
+            href="/programs"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-trc-gold-600 to-trc-gold-700 text-white font-bold rounded-lg hover:from-trc-gold-700 hover:to-trc-gold-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+          >
+            View Our Programs
+          </Link>
         </div>
       </section>
 
