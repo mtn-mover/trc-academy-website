@@ -18,15 +18,8 @@ function LoginForm() {
 
   // Redirect if already logged in
   useEffect(() => {
-    if (status === 'authenticated' && session?.user) {
-      // Redirect based on user role
-      if (session.user.isAdmin) {
-        router.push('/admin/dashboard');
-      } else if (session.user.isTeacher) {
-        router.push('/teacher/dashboard');
-      } else if (session.user.isStudent) {
-        router.push('/student/dashboard');
-      }
+    if (status === 'authenticated' && session?.user?.isAdmin) {
+      router.push('/admin/programs');
     }
   }, [status, session, router]);
 
@@ -36,10 +29,7 @@ function LoginForm() {
     if (errorParam) {
       switch (errorParam) {
         case 'no-permissions':
-          setError('Access denied - no permissions assigned. Contact administrator.');
-          break;
-        case 'access-expired':
-          setError('Your access has expired. Please contact administrator to renew.');
+          setError('Access denied - admin access required.');
           break;
         default:
           setError('Authentication error. Please try again.');
@@ -60,43 +50,17 @@ function LoginForm() {
       });
 
       if (result?.error) {
-        // Parse specific error messages from the auth system
         if (result.error.includes('inactive')) {
           setError('Account is inactive. Please contact administrator.');
-        } else if (result.error.includes('no permissions')) {
-          setError('Access denied - no permissions assigned. Contact administrator.');
-        } else if (result.error.includes('expired')) {
-          setError('Your access has expired. Please contact administrator to renew.');
+        } else if (result.error.includes('admin access required')) {
+          setError('Access denied - admin access required.');
         } else {
           setError('Invalid email or password');
         }
         setIsLoading(false);
       } else {
-        // Get the actual user roles from session and redirect accordingly
-        const response = await fetch('/api/auth/session');
-        const session = await response.json();
-
-        if (session?.user) {
-          const user = session.user;
-
-          // Redirect to appropriate dashboard based on highest priority role
-          // Priority: Admin > Teacher > Student
-          if (user.isAdmin) {
-            router.push('/admin/dashboard');
-          } else if (user.isTeacher) {
-            router.push('/teacher/dashboard');
-          } else if (user.isStudent) {
-            router.push('/student/dashboard');
-          } else {
-            setError('No valid role assigned. Contact administrator.');
-            setIsLoading(false);
-          }
-          // Don't call setIsLoading(false) here since we're redirecting
-        } else {
-          // If we can't get session after successful login, try again
-          router.refresh();
-          window.location.reload();
-        }
+        // Successful login - redirect to admin programs
+        router.push('/admin/programs');
       }
     } catch {
       setError('An error occurred. Please try again.');
@@ -114,14 +78,14 @@ function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-trc-blue-50 via-white to-trc-gray-50 flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-gray-50 flex items-center justify-center py-12 px-4">
       <div className="w-full" style={{ maxWidth: '384px' }}>
         {/* Logo and Title */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-trc-gray-900 mb-2">
-            Welcome Back
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Admin Login
           </h1>
-          <p className="text-trc-gray-600">Sign in to your trc.academy account</p>
+          <p className="text-gray-600">Sign in to manage TRC Academy programs</p>
         </div>
 
         {/* Login Form */}
@@ -129,7 +93,7 @@ function LoginForm() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-trc-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address
               </label>
               <input
@@ -137,8 +101,8 @@ function LoginForm() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500 focus:border-trc-blue-500 placeholder:text-gray-400"
-                placeholder="you@example.com"
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 placeholder:text-gray-400"
+                placeholder="admin@example.com"
                 required
                 disabled={isLoading}
                 autoComplete="off"
@@ -150,7 +114,7 @@ function LoginForm() {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-trc-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -159,7 +123,7 @@ function LoginForm() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-trc-blue-500 focus:border-trc-blue-500 placeholder:text-gray-400"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 placeholder:text-gray-400"
                   placeholder="Enter your password"
                   required
                   disabled={isLoading}
@@ -185,13 +149,6 @@ function LoginForm() {
               </div>
             </div>
 
-            {/* Forgot Password */}
-            <div className="text-right">
-              <Link href="/forgot-password" className="text-sm text-trc-blue-600 hover:text-trc-blue-700">
-                Forgot password?
-              </Link>
-            </div>
-
             {/* Error Message */}
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
@@ -203,7 +160,7 @@ function LoginForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full h-10 px-4 bg-trc-blue-600 text-white text-sm font-medium rounded-md hover:bg-trc-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-trc-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+              className="w-full h-10 px-4 bg-purple-600 text-white text-sm font-medium rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
             >
               {isLoading ? (
                 <>
@@ -219,6 +176,12 @@ function LoginForm() {
             </button>
           </form>
 
+          {/* Back to Home */}
+          <div className="mt-6 text-center">
+            <Link href="/" className="text-sm text-gray-600 hover:text-purple-600">
+              ← Back to Home
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -228,8 +191,8 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-trc-blue-50 to-trc-warm-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-trc-blue-600"></div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
       </div>
     }>
       <LoginForm />

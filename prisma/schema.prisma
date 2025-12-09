@@ -7,249 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Simplified User model - admin only
 model User {
-  id                   String                @id @default(cuid())
-  email                String                @unique
-  password             String
-  name                 String
-  timezone             String                @default("UTC")
-  isStudent            Boolean               @default(false)
-  isTeacher            Boolean               @default(false)
-  isAdmin              Boolean               @default(false)
-  accessExpiry         DateTime?
-  isActive             Boolean               @default(true)
-  createdAt            DateTime              @default(now())
-  updatedAt            DateTime              @updatedAt
-  familyName           String?
-  givenName            String?
-  auditLogs            AuditLog[]
-  classMembers         ClassMember[]
-  taughtClasses        ClassTeacher[]
-  peerCoaching1        PeerCoachingSession[] @relation("PeerStudent1")
-  peerCoaching2        PeerCoachingSession[] @relation("PeerStudent2")
-  uploads              Upload[]              @relation("UploadedBy")
-  createdPeerPlans     PeerCoachingPlan[]    @relation("PeerPlanCreator")
-  peerPlansAsStudent1  PeerCoachingPlan[]    @relation("PeerPlan1")
-  peerPlansAsStudent2  PeerCoachingPlan[]    @relation("PeerPlan2")
-  hostedMeetings       ZoomMeeting[]
-  fileAccessLogs       FileAccessLog[]
-}
-
-model Class {
-  id                   String                @id @default(cuid())
-  name                 String
-  description          String?
-  timezone             String                @default("Europe/Zurich")
-  startDate            DateTime
-  endDate              DateTime
-  isActive             Boolean               @default(true)
-  createdAt            DateTime              @default(now())
-  updatedAt            DateTime              @updatedAt
-  classDays            ClassDay[]
-  members              ClassMember[]
-  teachers             ClassTeacher[]
-  peerCoachingSessions PeerCoachingSession[]
-  peerCoachingPlans    PeerCoachingPlan[]
-  sessions             Session[]
-}
-
-model ClassTeacher {
-  id         String   @id @default(cuid())
-  classId    String
-  teacherId  String
-  isPrimary  Boolean  @default(false)
-  assignedAt DateTime @default(now())
-  class      Class    @relation(fields: [classId], references: [id])
-  teacher    User     @relation(fields: [teacherId], references: [id])
-
-  @@unique([classId, teacherId])
-}
-
-model ClassMember {
-  id       String   @id @default(cuid())
-  userId   String
-  classId  String
-  role     String   @default("STUDENT")
-  joinedAt DateTime @default(now())
-  class    Class    @relation(fields: [classId], references: [id])
-  user     User     @relation(fields: [userId], references: [id])
-
-  @@unique([userId, classId])
-}
-
-model ClassDay {
   id        String   @id @default(cuid())
-  classId   String
-  dayOfWeek Int
-  startTime String
-  endTime   String
+  email     String   @unique
+  password  String
+  name      String
+  isAdmin   Boolean  @default(true)
+  isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
-  class     Class    @relation(fields: [classId], references: [id])
+  updatedAt DateTime @updatedAt
 }
 
-model AuditLog {
-  id         String   @id @default(cuid())
-  userId     String
-  action     String
-  entityId   String?
-  entityType String?
-  metadata   String?
-  ipAddress  String?
-  userAgent  String?
-  createdAt  DateTime @default(now())
-  user       User     @relation(fields: [userId], references: [id])
-}
-
-model Enrollment {
-  id         String   @id @default(cuid())
-  userId     String
-  classId    String
-  enrolledAt DateTime @default(now())
-  createdAt  DateTime @default(now())
-
-  @@unique([userId, classId])
-}
-
-model Session {
-  id                   String        @id @default(cuid())
-  classId              String
-  title                String
-  description          String?
-  date                 DateTime
-  startTime            String
-  duration             Int
-  status               SessionStatus @default(PLANNED)
-  summary              String?
-  materialsVisible     Boolean       @default(false)
-  materialsReleaseDate DateTime?
-  createdAt            DateTime      @default(now())
-  updatedAt            DateTime      @updatedAt
-  documents            Document[]
-  recordings           Recording[]
-  class                Class         @relation(fields: [classId], references: [id], onDelete: Cascade)
-}
-
-model Document {
-  id         String   @id @default(cuid())
-  sessionId  String
-  title      String
-  fileName   String
-  fileUrl    String
-  fileSize   Int?
-  mimeType   String?
-  isVisible  Boolean  @default(false)
-  uploadedAt DateTime @default(now())
-  session    Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-}
-
-model Recording {
-  id        String   @id @default(cuid())
-  sessionId String
-  title     String
-  videoUrl  String
-  isVisible Boolean  @default(false)
-  addedAt   DateTime @default(now())
-  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-}
-
-model PeerCoachingSession {
-  id            String   @id @default(cuid())
-  classId       String
-  student1Id    String
-  student2Id    String
-  scheduledDate DateTime
-  startTime     String
-  endTime       String
-  duration      Int
-  status        String   @default("SCHEDULED")
-  notes         String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  class         Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
-  student1      User     @relation("PeerStudent1", fields: [student1Id], references: [id])
-  student2      User     @relation("PeerStudent2", fields: [student2Id], references: [id])
-}
-
-// File Storage for documents and recordings
-model Upload {
-  id             String          @id @default(cuid())
-  fileName       String
-  originalName   String
-  fileUrl        String
-  fileSize       Int
-  mimeType       String
-  uploadedBy     String
-  uploadedByUser User            @relation("UploadedBy", fields: [uploadedBy], references: [id])
-  uploadType     UploadType
-  relatedId      String? // sessionId or peerSessionId
-  isVisible      Boolean         @default(false)
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  accessLogs     FileAccessLog[]
-}
-
-// Peer Coaching Plan (Teacher creates pairs)
-model PeerCoachingPlan {
-  id        String                @id @default(cuid())
-  classId   String
-  student1Id String
-  student2Id String
-  startDate DateTime
-  endDate   DateTime
-  isActive  Boolean               @default(true)
-  createdBy String
-  createdAt DateTime              @default(now())
-  updatedAt DateTime              @updatedAt
-  class     Class                 @relation(fields: [classId], references: [id], onDelete: Cascade)
-  student1  User                  @relation("PeerPlan1", fields: [student1Id], references: [id])
-  student2  User                  @relation("PeerPlan2", fields: [student2Id], references: [id])
-  creator   User                  @relation("PeerPlanCreator", fields: [createdBy], references: [id])
-
-  @@unique([classId, student1Id, student2Id])
-}
-
-// Zoom Meeting Tracking
-model ZoomMeeting {
-  id               String   @id @default(cuid())
-  meetingId        String   @unique
-  sessionId        String? // Training session
-  peerSessionId    String? // Peer coaching session
-  hostId           String
-  joinUrl          String
-  startUrl         String
-  password         String?
-  startTime        DateTime
-  duration         Int
-  status           String   @default("SCHEDULED")
-  participantCount Int      @default(0)
-  recordingUrl     String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  host             User     @relation(fields: [hostId], references: [id])
-}
-
-// File Access Log
-model FileAccessLog {
-  id         String   @id @default(cuid())
-  userId     String
-  uploadId   String
-  action     String // "VIEW", "DOWNLOAD"
-  ipAddress  String?
-  accessedAt DateTime @default(now())
-  user       User     @relation(fields: [userId], references: [id])
-  upload     Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
-}
-
-enum SessionStatus {
-  PLANNED
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
-}
-
-enum UploadType {
-  SESSION_DOCUMENT
-  SESSION_RECORDING
-  PEER_RECORDING
-  GENERAL
+// Program/Course model with simple text fields
+model Program {
+  id                String   @id @default(cuid())
+  title             String
+  teacherName       String   // Simple text field, not a relationship
+  description       String?  @db.Text
+  startDate         DateTime
+  endDate           DateTime
+  price             Decimal? @db.Decimal(10, 2)
+  paymentConditions String?  @db.Text
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
