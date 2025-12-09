@@ -685,23 +685,13 @@ export default function CoachingTrainingPage() {
                 </div>
 
                 {/* Call-to-Action Area */}
-                <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 mt-8 border border-orange-200">
-                  <div className="flex flex-col md:flex-row items-center justify-between">
-                    <div className="text-center md:text-left mb-6 md:mb-0">
-                      <p className="text-3xl font-bold text-trc-gray-900 mb-2">$6,999</p>
-                      <p className="text-lg font-semibold text-trc-gray-700">Complete Certification Program</p>
-                      <p className="text-sm text-orange-600 mt-1 font-medium">Payment plans available</p>
-                      <p className="text-sm text-orange-600 mt-1 font-medium">Scholarships available</p>
-                    </div>
-                    <div className="text-center w-full md:w-auto">
-                      <Link
-                        href="/programs"
-                        className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-                      >
-                        View Programs & Apply
-                      </Link>
-                    </div>
-                  </div>
+                <div className="text-center mt-8">
+                  <Link
+                    href="/programs"
+                    className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
+                  >
+                    View Programs & Apply
+                  </Link>
                 </div>
 
               </div>
