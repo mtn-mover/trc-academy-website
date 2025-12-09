@@ -18,12 +18,21 @@ export const metadata: Metadata = {
   },
 };
 
+// Force dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 async function getPrograms() {
-  const programs = await prisma.program.findMany({
-    where: { isActive: true },
-    orderBy: { startDate: 'asc' },
-  });
-  return programs;
+  try {
+    const programs = await prisma.program.findMany({
+      where: { isActive: true },
+      orderBy: { startDate: 'asc' },
+    });
+    return programs;
+  } catch (error) {
+    // Handle case where Program table doesn't exist yet
+    console.error('Error fetching programs:', error);
+    return [];
+  }
 }
 
 function formatDate(date: Date) {
@@ -97,16 +106,16 @@ export default async function ProgramsPage() {
                   />
                 </svg>
                 <h2 className="text-3xl font-bold text-trc-gray-900 mb-4">
-                  Aktuell sind keine Kurse verfügbar
+                  No Programs Currently Available
                 </h2>
                 <p className="text-xl text-trc-gray-600 mb-8 leading-relaxed">
-                  Wir arbeiten an neuen spannenden Coaching-Zertifizierungsprogrammen. Kontaktieren Sie uns, um als Erstes zu erfahren, wann die Anmeldung beginnt.
+                  We&apos;re working on exciting new coaching certification programs. Contact us to be the first to know when enrollment begins.
                 </p>
                 <Link
                   href="/contact"
                   className="inline-block px-8 py-4 bg-gradient-to-r from-trc-gold-600 to-trc-gold-700 text-white font-bold rounded-lg hover:from-trc-gold-700 hover:to-trc-gold-800 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
                 >
-                  Kontaktieren Sie uns
+                  Contact Us
                 </Link>
               </div>
             </div>
