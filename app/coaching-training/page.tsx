@@ -640,44 +640,44 @@ export default function CoachingTrainingPage() {
                       </ul>
                     </div>
 
-                    {/* Program Highlights - Third Column (replacing Schedule & Dates) */}
+                    {/* Program Schedule - Third Column */}
                     <div className="bg-orange-50 rounded-xl p-6">
                       <div className="flex items-center mb-4">
                         <svg className="w-8 h-8 text-orange-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <h4 className="text-xl font-bold text-trc-gray-900">Program Highlights</h4>
+                        <h4 className="text-xl font-bold text-trc-gray-900">Schedule & Dates</h4>
                       </div>
                       <ul className="space-y-4">
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">8-month comprehensive program</span>
+                          <span className="text-lg text-trc-gray-700">Orientation: Sat, Nov 1st, 2025</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Flexible online schedule</span>
+                          <span className="text-lg text-trc-gray-700">Program Start: Nov 8th/9th, 2025</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">Small cohort sizes for personalized attention</span>
+                          <span className="text-lg text-trc-gray-700">Graduation: Sat, Jun 6th, 2026</span>
                         </li>
                         <li className="flex items-start">
                           <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-lg text-trc-gray-700">ICF-aligned curriculum</span>
+                          <span className="text-lg text-trc-gray-700">Monthly schedule: 2nd weekend + 2 Wed evenings</span>
                         </li>
-                        <li className="flex items-start">
-                          <svg className="w-6 h-6 text-trc-gold-600 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-lg text-trc-gray-700">Certified Professional Coach (CPC) credential</span>
+                        <li className="ml-12">
+                          <span className="text-lg text-trc-gray-700">Wed evenings: 3 hours</span>
+                        </li>
+                        <li className="ml-12">
+                          <span className="text-lg text-trc-gray-700">Sat: 6 hours | Sun: 4 hours</span>
                         </li>
                       </ul>
                     </div>
