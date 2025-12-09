@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { prisma } from '@/src/lib/prisma';
 
@@ -240,21 +241,34 @@ export default async function ProgramsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-trc-gold-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-trc-gray-900 mb-6">
-            Questions About Our Programs?
-          </h2>
-          <p className="text-xl text-trc-gray-600 mb-8 max-w-2xl mx-auto">
-            Schedule a free consultation to learn more about our programs and find the right fit for your career goals.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-trc-gold-600 to-trc-gold-700 text-white font-bold rounded-lg hover:from-trc-gold-700 hover:to-trc-gold-800 hover:scale-105 transform transition-all duration-300 shadow-xl hover:shadow-2xl text-lg"
-          >
-            Schedule a Free Consultation
-          </Link>
+      {/* Final CTA Section with Summit Image */}
+      <section className="relative py-32">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Summit_3.jpg"
+            alt="Mountain summit representing transformation"
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              Your Transformation Begins Today
+            </h2>
+            <p className="text-xl lg:text-2xl text-white max-w-4xl mx-auto mb-8" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
+              Take the first step toward your soul&apos;s work.
+              Discover how your unique wisdom can create lasting impact in the world.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-4 bg-white text-trc-blue-600 font-bold rounded-md hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+            >
+              Schedule a Free Consultation
+            </Link>
+          </div>
         </div>
       </section>
     </div>
